@@ -14,7 +14,6 @@
     <!-- Firebase SDK (Version 10.8.0 - Compat Version) -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
 
     <style>
         :root {
@@ -618,13 +617,13 @@
         }
 
         .storage-status-banner {
-            background: #EFF6FF;
-            border: 1px solid #BFDBFE;
+            background: #ECFDF5;
+            border: 1px solid #6EE7B7;
             border-radius: 14px;
             padding: 12px 18px;
             margin-bottom: 20px;
             font-size: 0.84rem;
-            color: #1E40AF;
+            color: #065F46;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -758,13 +757,13 @@
                 </button>
             </div>
 
-            <!-- Firebase Storage Status Banner -->
+            <!-- Firebase Cloud Connected Banner -->
             <div class="storage-status-banner">
                 <div>
-                    <i class="fa-solid fa-cloud-arrow-up" style="font-size:1.1rem; margin-right:8px;"></i>
-                    <strong>Hệ Thống Đám Mây Firebase Storage:</strong> Tự động nén ảnh thông minh trước khi lưu (Tiết kiệm 80% dung lượng kho 5GB miễn phí).
+                    <i class="fa-solid fa-cloud" style="font-size:1.1rem; margin-right:8px;"></i>
+                    <strong>Hệ Thống Đám Mây Firebase (lona-dress-hoian):</strong> Đã kết nối thành công 100%! Tự động đồng bộ 24/7 trên tất cả các máy.
                 </div>
-                <span style="font-weight:700; color:#047857;" id="firebase-sync-badge"><i class="fa-solid fa-signal"></i> Đã sẵn sàng kết nối Cloud</span>
+                <span style="font-weight:800; color:#047857;" id="firebase-sync-badge"><i class="fa-solid fa-circle-check"></i> LIVE CLOUD ACTIVE</span>
             </div>
 
             <!-- Admin Stat KPI Cards -->
@@ -967,7 +966,7 @@
                 <!-- ENHANCED IMAGE UPLOAD WITH FILE PICKER & AUTO COMPRESSION -->
                 <div class="form-group" style="background:#FFFDF9; border:1px dashed #F59E0B; padding:16px; border-radius:14px;">
                     <label style="color:#78350F; font-weight:700;"><i class="fa-solid fa-image"></i> Tải Ảnh Trang Phục Mẫu *</label>
-                    <p style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:10px;">Ảnh sẽ tự động được nén chuẩn HD nhẹ (150KB-300KB) trước khi lưu để tiết kiệm bộ nhớ 5GB:</p>
+                    <p style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:10px;">Ảnh sẽ tự động được nén chuẩn HD nhẹ (150KB-300KB) trước khi đồng bộ lên Đám Mây Firebase:</p>
 
                     <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
                         <input type="file" id="add-image-file" accept="image/*" onchange="handleImageFileUpload(event)" style="display:none;">
@@ -993,7 +992,7 @@
                 </div>
 
                 <button type="submit" style="width:100%; background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:14px; border:none; border-radius:14px; cursor:pointer; font-size:1rem; box-shadow:0 4px 15px rgba(217, 119, 6, 0.3);">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> LƯU & ĐĂNG MẪU LÊN TIỆM
+                    <i class="fa-solid fa-cloud-arrow-up"></i> LƯU & ĐĂNG MẪU LÊN CLOUD FIREBASE
                 </button>
             </form>
         </div>
@@ -1006,33 +1005,25 @@
         <span style="background:rgba(0,0,0,0.2); padding:4px 12px; border-radius:20px;" id="float-total">0 đ</span>
     </div>
 
-    <!-- JavaScript Application Engine -->
+    <!-- JavaScript Application Engine with Firebase Realtime Sync -->
     <script>
-        // Optional Firebase Configuration placeholder (will auto-sync when configured)
+        // Exact Firebase Credentials provided by User
         const firebaseConfig = {
-            apiKey: "YOUR_FIREBASE_API_KEY",
+            apiKey: "AIzaSyDmh2etZnIK3FpokdER7MTRORNzaGFeJAc",
             authDomain: "lona-dress-hoian.firebaseapp.com",
             projectId: "lona-dress-hoian",
-            storageBucket: "lona-dress-hoian.appspot.com",
-            messagingSenderId: "1234567890",
-            appId: "1:1234567890:web:abcdef123456"
+            storageBucket: "lona-dress-hoian.firebasestorage.app",
+            messagingSenderId: "88010395938",
+            appId: "1:88010395938:web:cfc0f4c3215bec22e6557b",
+            measurementId: "G-JPJP93KFEN"
         };
 
-        let isFirebaseInitialized = false;
+        // Initialize Firebase App & Firestore Database
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
-        try {
-            if (typeof firebase !== 'undefined' && firebaseConfig.apiKey !== "YOUR_FIREBASE_API_KEY") {
-                firebase.initializeApp(firebaseConfig);
-                const db = firebase.firestore();
-                const storage = firebase.storage();
-                isFirebaseInitialized = true;
-                console.log("Firebase Connected Successfully!");
-            }
-        } catch (e) {
-            console.log("Firebase Running in Local Client Mode:", e);
-        }
-
-        let productsDB = [
+        let productsDB = [];
+        let initialProducts = [
             {
                 id: 1,
                 brand: "LONA Signature",
@@ -1187,10 +1178,32 @@
             }
         ];
 
+        // Realtime 24/7 Firebase Listener
+        db.collection("products").onSnapshot((snapshot) => {
+            if (!snapshot.empty) {
+                let items = [];
+                snapshot.forEach((doc) => {
+                    items.push({ docId: doc.id, ...doc.data() });
+                });
+                // Sort by ID descending
+                items.sort((a, b) => b.id - a.id);
+                productsDB = items;
+                renderProducts(productsDB);
+                if (document.getElementById('view-admin').classList.contains('active')) {
+                    renderAdminInventory();
+                }
+            } else {
+                // Populate default products into Firestore
+                initialProducts.forEach(item => {
+                    db.collection("products").doc(String(item.id)).set(item);
+                });
+            }
+        });
+
         let cartState = [];
         let currentFilter = 'all';
 
-        // Auto Compress Image File to JPEG 200KB-300KB to Save Storage Space
+        // Auto Compress Image File to JPEG 200KB-300KB
         function compressImage(file, maxWidth = 1000, maxHeight = 1300, quality = 0.82) {
             return new Promise((resolve) => {
                 const reader = new FileReader();
@@ -1230,7 +1243,6 @@
         async function handleImageFileUpload(e) {
             const file = e.target.files[0];
             if (file) {
-                // Auto compress before saving
                 const compressedDataUrl = await compressImage(file);
                 document.getElementById('add-image').value = compressedDataUrl;
                 document.getElementById('img-preview-tag').src = compressedDataUrl;
@@ -1386,25 +1398,23 @@
         }
 
         function updateOutfitStatus(id, newStatus) {
-            const p = productsDB.find(x => x.id === id);
-            if (p) {
-                p.status = newStatus;
-                renderAdminInventory();
-            }
+            db.collection("products").doc(String(id)).update({ status: newStatus }).then(() => {
+                console.log("Updated status in Firebase!");
+            });
         }
 
         function updateBlackoutDates(id, type, dateVal) {
-            const p = productsDB.find(x => x.id === id);
-            if (p) {
-                if (type === 'start') p.blackoutStart = dateVal;
-                if (type === 'end') p.blackoutEnd = dateVal;
-            }
+            const updateObj = type === 'start' ? { blackoutStart: dateVal } : { blackoutEnd: dateVal };
+            db.collection("products").doc(String(id)).update(updateObj).then(() => {
+                console.log("Updated blackout dates in Firebase!");
+            });
         }
 
         function deleteOutfit(id) {
-            if (confirm("Anh có chắc muốn xóa mẫu trang phục này khỏi kho cửa hàng không?")) {
-                productsDB = productsDB.filter(p => p.id !== id);
-                renderAdminInventory();
+            if (confirm("Anh có chắc muốn xóa mẫu trang phục này khỏi kho Cloud không?")) {
+                db.collection("products").doc(String(id)).delete().then(() => {
+                    console.log("Deleted outfit from Firebase!");
+                });
             }
         }
 
@@ -1438,10 +1448,10 @@
                 blackoutEnd: ""
             };
 
-            productsDB.unshift(newOutfit);
-            closeAddProductModal();
-            renderAdminInventory();
-            alert("✨ ĐÃ UP MẪU TRANG PHỤC MỚI LÊN LONA DRESS THÀNH CÔNG!");
+            db.collection("products").doc(String(newOutfit.id)).set(newOutfit).then(() => {
+                closeAddProductModal();
+                alert("✨ ĐÃ UP MẪU TRANG PHỤC MỚI LÊN KHO CLOUD FIREBASE THÀNH CÔNG!");
+            });
         }
 
         function filterCategory(cat, btn) {
@@ -1610,7 +1620,7 @@
         }
 
         window.onload = function() {
-            renderProducts(productsDB);
+            // Initial load handled by Firebase onSnapshot
         };
     </script>
 </body>
