@@ -2,31 +2,32 @@
 
 Web Application & Báo cáo Lộ trình Kinh doanh cho tiệm thuê quần áo nữ cao cấp & trending tại Trung tâm Phố cổ Hội An.
 
-## 🚀 HƯỚNG DẪN DEPLOY TRÊN GITHUB PAGES / GIT SERVER
+- **GitHub Repository:** [https://github.com/ldthang2810-lang/thangle-Gitproject1](https://github.com/ldthang2810-lang/thangle-Gitproject1)
+- **Link Live Web App (GitHub Pages):** [https://ldthang2810-lang.github.io/thangle-Gitproject1/app.html](https://ldthang2810-lang.github.io/thangle-Gitproject1/app.html)
+- **Link Live Báo Cáo Chiến Lược (GitHub Pages):** [https://ldthang2810-lang.github.io/thangle-Gitproject1/index.html](https://ldthang2810-lang.github.io/thangle-Gitproject1/index.html)
 
-Mã nguồn đã được khởi tạo Git repository và commit hoàn chỉnh tại máy local. Để đưa lên Internet vĩnh viễn dùng Git:
+---
 
-### Bước 1: Tạo Repository trên GitHub
-1. Truy cập [https://github.com/new](https://github.com/new)
-2. Đặt tên Repo: `tiem-thue-quan-ao-hoi-an`
-3. Nhấn **Create repository**.
+## 🚀 CÁC BƯỚC ĐẨY CODE LÊN GITHUB & KÍCH HOẠT GITHUB PAGES
 
-### Bước 2: Push Mã Nguồn Từ Máy Lên GitHub
-Mở Terminal tại thư mục dự án và chạy các lệnh:
+Em đã cấu hình sẵn Remote Origin tới Repo: `https://github.com/ldthang2810-lang/thangle-Gitproject1.git`.
+
+### Bước 1: Đẩy Code Lên GitHub (Push)
+Anh chỉ cần mở Terminal (hoặc VS Code Terminal) tại thư mục dự án và gõ câu lệnh duy nhất:
 
 ```bash
-git remote add origin https://github.com/USERNAME/tiem-thue-quan-ao-hoi-an.git
-git branch -M main
 git push -u origin main
 ```
+*(Nếu Terminal hỏi Username/Password, anh nhập Tên tài khoản GitHub `ldthang2810-lang` hoặc GitHub Personal Access Token/Mật khẩu).*
 
-### Bước 3: Bật GitHub Pages (Miễn Phí Vĩnh Viễn)
-1. Vào **Settings** của Repository trên GitHub.
-2. Chọn mục **Pages** ở thanh menu bên trái.
-3. Ở phần **Build and deployment** -> **Branch**: Chọn `main` / `root` -> Bấm **Save**.
-4. Sau 1 phút, GitHub sẽ cấp cho anh link Web App dùng được trên mọi điện thoại & máy tính:
-   - **Link Web App Cửa Hàng:** `https://USERNAME.github.io/tiem-thue-quan-ao-hoi-an/app.html`
-   - **Link Báo Cáo Chiến Lược:** `https://USERNAME.github.io/tiem-thue-quan-ao-hoi-an/index.html`
+### Bước 2: Bật GitHub Pages (Miễn Phí Vĩnh Viễn)
+1. Truy cập vào Repo của anh: [https://github.com/ldthang2810-lang/thangle-Gitproject1](https://github.com/ldthang2810-lang/thangle-Gitproject1)
+2. Vào **Settings** -> Mục **Pages** ở danh mục bên trái.
+3. Ở phần **Build and deployment**:
+   - **Branch**: Chọn `main` và thư mục `/ (root)`.
+   - Bấm **Save**.
+4. Sau khoảng 1 phút, trang web sẽ chính thức LIVE vĩnh viễn tại địa chỉ:
+   👉 **https://ldthang2810-lang.github.io/thangle-Gitproject1/app.html**
 
 ---
 
