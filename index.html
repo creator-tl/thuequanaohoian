@@ -539,6 +539,44 @@
             display: block;
         }
 
+        .admin-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .admin-tab-btn {
+            background: #F5EFE6;
+            border: 1px solid #E5D9C8;
+            color: #5C4433;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .admin-tab-btn.active {
+            background: linear-gradient(135deg, #8C6D53, #5C4433);
+            color: #FFFFFF;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(92,68,51,0.25);
+        }
+
+        .admin-sub-view {
+            display: none;
+        }
+
+        .admin-sub-view.active {
+            display: block;
+        }
+
         .admin-kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -628,6 +666,36 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+        }
+
+        .order-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+        .order-pending { background: #FEF3C7; color: #92400E; }
+        .order-confirmed { background: #E0F2FE; color: #0369A1; }
+        .order-completed { background: #DCFCE7; color: #15803D; }
+        .order-cancelled { background: #FEE2E2; color: #B91C1C; }
+
+        .zalo-btn {
+            background: #0068FF;
+            color: #FFF;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .zalo-btn:hover {
+            background: #0052CC;
         }
     </style>
 </head>
@@ -747,10 +815,10 @@
     <div class="admin-section" id="view-admin">
         <div class="container">
             
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:16px;">
                 <div>
-                    <h2 class="font-serif" style="font-size:2rem; color:#2C221E;">Quản Lý LONA Dress - Lịch Khả Dụng</h2>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Cập nhật tình hình kho trang phục, đưa mẫu mới lên tiệm và thiết lập thời gian cho thuê / tạm bận.</p>
+                    <h2 class="font-serif" style="font-size:2rem; color:#2C221E;">Portal Quản Lý Tiệm LONA Dress</h2>
+                    <p style="color:var(--text-secondary); font-size:0.9rem;">Quản lý đơn đặt thuê của khách hàng, theo dõi doanh thu & cập nhật lịch bận trang phục kho.</p>
                 </div>
 
                 <div style="display:flex; gap:12px; align-items:center;">
@@ -759,7 +827,7 @@
                     </button>
 
                     <button onclick="handleAdminLogout()" style="background:#FDF0F0; color:#B94A4A; border:1px solid #F5C6C6; font-weight:700; padding:10px 18px; border-radius:30px; cursor:pointer; font-size:0.85rem;">
-                        <i class="fa-solid fa-right-from-bracket"></i> Đăng Xuất Admin
+                        <i class="fa-solid fa-right-from-bracket"></i> Đăng Xuất
                     </button>
                 </div>
             </div>
@@ -768,63 +836,149 @@
             <div class="storage-status-banner">
                 <div>
                     <i class="fa-solid fa-cloud" style="font-size:1.1rem; margin-right:8px;"></i>
-                    <strong>Hệ Thống Đám Mây Firebase (lona-dress-hoian):</strong> Đã kết nối thành công 100%! Tự động đồng bộ 24/7 trên tất cả các máy.
+                    <strong>Đám Mây Realtime Firebase (lona-dress-hoian):</strong> Đơn hàng mới & Tình trạng kho tự động đồng bộ ngay lập tức!
                 </div>
                 <span style="font-weight:800; color:#2E5C38;" id="firebase-sync-badge"><i class="fa-solid fa-circle-check"></i> LIVE CLOUD ACTIVE</span>
             </div>
 
-            <!-- Admin Stat KPI Cards -->
-            <div class="admin-kpi-grid">
-                <div class="admin-kpi">
-                    <div class="admin-kpi-icon" style="background:#F5EFE6; color:#5C4433;"><i class="fa-solid fa-shirt"></i></div>
-                    <div>
-                        <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-total-count">8</div>
-                        <div style="font-size:0.8rem; color:var(--text-secondary);">Tổng trang phục kho</div>
+            <!-- Admin Sub Tabs Nav -->
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" id="tab-btn-orders" onclick="switchAdminTab('orders')">
+                    <i class="fa-solid fa-receipt"></i> QUẢN LÝ ĐƠN ĐẶT THUÊ (<span id="tab-order-count">0</span>)
+                </button>
+                <button class="admin-tab-btn" id="tab-btn-inventory" onclick="switchAdminTab('inventory')">
+                    <i class="fa-solid fa-boxes-packing"></i> KHO TRANG PHỤC & LỊCH BẬN (<span id="tab-inventory-count">8</span>)
+                </button>
+            </div>
+
+            <!-- ================= SUB VIEW A: ORDER MANAGEMENT ================= -->
+            <div class="admin-sub-view active" id="admin-sub-orders">
+                <!-- Order Stat KPI Cards -->
+                <div class="admin-kpi-grid">
+                    <div class="admin-kpi">
+                        <div class="admin-kpi-icon" style="background:#FEF3C7; color:#92400E;"><i class="fa-solid fa-bell"></i></div>
+                        <div>
+                            <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="kpi-order-pending">0</div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">Đơn mới chờ xác nhận</div>
+                        </div>
+                    </div>
+                    <div class="admin-kpi">
+                        <div class="admin-kpi-icon" style="background:#E0F2FE; color:#0369A1;"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div>
+                            <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="kpi-order-confirmed">0</div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">Đang cho thuê / Đã giao</div>
+                        </div>
+                    </div>
+                    <div class="admin-kpi">
+                        <div class="admin-kpi-icon" style="background:#DCFCE7; color:#15803D;"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="kpi-order-completed">0</div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">Đơn hoàn tất (Đã trả)</div>
+                        </div>
+                    </div>
+                    <div class="admin-kpi">
+                        <div class="admin-kpi-icon" style="background:#FAF5ED; color:#5C4433;"><i class="fa-solid fa-coins"></i></div>
+                        <div>
+                            <div style="font-size:1.3rem; font-weight:800; color:#5C4433;" id="kpi-total-revenue">0 đ</div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">Doanh thu tạm tính</div>
+                        </div>
                     </div>
                 </div>
-                <div class="admin-kpi">
-                    <div class="admin-kpi-icon" style="background:#EAF2EC; color:#2E5C38;"><i class="fa-solid fa-circle-check"></i></div>
-                    <div>
-                        <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-avail-count">5</div>
-                        <div style="font-size:0.8rem; color:var(--text-secondary);">Đang sẵn sàng cho thuê</div>
+
+                <!-- Orders Filter & Search -->
+                <div class="admin-table-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+                        <h3 class="font-serif" style="font-size:1.3rem; color:#5C4433;"><i class="fa-solid fa-list-ol"></i> Danh Sách Đơn Thuê Đồ Của Khách Hàng</h3>
+                        
+                        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                            <input type="text" id="order-search-input" oninput="filterAdminOrders()" placeholder="Tìm theo Mã đơn, Tên khách, SĐT..." style="padding:8px 14px; border:1px solid #EBE3D8; border-radius:20px; font-size:0.85rem; outline:none; width:240px;">
+                            
+                            <select id="order-status-filter" onchange="filterAdminOrders()" style="padding:8px 14px; border:1px solid #EBE3D8; border-radius:20px; font-size:0.85rem; font-weight:700; color:#5C4433;">
+                                <option value="all">Tất Cả Trạng Thái Đơn</option>
+                                <option value="pending">🟡 Chờ Xác Nhận</option>
+                                <option value="confirmed">🔵 Đã Giao Đồ / Đang Thuê</option>
+                                <option value="completed">🟢 Đã Nhận Đồ & Hoàn Tất</option>
+                                <option value="cancelled">🔴 Đã Hủy Đơn</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="admin-kpi">
-                    <div class="admin-kpi-icon" style="background:#FDF0F0; color:#B94A4A;"><i class="fa-solid fa-user-tag"></i></div>
-                    <div>
-                        <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-rented-count">2</div>
-                        <div style="font-size:0.8rem; color:var(--text-secondary);">Đang cho thuê / Đặt trước</div>
-                    </div>
-                </div>
-                <div class="admin-kpi">
-                    <div class="admin-kpi-icon" style="background:#F3EEF8; color:#582C7A;"><i class="fa-solid fa-soap"></i></div>
-                    <div>
-                        <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-maint-count">1</div>
-                        <div style="font-size:0.8rem; color:var(--text-secondary);">Đang giặt hấp / Khử khuẩn</div>
+
+                    <div style="overflow-x:auto;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã Đơn & Thời Gian</th>
+                                    <th>Khách Hàng & Zalo</th>
+                                    <th>Mẫu Thuê & Size</th>
+                                    <th>Địa Chỉ Giao / Nhận Đồ</th>
+                                    <th>Tổng Tiền & Cọc</th>
+                                    <th>Trạng Thái Đơn</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-orders-tbody">
+                                <!-- JS Rendered Order Rows -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
 
-            <!-- Admin Inventory Table -->
-            <div class="admin-table-card">
-                <h3 class="font-serif" style="font-size:1.3rem; margin-bottom:16px; color:#5C4433;"><i class="fa-solid fa-list-check"></i> Bảng Cập Nhật Trạng Thái & Lịch Khả Dụng Mẫu Đồ</h3>
-                
-                <div style="overflow-x:auto;">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Ảnh & Mẫu Trang Phục</th>
-                                <th>Thương Hiệu & Tier</th>
-                                <th>Giá Thuê (3h / 24h)</th>
-                                <th>Trạng Thái Hiện Tại</th>
-                                <th>Khoảng Thời Gian Bận / Đã Cọc</th>
-                                <th>Thao Tác Quản Lý</th>
-                            </tr>
-                        </thead>
-                        <tbody id="admin-inventory-tbody">
-                            <!-- JS Rendered Table Rows -->
-                        </tbody>
-                    </table>
+            <!-- ================= SUB VIEW B: INVENTORY & BLACKOUT DATES ================= -->
+            <div class="admin-sub-view" id="admin-sub-inventory">
+                <!-- Admin Stat KPI Cards -->
+                <div class="admin-kpi-grid">
+                    <div class="admin-kpi">
+                        <div class="admin-kpi-icon" style="background:#F5EFE6; color:#5C4433;"><i class="fa-solid fa-shirt"></i></div>
+                        <div>
+                            <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-total-count">8</div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">Tổng trang phục kho</div>
+                        </div>
+                    </div>
+                    <div class="admin-kpi">
+                        <div class="admin-kpi-icon" style="background:#EAF2EC; color:#2E5C38;"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-avail-count">5</div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">Đang sẵn sàng cho thuê</div>
+                        </div>
+                    </div>
+                    <div class="admin-kpi">
+                        <div class="admin-kpi-icon" style="background:#FDF0F0; color:#B94A4A;"><i class="fa-solid fa-user-tag"></i></div>
+                        <div>
+                            <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-rented-count">2</div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">Đang cho thuê / Đặt trước</div>
+                        </div>
+                    </div>
+                    <div class="admin-kpi">
+                        <div class="admin-kpi-icon" style="background:#F3EEF8; color:#582C7A;"><i class="fa-solid fa-soap"></i></div>
+                        <div>
+                            <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-maint-count">1</div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">Đang giặt hấp / Khử khuẩn</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Inventory Table -->
+                <div class="admin-table-card">
+                    <h3 class="font-serif" style="font-size:1.3rem; margin-bottom:16px; color:#5C4433;"><i class="fa-solid fa-list-check"></i> Bảng Cập Nhật Trạng Thái & Lịch Khả Dụng Mẫu Đồ</h3>
+                    
+                    <div style="overflow-x:auto;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Ảnh & Mẫu Trang Phục</th>
+                                    <th>Thương Hiệu & Tier</th>
+                                    <th>Giá Thuê (3h / 24h)</th>
+                                    <th>Trạng Thái Hiện Tại</th>
+                                    <th>Khoảng Thời Gian Bận / Đã Cọc</th>
+                                    <th>Thao Tác Quản Lý</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-inventory-tbody">
+                                <!-- JS Rendered Table Rows -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -837,7 +991,7 @@
             <button class="modal-close" onclick="closeAdminLoginModal()"><i class="fa-solid fa-xmark"></i></button>
             <img src="assets/lona_dress_logo.png" style="width: 74px; height: 74px; border-radius: 50%; margin-bottom: 12px; border: 2px solid #8C6D53; box-shadow:0 4px 15px rgba(140,109,83,0.3);">
             <h3 class="font-serif" style="font-size: 1.55rem; color: #5C4433; margin-bottom: 4px;">Đăng Nhập Quản Lý LONA</h3>
-            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 20px;">Vui lòng nhập tài khoản quản trị tiệm để vào Portal quản lý kho.</p>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 20px;">Vui lòng nhập tài khoản quản trị tiệm để vào Portal quản lý đơn & kho.</p>
 
             <form onsubmit="handleAdminLogin(event)">
                 <div class="form-group" style="text-align: left;">
@@ -870,7 +1024,7 @@
         </div>
     </div>
 
-    <!-- Modal 2: Cart Drawer -->
+    <!-- Modal 2: Cart Drawer & Checkout -->
     <div class="modal-overlay" id="cart-modal">
         <div class="modal-card" style="max-width: 600px;">
             <button class="modal-close" onclick="closeCartModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -902,30 +1056,30 @@
                 
                 <div class="form-group">
                     <label>Họ và Tên Khách Hàng *</label>
-                    <input type="text" class="form-control" required placeholder="Ví dụ: Nguyễn Phương Thảo">
+                    <input type="text" class="form-control" id="cart-cust-name" required placeholder="Ví dụ: Nguyễn Phương Thảo">
                 </div>
 
                 <div class="grid-2" style="gap:12px;">
                     <div class="form-group">
                         <label>Số Điện Thoại / Zalo *</label>
-                        <input type="tel" class="form-control" required placeholder="0987 xxx xxx">
+                        <input type="tel" class="form-control" id="cart-cust-phone" required placeholder="0987 xxx xxx">
                     </div>
                     <div class="form-group">
                         <label>Hình thức nhận đồ *</label>
-                        <select class="form-control">
-                            <option>Giao tận nơi (Khách sạn / Homestay Hoi An)</option>
-                            <option>Thử & Lấy đồ trực tiếp tại Cửa Hàng LONA Dress</option>
+                        <select class="form-control" id="cart-delivery-type">
+                            <option value="Giao tận nơi">Giao tận nơi (Khách sạn / Homestay Hoi An)</option>
+                            <option value="Nhận tại tiệm">Thử & Lấy đồ trực tiếp tại Cửa Hàng LONA Dress</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Tên Khách Sạn / Homestay Địa chỉ tại Hội An *</label>
-                    <input type="text" class="form-control" placeholder="Ví dụ: Anio Boutique Hotel, 02 Thái Phiên, Hoi An">
+                    <input type="text" class="form-control" id="cart-cust-address" placeholder="Ví dụ: Anio Boutique Hotel, 02 Thái Phiên, Hoi An">
                 </div>
 
                 <button type="submit" style="width:100%; background:linear-gradient(135deg, #8C6D53, #5C4433); color:#FFF; font-weight:800; font-size:1rem; padding:14px; border:none; border-radius:14px; cursor:pointer; margin-top:10px; box-shadow:0 6px 20px rgba(92, 68, 51, 0.35);">
-                    <i class="fa-solid fa-paper-plane"></i> XÁC NHẬN ĐẶT THUÊ ĐỒ (GỬI ZALO/VIETQR)
+                    <i class="fa-solid fa-paper-plane"></i> XÁC NHẬN ĐẶT THUÊ ĐỒ (GỬI LÊN HỆ THỐNG LONA)
                 </button>
             </form>
         </div>
@@ -1064,6 +1218,8 @@
         let isAdminLoggedIn = localStorage.getItem('lona_admin_logged_in') === 'true';
 
         let productsDB = [];
+        let ordersDB = [];
+
         let initialProducts = [
             {
                 id: 1,
@@ -1219,7 +1375,7 @@
             }
         ];
 
-        // Realtime 24/7 Firebase Listener
+        // Realtime 24/7 Firebase Listener for Products
         db.collection("products").onSnapshot((snapshot) => {
             if (!snapshot.empty) {
                 let items = [];
@@ -1229,6 +1385,7 @@
                 items.sort((a, b) => b.id - a.id);
                 productsDB = items;
                 renderProducts(productsDB);
+                document.getElementById('tab-inventory-count').innerText = productsDB.length;
                 if (document.getElementById('view-admin').classList.contains('active')) {
                     renderAdminInventory();
                 }
@@ -1239,8 +1396,39 @@
             }
         });
 
+        // Realtime 24/7 Firebase Listener for Orders
+        db.collection("orders").onSnapshot((snapshot) => {
+            let orders = [];
+            snapshot.forEach((doc) => {
+                orders.push({ docId: doc.id, ...doc.data() });
+            });
+            orders.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+            ordersDB = orders;
+            document.getElementById('tab-order-count').innerText = ordersDB.length;
+            if (document.getElementById('view-admin').classList.contains('active')) {
+                renderAdminOrders();
+            }
+        });
+
         let cartState = [];
         let currentFilter = 'all';
+
+        function switchAdminTab(subTab) {
+            document.getElementById('tab-btn-orders').classList.remove('active');
+            document.getElementById('tab-btn-inventory').classList.remove('active');
+            document.getElementById('admin-sub-orders').classList.remove('active');
+            document.getElementById('admin-sub-inventory').classList.remove('active');
+
+            if (subTab === 'orders') {
+                document.getElementById('tab-btn-orders').classList.add('active');
+                document.getElementById('admin-sub-orders').classList.add('active');
+                renderAdminOrders();
+            } else {
+                document.getElementById('tab-btn-inventory').classList.add('active');
+                document.getElementById('admin-sub-inventory').classList.add('active');
+                renderAdminInventory();
+            }
+        }
 
         function openAdminLoginModal() {
             document.getElementById('admin-login-error').style.display = 'none';
@@ -1298,7 +1486,116 @@
                 document.getElementById('view-admin').classList.add('active');
                 document.getElementById('search-container').style.display = 'none';
                 document.getElementById('float-cart-bar').style.display = 'none';
+                renderAdminOrders();
                 renderAdminInventory();
+            }
+        }
+
+        function renderAdminOrders() {
+            const tbody = document.getElementById('admin-orders-tbody');
+            tbody.innerHTML = '';
+
+            let pendingCount = 0;
+            let confirmedCount = 0;
+            let completedCount = 0;
+            let totalRev = 0;
+
+            const filterStatus = document.getElementById('order-status-filter').value;
+            const searchQuery = document.getElementById('order-search-input').value.toLowerCase().trim();
+
+            ordersDB.forEach(ord => {
+                if (ord.status === 'pending') pendingCount++;
+                if (ord.status === 'confirmed') confirmedCount++;
+                if (ord.status === 'completed') {
+                    completedCount++;
+                    totalRev += (ord.totalAmount || 0);
+                }
+
+                // Filter logic
+                if (filterStatus !== 'all' && ord.status !== filterStatus) return;
+                if (searchQuery) {
+                    const matchId = (ord.orderId || '').toLowerCase().includes(searchQuery);
+                    const matchName = (ord.customerName || '').toLowerCase().includes(searchQuery);
+                    const matchPhone = (ord.customerPhone || '').toLowerCase().includes(searchQuery);
+                    if (!matchId && !matchName && !matchPhone) return;
+                }
+
+                let badgeHtml = '';
+                if (ord.status === 'pending') badgeHtml = `<span class="order-badge order-pending">🟡 Chờ Xác Nhận</span>`;
+                else if (ord.status === 'confirmed') badgeHtml = `<span class="order-badge order-confirmed">🔵 Đã Giao Đồ</span>`;
+                else if (ord.status === 'completed') badgeHtml = `<span class="order-badge order-completed">🟢 Hoàn Tất</span>`;
+                else if (ord.status === 'cancelled') badgeHtml = `<span class="order-badge order-cancelled">🔴 Đã Hủy</span>`;
+
+                const cleanPhone = (ord.customerPhone || '').replace(/\D/g, '');
+                const zaloUrl = cleanPhone ? `https://zalo.me/${cleanPhone}` : '#';
+
+                const itemsSummary = (ord.items || []).map(i => `
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                        <img src="${i.image}" style="width:34px; height:44px; object-fit:cover; border-radius:6px;">
+                        <div style="font-size:0.8rem;">
+                            <strong>${i.name}</strong><br>
+                            <span style="color:var(--text-secondary);">Size: ${i.size} | ${i.plan === '3h' ? 'Gói 3h' : 'Gói 24h'}</span>
+                        </div>
+                    </div>
+                `).join('');
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>
+                        <strong style="color:#5C4433; font-size:0.95rem;">#${ord.orderId}</strong>
+                        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">${ord.createdAt || ''}</div>
+                    </td>
+                    <td>
+                        <div style="font-weight:700; color:#2C221E;">${ord.customerName || 'N/A'}</div>
+                        <div style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:4px;">📞 ${ord.customerPhone || 'N/A'}</div>
+                        <a href="${zaloUrl}" target="_blank" class="zalo-btn"><i class="fa-solid fa-comment-dots"></i> Zalo Chat</a>
+                    </td>
+                    <td>${itemsSummary}</td>
+                    <td>
+                        <div style="font-size:0.82rem; font-weight:700; color:#5C4433;">${ord.deliveryType || 'Giao tận nơi'}</div>
+                        <div style="font-size:0.78rem; color:var(--text-secondary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${ord.hotelAddress || 'Tại tiệm'}</div>
+                    </td>
+                    <td>
+                        <strong style="color:var(--accent-rose); font-size:1rem;">${(ord.totalAmount || 0).toLocaleString('vi-VN')} đ</strong>
+                        <div style="font-size:0.75rem; color:var(--accent-gold-dark);">Cọc: ${(ord.deposit || 0).toLocaleString('vi-VN')} đ</div>
+                    </td>
+                    <td>
+                        <select onchange="updateOrderStatus('${ord.orderId}', this.value)" style="padding:6px 10px; border-radius:8px; border:1px solid #EBE3D8; font-weight:700; font-size:0.82rem; color:#5C4433; margin-top:4px;">
+                            <option value="pending" ${ord.status === 'pending' ? 'selected' : ''}>🟡 Chờ Xác Nhận</option>
+                            <option value="confirmed" ${ord.status === 'confirmed' ? 'selected' : ''}>🔵 Đã Giao Đồ / Đang Thuê</option>
+                            <option value="completed" ${ord.status === 'completed' ? 'selected' : ''}>🟢 Đã Trả Đồ & Hoàn Tất</option>
+                            <option value="cancelled" ${ord.status === 'cancelled' ? 'selected' : ''}>🔴 Hủy Đơn Hàng</option>
+                        </select>
+                        <div style="margin-top:4px;">${badgeHtml}</div>
+                    </td>
+                    <td>
+                        <button onclick="deleteOrder('${ord.orderId}')" style="background:none; border:none; color:var(--accent-rose); cursor:pointer; font-size:1.1rem;" title="Xóa đơn hàng"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('kpi-order-pending').innerText = pendingCount;
+            document.getElementById('kpi-order-confirmed').innerText = confirmedCount;
+            document.getElementById('kpi-order-completed').innerText = completedCount;
+            document.getElementById('kpi-total-revenue').innerText = totalRev.toLocaleString('vi-VN') + " đ";
+        }
+
+        function filterAdminOrders() {
+            renderAdminOrders();
+        }
+
+        function updateOrderStatus(orderId, newStatus) {
+            db.collection("orders").doc(orderId).update({ status: newStatus }).then(() => {
+                console.log(`Updated order #${orderId} status to ${newStatus}`);
+            });
+        }
+
+        function deleteOrder(orderId) {
+            if (confirm(`Anh có chắc muốn xóa đơn hàng #${orderId} khỏi Cloud không?`)) {
+                db.collection("orders").doc(orderId).delete().then(() => {
+                    console.log(`Deleted order #${orderId}`);
+                });
             }
         }
 
@@ -1690,10 +1987,58 @@
 
         function submitRentalOrder(e) {
             e.preventDefault();
-            alert("🎉 ĐẶT THUÊ THÀNH CÔNG!\n\nĐơn hàng của anh chị đã được khởi tạo trên LONA Dress. Nhân viên tiệm sẽ gọi xác nhận & giao đồ tận khách sạn trong vòng 15-30 phút!");
-            cartState = [];
-            updateCartUI();
-            closeCartModal();
+            if (cartState.length === 0) {
+                alert("Giỏ đồ thuê đang trống!");
+                return;
+            }
+
+            const name = document.getElementById('cart-cust-name').value.trim();
+            const phone = document.getElementById('cart-cust-phone').value.trim();
+            const delType = document.getElementById('cart-delivery-type').value;
+            const address = document.getElementById('cart-cust-address').value.trim();
+
+            let subtotal = 0;
+            let totalDeposit = 0;
+            cartState.forEach(item => {
+                subtotal += item.selectedPrice;
+                totalDeposit += item.deposit;
+            });
+            const insurance = 20000;
+            const total = subtotal + insurance;
+
+            const orderObj = {
+                orderId: "LONA-" + Math.floor(1000 + Math.random() * 9000),
+                createdAt: new Date().toLocaleString('vi-VN'),
+                timestamp: Date.now(),
+                customerName: name,
+                customerPhone: phone,
+                deliveryType: delType,
+                hotelAddress: address || "Thử & Lấy đồ trực tiếp tại tiệm",
+                items: cartState.map(i => ({
+                    id: i.id,
+                    name: i.name,
+                    size: i.selectedSize,
+                    plan: i.selectedPlan,
+                    price: i.selectedPrice,
+                    image: i.image
+                })),
+                subtotal: subtotal,
+                insurance: insurance,
+                deposit: totalDeposit,
+                totalAmount: total,
+                status: "pending",
+                paymentStatus: "unpaid"
+            };
+
+            db.collection("orders").doc(orderObj.orderId).set(orderObj).then(() => {
+                alert(`🎉 ĐẶT THUÊ THÀNH CÔNG!\n\nMã đơn hàng của anh chị: #${orderObj.orderId}\nĐơn hàng đã được lưu đồng bộ lên hệ thống tiệm LONA Dress. Nhân viên tiệm sẽ liên hệ Zalo / SĐT để giao đồ ngay!`);
+                cartState = [];
+                updateCartUI();
+                closeCartModal();
+            }).catch(err => {
+                console.error(err);
+                alert("Có lỗi xảy ra khi lưu đơn hàng. Vui lòng thử lại!");
+            });
         }
 
         window.onload = function() {
