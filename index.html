@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>thuequanaohoian - Thuê Quần Áo Hội An | Cho Thuê Váy Tiệc, Áo Dài, Đầm Thiết Kế Premium</title>
+    <title>LONA Dress - Thuê Quần Áo Hội An | Cho Thuê Váy Tiệc, Áo Dài, Đầm Thiết Kế Premium</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,7 +108,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 0;
+            padding: 12px 0;
             gap: 20px;
         }
 
@@ -119,28 +119,22 @@
             text-decoration: none;
         }
 
-        .store-logo {
+        .store-logo-img {
             width: 52px;
             height: 52px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #F59E0B, #E11D48);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #FFF;
-            font-size: 1.3rem;
-            font-weight: 800;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
-            text-align: center;
-            line-height: 1;
+            object-fit: cover;
+            border: 2px solid #F59E0B;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
         }
 
         .store-name {
-            font-size: 1.4rem;
+            font-size: 1.55rem;
             font-weight: 800;
-            color: #0F172A;
+            color: #78350F;
             line-height: 1.2;
             letter-spacing: -0.5px;
+            font-family: 'Playfair Display', serif;
         }
 
         .store-tagline {
@@ -624,7 +618,7 @@
     <!-- Top Announcement Bar + Mode Switcher -->
     <div class="top-bar">
         <div style="display:flex; align-items:center; gap:10px;">
-            <span><i class="fa-solid fa-sparkles"></i> WELCOME TO THUEQUANAOHOIAN - THUÊ QUẦN ÁO HỘI AN PREMIUM</span>
+            <span><i class="fa-solid fa-sparkles"></i> WELCOME TO LONA DRESS - THUÊ QUẦN ÁO HỘI AN PREMIUM</span>
         </div>
         
         <!-- Store / Admin Mode Switcher -->
@@ -643,9 +637,9 @@
         <div class="container">
             <div class="header-inner">
                 <a href="#" class="store-brand">
-                    <div class="store-logo">THÁNG</div>
+                    <img src="assets/lona_dress_logo.png" alt="LONA Dress Logo" class="store-logo-img">
                     <div>
-                        <div class="store-name">thuequanaohoian</div>
+                        <div class="store-name">LONA Dress</div>
                         <div class="store-tagline">Thuê Quần Áo Nữ & Cổ Phục Hội An Premium</div>
                     </div>
                 </a>
@@ -672,7 +666,7 @@
         <!-- Hero Banner -->
         <section class="hero-banner">
             <div class="container">
-                <h2 class="font-serif" style="font-size: 1.85rem; color:#78350F; margin-bottom: 4px;">thuequanaohoian - Tiệm Thuê Thời Trang Phố Cổ</h2>
+                <h2 class="font-serif" style="font-size: 1.85rem; color:#78350F; margin-bottom: 4px;">LONA Dress - Tiệm Thuê Thời Trang Phố Cổ</h2>
                 <p style="color:#92400E; font-size: 0.95rem;">Cho thuê trang phục chụp ảnh sống ảo, đầm thiết kế đi tiệc & áo dài tơ tằm thêu thủ công tại Trung tâm Hội An.</p>
 
                 <div class="info-grid">
@@ -720,7 +714,7 @@
         <section class="products-section">
             <div class="container">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <h3 class="font-serif" style="font-size: 1.5rem; color:#0F172A;" id="catalog-title">Bộ Sưu Tập Trang Phục thuequanaohoian</h3>
+                    <h3 class="font-serif" style="font-size: 1.5rem; color:#0F172A;" id="catalog-title">Bộ Sưu Tập Trang Phục LONA Dress</h3>
                     <span style="font-size:0.85rem; color:var(--text-secondary);" id="item-count-label">Hiển thị 8 sản phẩm</span>
                 </div>
 
@@ -737,7 +731,7 @@
             
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
                 <div>
-                    <h2 class="font-serif" style="font-size:2rem; color:#0F172A;">Quản Lý thuequanaohoian - Lịch Khả Dụng</h2>
+                    <h2 class="font-serif" style="font-size:2rem; color:#0F172A;">Quản Lý LONA Dress - Lịch Khả Dụng</h2>
                     <p style="color:var(--text-secondary); font-size:0.9rem;">Cập nhật tình hình kho trang phục, đưa mẫu mới lên tiệm và thiết lập thời gian cho thuê / tạm bận.</p>
                 </div>
 
@@ -818,7 +812,7 @@
     <div class="modal-overlay" id="cart-modal">
         <div class="modal-card" style="max-width: 600px;">
             <button class="modal-close" onclick="closeCartModal()"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="font-serif" style="font-size:1.5rem; margin-bottom:20px; color:#78350F;"><i class="fa-solid fa-bag-shopping"></i> Giỏ Hàng & Đặt Thuê - thuequanaohoian</h3>
+            <h3 class="font-serif" style="font-size:1.5rem; margin-bottom:20px; color:#78350F;"><i class="fa-solid fa-bag-shopping"></i> Giỏ Hàng & Đặt Thuê - LONA Dress</h3>
             
             <div id="cart-items-container"></div>
 
@@ -858,7 +852,7 @@
                         <label>Hình thức nhận đồ *</label>
                         <select class="form-control">
                             <option>Giao tận nơi (Khách sạn / Homestay Hoi An)</option>
-                            <option>Thử & Lấy đồ trực tiếp tại Cửa Hàng</option>
+                            <option>Thử & Lấy đồ trực tiếp tại Cửa Hàng LONA Dress</option>
                         </select>
                     </div>
                 </div>
@@ -880,18 +874,18 @@
         <div class="modal-card" style="max-width: 650px;">
             <button class="modal-close" onclick="closeAddProductModal()"><i class="fa-solid fa-xmark"></i></button>
             
-            <h3 class="font-serif" style="font-size:1.5rem; margin-bottom:20px; color:#78350F;"><i class="fa-solid fa-plus-circle"></i> Thêm Mẫu Cho Thuê Mới Vừa Nhập - thuequanaohoian</h3>
+            <h3 class="font-serif" style="font-size:1.5rem; margin-bottom:20px; color:#78350F;"><i class="fa-solid fa-plus-circle"></i> Thêm Mẫu Cho Thuê Mới Vừa Nhập - LONA Dress</h3>
 
             <form onsubmit="saveNewOutfit(event)">
                 <div class="form-group">
                     <label>Tên Trang Phục / Mẫu Váy *</label>
-                    <input type="text" class="form-control" id="add-name" required placeholder="Ví dụ: Daphale - Velvet Red Silk Dress">
+                    <input type="text" class="form-control" id="add-name" required placeholder="Ví dụ: LONA Couture - Velvet Red Silk Dress">
                 </div>
 
                 <div class="grid-2" style="gap:12px;">
                     <div class="form-group">
                         <label>Thương Hiệu / Hãng *</label>
-                        <input type="text" class="form-control" id="add-brand" required placeholder="Ví dụ: Sò Vintage / Daphale">
+                        <input type="text" class="form-control" id="add-brand" required placeholder="Ví dụ: LONA Dress / Sò Vintage">
                     </div>
                     <div class="form-group">
                         <label>Danh Mục *</label>
@@ -972,8 +966,8 @@
         let productsDB = [
             {
                 id: 1,
-                brand: "Sò Vintage",
-                name: "Sò Vintage - 004 - DASHA Đầm Lưới Kèm Tay Choàng",
+                brand: "LONA Signature",
+                name: "LONA - DASHA Đầm Lưới Kèm Tay Choàng Retro Hoi An",
                 cat: "boho",
                 tier: "tier-2",
                 tierLabel: "Tier 2: Premium",
@@ -991,8 +985,8 @@
             },
             {
                 id: 2,
-                brand: "Daphale Studios",
-                name: "Daphale - Aurora Silk Dress - Đầm Lụa Cổ Yếm Quyến Rũ",
+                brand: "LONA Couture",
+                name: "LONA - Aurora Silk Dress - Đầm Lụa Cổ Yếm Quyến Rũ",
                 cat: "localbrand",
                 tier: "tier-2",
                 tierLabel: "Tier 2: Local Brand",
@@ -1010,8 +1004,8 @@
             },
             {
                 id: 3,
-                brand: "Làng Nghề Cổ Truyền",
-                name: "Áo Dài Tơ Tằm Gấm Thêu Tay Cổ Phục Cao Cấp",
+                brand: "LONA Heritage",
+                name: "LONA - Áo Dài Tơ Tằm Gấm Thêu Tay Cổ Phục Cao Cấp",
                 cat: "aodai",
                 tier: "tier-3",
                 tierLabel: "Tier 3: Luxury Couture",
@@ -1029,8 +1023,8 @@
             },
             {
                 id: 4,
-                brand: "Boho Fashion",
-                name: "Boho Summer Dream - Váy Maxi Thổ Cẩm Trắng Bay Rủ",
+                brand: "LONA Boho",
+                name: "LONA Summer Dream - Váy Maxi Thổ Cẩm Trắng Bay Rủ",
                 cat: "boho",
                 tier: "tier-1",
                 tierLabel: "Tier 1: Gen Z Trend",
@@ -1048,8 +1042,8 @@
             },
             {
                 id: 5,
-                brand: "Châu Hy Couture",
-                name: "Châu Hy - 022 - Đầm Ren Trắng Phủ Lưới Indochine",
+                brand: "LONA Indochine",
+                name: "LONA - Đầm Ren Trắng Phủ Lưới Indochine Hoài Niệm",
                 cat: "localbrand",
                 tier: "tier-2",
                 tierLabel: "Tier 2: Premium",
@@ -1067,8 +1061,8 @@
             },
             {
                 id: 6,
-                brand: "Subtle Le Nguyen",
-                name: "Subtle Le Nguyen - High Couture Evening Gown",
+                brand: "LONA VIP Evening",
+                name: "LONA High Couture Evening Gown - Váy Dạ Hội VIP",
                 cat: "evening",
                 tier: "tier-3",
                 tierLabel: "Tier 3: Luxury VIP",
@@ -1086,8 +1080,8 @@
             },
             {
                 id: 7,
-                brand: "Hội An Photo Tour",
-                name: "COMBO FULL PHOTO TOUR: Outfit Tier 2 + Makeup + Thợ Ảnh 1.5h",
+                brand: "LONA Photo Package",
+                name: "COMBO FULL PHOTO TOUR: Outfit LONA + Makeup + Thợ Ảnh 1.5h",
                 cat: "combo",
                 tier: "tier-2",
                 tierLabel: "Combo Trọn Gói",
@@ -1105,8 +1099,8 @@
             },
             {
                 id: 8,
-                brand: "Phụ Kiện Hội An",
-                name: "Set Phụ Kiện: Nón Cối Vintage + Túi Mây Tre + Quạt Xếp",
+                brand: "LONA Accessories",
+                name: "Set Phụ Kiện LONA: Nón Cối Vintage + Túi Mây Tre + Quạt Xếp",
                 cat: "accessory",
                 tier: "tier-1",
                 tierLabel: "Phụ Kiện",
@@ -1323,7 +1317,7 @@
             productsDB.unshift(newOutfit);
             closeAddProductModal();
             renderAdminInventory();
-            alert("✨ ĐÃ UP MẪU TRANG PHỤC MỚI LÊN THUEQUANAOHOIAN THÀNH CÔNG!");
+            alert("✨ ĐÃ UP MẪU TRANG PHỤC MỚI LÊN LONA DRESS THÀNH CÔNG!");
         }
 
         function filterCategory(cat, btn) {
@@ -1485,7 +1479,7 @@
 
         function submitRentalOrder(e) {
             e.preventDefault();
-            alert("🎉 ĐẶT THUÊ THÀNH CÔNG!\n\nĐơn hàng của anh chị đã được khởi tạo trên thuequanaohoian. Nhân viên tiệm sẽ gọi xác nhận & giao đồ tận khách sạn trong vòng 15-30 phút!");
+            alert("🎉 ĐẶT THUÊ THÀNH CÔNG!\n\nĐơn hàng của anh chị đã được khởi tạo trên LONA Dress. Nhân viên tiệm sẽ gọi xác nhận & giao đồ tận khách sạn trong vòng 15-30 phút!");
             cartState = [];
             updateCartUI();
             closeCartModal();
