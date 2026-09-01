@@ -752,9 +752,15 @@
                     <p style="color:var(--text-secondary); font-size:0.9rem;">Cập nhật tình hình kho trang phục, đưa mẫu mới lên tiệm và thiết lập thời gian cho thuê / tạm bận.</p>
                 </div>
 
-                <button onclick="openAddProductModal()" style="background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:12px 24px; border:none; border-radius:30px; cursor:pointer; font-size:0.92rem; box-shadow:0 4px 15px rgba(217,119,6,0.3);">
-                    <i class="fa-solid fa-plus"></i> THÊM MẪU CHO THUÊ MỚI
-                </button>
+                <div style="display:flex; gap:12px; align-items:center;">
+                    <button onclick="openAddProductModal()" style="background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:12px 24px; border:none; border-radius:30px; cursor:pointer; font-size:0.92rem; box-shadow:0 4px 15px rgba(217,119,6,0.3);">
+                        <i class="fa-solid fa-plus"></i> THÊM MẪU CHO THUÊ MỚI
+                    </button>
+
+                    <button onclick="handleAdminLogout()" style="background:#FEF2F2; color:#991B1B; border:1px solid #FCA5A5; font-weight:700; padding:10px 18px; border-radius:30px; cursor:pointer; font-size:0.85rem;">
+                        <i class="fa-solid fa-right-from-bracket"></i> Đăng Xuất Admin
+                    </button>
+                </div>
             </div>
 
             <!-- Firebase Cloud Connected Banner -->
@@ -821,6 +827,35 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <!-- MODAL: ADMIN LOGIN GATEKEEPER -->
+    <div class="modal-overlay" id="admin-login-modal">
+        <div class="modal-card" style="max-width: 420px; text-align: center; border-top: 5px solid #F59E0B;">
+            <button class="modal-close" onclick="closeAdminLoginModal()"><i class="fa-solid fa-xmark"></i></button>
+            <img src="assets/lona_dress_logo.png" style="width: 74px; height: 74px; border-radius: 50%; margin-bottom: 12px; border: 2px solid #F59E0B; box-shadow:0 4px 15px rgba(245,158,11,0.3);">
+            <h3 class="font-serif" style="font-size: 1.55rem; color: #78350F; margin-bottom: 4px;">Đăng Nhập Quản Lý LONA</h3>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 20px;">Vui lòng nhập tài khoản quản trị tiệm để vào Portal quản lý kho.</p>
+
+            <form onsubmit="handleAdminLogin(event)">
+                <div class="form-group" style="text-align: left;">
+                    <label>Tài khoản Quản Lý *</label>
+                    <input type="text" class="form-control" id="admin-user-input" required placeholder="Tên đăng nhập (mặc định: admin)">
+                </div>
+                <div class="form-group" style="text-align: left;">
+                    <label>Mật Khẩu *</label>
+                    <input type="password" class="form-control" id="admin-pass-input" required placeholder="Mật khẩu (mặc định: lona2026)">
+                </div>
+
+                <div id="admin-login-error" style="color:var(--accent-rose); font-size:0.82rem; font-weight:700; margin-bottom:12px; display:none;">
+                    <i class="fa-solid fa-circle-exclamation"></i> Tài khoản hoặc mật khẩu không chính xác!
+                </div>
+
+                <button type="submit" style="width:100%; background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:13px; border:none; border-radius:12px; font-size:0.95rem; cursor:pointer; margin-top:4px; box-shadow:0 4px 15px rgba(217, 119, 6, 0.35);">
+                    <i class="fa-solid fa-right-to-bracket"></i> XÁC NHẬN ĐĂNG NHẬP ADMIN
+                </button>
+            </form>
         </div>
     </div>
 
@@ -1005,7 +1040,7 @@
         <span style="background:rgba(0,0,0,0.2); padding:4px 12px; border-radius:20px;" id="float-total">0 đ</span>
     </div>
 
-    <!-- JavaScript Application Engine with Firebase Realtime Sync -->
+    <!-- JavaScript Application Engine with Admin Auth & Firebase Realtime Sync -->
     <script>
         // Exact Firebase Credentials provided by User
         const firebaseConfig = {
@@ -1021,6 +1056,11 @@
         // Initialize Firebase App & Firestore Database
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
+
+        // Admin Auth Credentials (default admin/lona2026)
+        const ADMIN_USER = "admin";
+        const ADMIN_PASS = "lona2026";
+        let isAdminLoggedIn = localStorage.getItem('lona_admin_logged_in') === 'true';
 
         let productsDB = [];
         let initialProducts = [
@@ -1185,7 +1225,6 @@
                 snapshot.forEach((doc) => {
                     items.push({ docId: doc.id, ...doc.data() });
                 });
-                // Sort by ID descending
                 items.sort((a, b) => b.id - a.id);
                 productsDB = items;
                 renderProducts(productsDB);
@@ -1193,7 +1232,6 @@
                     renderAdminInventory();
                 }
             } else {
-                // Populate default products into Firestore
                 initialProducts.forEach(item => {
                     db.collection("products").doc(String(item.id)).set(item);
                 });
@@ -1203,7 +1241,67 @@
         let cartState = [];
         let currentFilter = 'all';
 
-        // Auto Compress Image File to JPEG 200KB-300KB
+        function openAdminLoginModal() {
+            document.getElementById('admin-login-error').style.display = 'none';
+            document.getElementById('admin-login-modal').classList.add('active');
+        }
+
+        function closeAdminLoginModal() {
+            document.getElementById('admin-login-modal').classList.remove('active');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('admin-user-input').value.trim();
+            const p = document.getElementById('admin-pass-input').value.trim();
+
+            if ((u === ADMIN_USER || u === "lonadress") && p === ADMIN_PASS) {
+                isAdminLoggedIn = true;
+                localStorage.setItem('lona_admin_logged_in', 'true');
+                closeAdminLoginModal();
+                switchView('admin');
+                alert("🔓 ĐĂNG NHẬP THÀNH CÔNG! CHÀO MỪNG QUẢN LÝ LONA DRESS.");
+            } else {
+                document.getElementById('admin-login-error').style.display = 'block';
+            }
+        }
+
+        function handleAdminLogout() {
+            if (confirm("Anh có chắc muốn đăng xuất khỏi quyền Admin không?")) {
+                isAdminLoggedIn = false;
+                localStorage.removeItem('lona_admin_logged_in');
+                switchView('store');
+                alert("🔒 Đã đăng xuất khỏi tài khoản Admin.");
+            }
+        }
+
+        function switchView(mode) {
+            if (mode === 'admin' && !isAdminLoggedIn) {
+                openAdminLoginModal();
+                return;
+            }
+
+            document.getElementById('btn-mode-store').classList.remove('active');
+            document.getElementById('btn-mode-admin').classList.remove('active');
+
+            if (mode === 'store') {
+                document.getElementById('btn-mode-store').classList.add('active');
+                document.getElementById('view-storefront').style.display = 'block';
+                document.getElementById('view-admin').classList.remove('active');
+                document.getElementById('search-container').style.display = 'block';
+                document.getElementById('float-cart-bar').style.display = 'flex';
+                renderProducts(productsDB);
+            } else {
+                document.getElementById('btn-mode-admin').classList.add('active');
+                document.getElementById('view-storefront').style.display = 'none';
+                document.getElementById('view-admin').classList.active = true;
+                document.getElementById('view-admin').classList.add('active');
+                document.getElementById('search-container').style.display = 'none';
+                document.getElementById('float-cart-bar').style.display = 'none';
+                renderAdminInventory();
+            }
+        }
+
         function compressImage(file, maxWidth = 1000, maxHeight = 1300, quality = 0.82) {
             return new Promise((resolve) => {
                 const reader = new FileReader();
@@ -1254,27 +1352,6 @@
             if (url && url.length > 5) {
                 document.getElementById('img-preview-tag').src = url;
                 document.getElementById('image-upload-preview').style.display = 'block';
-            }
-        }
-
-        function switchView(mode) {
-            document.getElementById('btn-mode-store').classList.remove('active');
-            document.getElementById('btn-mode-admin').classList.remove('active');
-
-            if (mode === 'store') {
-                document.getElementById('btn-mode-store').classList.add('active');
-                document.getElementById('view-storefront').style.display = 'block';
-                document.getElementById('view-admin').classList.remove('active');
-                document.getElementById('search-container').style.display = 'block';
-                document.getElementById('float-cart-bar').style.display = 'flex';
-                renderProducts(productsDB);
-            } else {
-                document.getElementById('btn-mode-admin').classList.add('active');
-                document.getElementById('view-storefront').style.display = 'none';
-                document.getElementById('view-admin').classList.add('active');
-                document.getElementById('search-container').style.display = 'none';
-                document.getElementById('float-cart-bar').style.display = 'none';
-                renderAdminInventory();
             }
         }
 
