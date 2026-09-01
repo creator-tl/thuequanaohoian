@@ -937,9 +937,27 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Link Hình Ảnh (URL Image) *</label>
-                    <input type="url" class="form-control" id="add-image" required placeholder="https://images.unsplash.com/photo-...">
+                <!-- ENHANCED IMAGE UPLOAD WITH FILE PICKER & PREVIEW -->
+                <div class="form-group" style="background:#FFFDF9; border:1px dashed #F59E0B; padding:16px; border-radius:14px;">
+                    <label style="color:#78350F; font-weight:700;"><i class="fa-solid fa-image"></i> Tải Ảnh Trang Phục Mẫu *</label>
+                    <p style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:10px;">Anh có thể chọn file ảnh từ máy tính/điện thoại HOẶC dán link ảnh URL vào ô bên dưới:</p>
+
+                    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                        <input type="file" id="add-image-file" accept="image/*" onchange="handleImageFileUpload(event)" style="display:none;">
+                        
+                        <button type="button" onclick="document.getElementById('add-image-file').click()" style="background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:10px 18px; border:none; border-radius:12px; cursor:pointer; font-size:0.85rem; display:flex; align-items:center; gap:8px; box-shadow:0 3px 10px rgba(217,119,6,0.3);">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> CHỌN ẢNH TỪ MÁY TÍNH / ĐIỆN THOẠI
+                        </button>
+                        
+                        <span style="font-size:0.8rem; color:var(--text-secondary); font-weight:700;">hoặc dán Link URL:</span>
+                    </div>
+
+                    <input type="text" class="form-control" id="add-image" required placeholder="https://... hoặc chọn file từ máy tính ở trên" style="margin-top:10px;" oninput="previewImageURL(this.value)">
+
+                    <div id="image-upload-preview" style="margin-top:12px; display:none;">
+                        <div style="font-size:0.78rem; font-weight:700; color:var(--accent-emerald); margin-bottom:4px;"><i class="fa-solid fa-circle-check"></i> Xem trước hình ảnh đã chọn:</div>
+                        <img id="img-preview-tag" style="max-height:140px; border-radius:12px; border:2px solid #F59E0B; object-fit:cover; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -1120,6 +1138,27 @@
 
         let cartState = [];
         let currentFilter = 'all';
+
+        function handleImageFileUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    const dataUrl = evt.target.result;
+                    document.getElementById('add-image').value = dataUrl;
+                    document.getElementById('img-preview-tag').src = dataUrl;
+                    document.getElementById('image-upload-preview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function previewImageURL(url) {
+            if (url && url.length > 5) {
+                document.getElementById('img-preview-tag').src = url;
+                document.getElementById('image-upload-preview').style.display = 'block';
+            }
+        }
 
         function switchView(mode) {
             document.getElementById('btn-mode-store').classList.remove('active');
