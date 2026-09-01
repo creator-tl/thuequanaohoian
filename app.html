@@ -17,22 +17,22 @@
 
     <style>
         :root {
-            --bg-main: #FAF8F5;
+            --bg-main: #FDFBF7;
             --bg-card: #FFFFFF;
-            --bg-card-hover: #FFFDF9;
-            --accent-gold: #D97706;
-            --accent-gold-light: #F59E0B;
-            --accent-gold-dark: #92400E;
-            --accent-rose: #E11D48;
-            --accent-emerald: #059669;
-            --accent-cyan: #0284C7;
-            --text-primary: #1E293B;
-            --text-secondary: #64748B;
-            --text-muted: #94A3B8;
-            --border-color: #E2E8F0;
-            --border-gold: rgba(217, 119, 6, 0.3);
-            --shadow-soft: 0 10px 25px -5px rgba(217, 119, 6, 0.12);
-            --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --bg-card-hover: #FAF5ED;
+            --accent-gold: #8C6D53;
+            --accent-gold-light: #A68A70;
+            --accent-gold-dark: #5C4433;
+            --accent-rose: #B94A4A;
+            --accent-emerald: #4A7C59;
+            --accent-cyan: #4A7B9D;
+            --text-primary: #2C221E;
+            --text-secondary: #6B5B52;
+            --text-muted: #9E8E85;
+            --border-color: #EBE3D8;
+            --border-gold: rgba(140, 109, 83, 0.25);
+            --shadow-soft: 0 10px 25px -5px rgba(140, 109, 83, 0.12);
+            --shadow-card: 0 4px 15px rgba(92, 68, 51, 0.05);
         }
 
         * {
@@ -60,7 +60,7 @@
 
         /* Top Bar Notification */
         .top-bar {
-            background: linear-gradient(90deg, #F59E0B, #D97706);
+            background: linear-gradient(90deg, #8C6D53, #5C4433);
             color: #FFFFFF;
             font-weight: 700;
             font-size: 0.82rem;
@@ -69,12 +69,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2);
+            box-shadow: 0 2px 8px rgba(92, 68, 51, 0.2);
         }
 
         .mode-switcher {
             display: flex;
-            background: rgba(0,0,0,0.15);
+            background: rgba(0,0,0,0.2);
             padding: 3px;
             border-radius: 20px;
             gap: 4px;
@@ -101,11 +101,11 @@
         /* Header Store Banner */
         header {
             background: #FFFFFF;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 10px rgba(92, 68, 51, 0.04);
         }
 
         .header-inner {
@@ -128,14 +128,14 @@
             height: 52px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #F59E0B;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+            border: 2px solid #8C6D53;
+            box-shadow: 0 4px 12px rgba(140, 109, 83, 0.3);
         }
 
         .store-name {
             font-size: 1.55rem;
             font-weight: 800;
-            color: #78350F;
+            color: #5C4433;
             line-height: 1.2;
             letter-spacing: -0.5px;
             font-family: 'Playfair Display', serif;
@@ -156,8 +156,8 @@
 
         .search-input {
             width: 100%;
-            background: #F8FAFC;
-            border: 1px solid #E2E8F0;
+            background: #F8F5F0;
+            border: 1px solid var(--border-color);
             border-radius: 30px;
             padding: 10px 18px 10px 42px;
             color: var(--text-primary);
@@ -169,7 +169,7 @@
         .search-input:focus {
             background: #FFFFFF;
             border-color: var(--accent-gold);
-            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+            box-shadow: 0 0 0 3px rgba(140, 109, 83, 0.15);
         }
 
         .search-icon {
@@ -189,7 +189,7 @@
         }
 
         .btn-cart {
-            background: linear-gradient(135deg, #F59E0B, #D97706);
+            background: linear-gradient(135deg, #8C6D53, #5C4433);
             color: #FFF;
             font-weight: 700;
             border: none;
@@ -201,16 +201,16 @@
             gap: 10px;
             font-size: 0.88rem;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+            box-shadow: 0 4px 15px rgba(92, 68, 51, 0.25);
         }
 
         .btn-cart:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.45);
+            box-shadow: 0 6px 20px rgba(92, 68, 51, 0.4);
         }
 
         .cart-badge {
-            background: #1E293B;
+            background: #2C221E;
             color: #FFF;
             font-size: 0.75rem;
             width: 22px;
@@ -224,8 +224,8 @@
 
         /* Hero Store Info Banner */
         .hero-banner {
-            background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 50%, #FEE2E2 100%);
-            border-bottom: 1px solid #FDE68A;
+            background: linear-gradient(135deg, #F7F0E6 0%, #FAF5ED 50%, #F3EAE0 100%);
+            border-bottom: 1px solid #EBE0D2;
             padding: 35px 0;
             position: relative;
         }
@@ -238,22 +238,22 @@
         }
 
         .info-card {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(245, 158, 11, 0.3);
+            border: 1px solid rgba(140, 109, 83, 0.2);
             border-radius: 16px;
             padding: 16px 20px;
             display: flex;
             align-items: center;
             gap: 14px;
-            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.06);
+            box-shadow: 0 4px 15px rgba(92, 68, 51, 0.05);
         }
 
         .info-icon {
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: #FEF3C7;
+            background: #F0E6D8;
             color: var(--accent-gold-dark);
             display: flex;
             align-items: center;
@@ -265,8 +265,8 @@
         /* Category Nav Filter Pills */
         .cat-nav {
             padding: 16px 0;
-            border-bottom: 1px solid #E2E8F0;
-            background: #FAF8F5;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-main);
             position: sticky;
             top: 81px;
             z-index: 90;
@@ -281,7 +281,7 @@
 
         .cat-btn {
             background: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             color: var(--text-secondary);
             padding: 8px 18px;
             border-radius: 25px;
@@ -292,15 +292,15 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
 
         .cat-btn.active {
-            background: linear-gradient(135deg, #F59E0B, #D97706);
+            background: linear-gradient(135deg, #8C6D53, #5C4433);
             color: #FFFFFF;
             font-weight: 700;
             border-color: transparent;
-            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+            box-shadow: 0 4px 12px rgba(92, 68, 51, 0.25);
         }
 
         /* Products Grid */
@@ -313,7 +313,7 @@
 
         .product-card {
             background: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             border-radius: 18px;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -325,8 +325,8 @@
 
         .product-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(217, 119, 6, 0.4);
-            box-shadow: 0 12px 30px rgba(217, 119, 6, 0.15);
+            border-color: rgba(140, 109, 83, 0.4);
+            box-shadow: 0 12px 30px rgba(92, 68, 51, 0.12);
         }
 
         .product-img-wrapper {
@@ -334,7 +334,7 @@
             width: 100%;
             height: 360px;
             overflow: hidden;
-            background: #F1F5F9;
+            background: #F5EFE6;
         }
 
         .product-img {
@@ -348,7 +348,7 @@
             position: absolute;
             top: 14px;
             left: 14px;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(6px);
             color: var(--accent-gold-dark);
             font-size: 0.72rem;
@@ -367,9 +367,9 @@
             padding: 4px 10px;
             border-radius: 20px;
         }
-        .tier-1 { background: #0284C7; color: #FFF; }
-        .tier-2 { background: #D97706; color: #FFF; }
-        .tier-3 { background: #E11D48; color: #FFF; }
+        .tier-1 { background: #4A7B9D; color: #FFF; }
+        .tier-2 { background: #8C6D53; color: #FFF; }
+        .tier-3 { background: #B94A4A; color: #FFF; }
 
         .status-badge {
             display: inline-flex;
@@ -381,10 +381,10 @@
             border-radius: 12px;
             margin-bottom: 8px;
         }
-        .status-available { background: #E6F4EA; color: #137333; }
-        .status-rented { background: #FCE8E6; color: #C5221F; }
-        .status-reserved { background: #FEF7E0; color: #B06000; }
-        .status-maintenance { background: #F3E8FF; color: #6B21A8; }
+        .status-available { background: #EAF2EC; color: #2E5C38; }
+        .status-rented { background: #FDF0F0; color: #9E3A3A; }
+        .status-reserved { background: #F7EFE2; color: #7C5217; }
+        .status-maintenance { background: #F3EEF8; color: #582C7A; }
 
         .product-info {
             padding: 20px;
@@ -405,7 +405,7 @@
         .product-title {
             font-size: 1.08rem;
             font-weight: 700;
-            color: #0F172A;
+            color: #2C221E;
             margin-bottom: 8px;
             line-height: 1.35;
             display: -webkit-box;
@@ -417,7 +417,7 @@
         .price-box {
             margin-top: auto;
             padding-top: 12px;
-            border-top: 1px dashed #E2E8F0;
+            border-top: 1px dashed var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
@@ -431,8 +431,8 @@
 
         .btn-rent-now {
             width: 100%;
-            background: #FEF3C7;
-            border: 1px solid #FDE68A;
+            background: #F5EFE6;
+            border: 1px solid #E5D9C8;
             color: var(--accent-gold-dark);
             font-weight: 700;
             padding: 11px;
@@ -450,13 +450,14 @@
         .btn-rent-now:hover {
             background: var(--accent-gold);
             color: #FFFFFF;
+            border-color: transparent;
         }
 
         /* Modal Overlay */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(44, 34, 30, 0.6);
             backdrop-filter: blur(6px);
             z-index: 1000;
             display: none;
@@ -471,7 +472,7 @@
 
         .modal-card {
             background: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             border-radius: 24px;
             max-width: 850px;
             width: 100%;
@@ -479,14 +480,14 @@
             overflow-y: auto;
             position: relative;
             padding: 30px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 25px 60px rgba(44, 34, 30, 0.2);
         }
 
         .modal-close {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: #F1F5F9;
+            background: #F5EFE6;
             border: none;
             color: var(--text-secondary);
             width: 36px;
@@ -513,8 +514,8 @@
 
         .form-control {
             width: 100%;
-            background: #F8FAFC;
-            border: 1px solid #E2E8F0;
+            background: #F8F5F0;
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 11px 15px;
             color: var(--text-primary);
@@ -525,7 +526,7 @@
         .form-control:focus {
             background: #FFFFFF;
             border-color: var(--accent-gold);
-            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+            box-shadow: 0 0 0 3px rgba(140, 109, 83, 0.15);
         }
 
         /* ADMIN PORTAL STYLES */
@@ -547,7 +548,7 @@
 
         .admin-kpi {
             background: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             border-radius: 18px;
             padding: 20px;
             display: flex;
@@ -569,7 +570,7 @@
 
         .admin-table-card {
             background: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             border-radius: 20px;
             padding: 24px;
             box-shadow: var(--shadow-card);
@@ -584,17 +585,17 @@
         }
 
         .admin-table th {
-            background: #F8FAFC;
-            color: #475569;
+            background: #F8F5F0;
+            color: #5C4433;
             text-align: left;
             padding: 12px 14px;
             font-weight: 700;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .admin-table td {
             padding: 14px;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid var(--border-color);
             vertical-align: middle;
         }
 
@@ -603,11 +604,11 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(90deg, #F59E0B, #D97706);
+            background: linear-gradient(90deg, #8C6D53, #5C4433);
             color: #FFF;
             padding: 14px 28px;
             border-radius: 40px;
-            box-shadow: 0 10px 30px rgba(217, 119, 6, 0.4);
+            box-shadow: 0 10px 30px rgba(92, 68, 51, 0.35);
             display: flex;
             align-items: center;
             gap: 18px;
@@ -617,13 +618,13 @@
         }
 
         .storage-status-banner {
-            background: #ECFDF5;
-            border: 1px solid #6EE7B7;
+            background: #F0F6F2;
+            border: 1px solid #B8DAC3;
             border-radius: 14px;
             padding: 12px 18px;
             margin-bottom: 20px;
             font-size: 0.84rem;
-            color: #065F46;
+            color: #2E5C38;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -683,29 +684,29 @@
         <!-- Hero Banner -->
         <section class="hero-banner">
             <div class="container">
-                <h2 class="font-serif" style="font-size: 1.85rem; color:#78350F; margin-bottom: 4px;">LONA Dress - Tiệm Thuê Thời Trang Phố Cổ</h2>
-                <p style="color:#92400E; font-size: 0.95rem;">Cho thuê trang phục chụp ảnh sống ảo, đầm thiết kế đi tiệc & áo dài tơ tằm thêu thủ công tại Trung tâm Hội An.</p>
+                <h2 class="font-serif" style="font-size: 1.85rem; color:#5C4433; margin-bottom: 4px;">LONA Dress - Tiệm Thuê Thời Trang Phố Cổ</h2>
+                <p style="color:#6B5B52; font-size: 0.95rem;">Cho thuê trang phục chụp ảnh sống ảo, đầm thiết kế đi tiệc & áo dài tơ tằm thêu thủ công tại Trung tâm Hội An.</p>
 
                 <div class="info-grid">
                     <div class="info-card">
                         <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
                         <div>
-                            <div style="font-weight:700; font-size:0.95rem; color:#78350F;">0702 784 353</div>
-                            <div style="font-size:0.78rem; color:#92400E;">Hotline / Zalo Đặt Đồ</div>
+                            <div style="font-weight:700; font-size:0.95rem; color:#5C4433;">0702 784 353</div>
+                            <div style="font-size:0.78rem; color:#8C6D53;">Hotline / Zalo Đặt Đồ</div>
                         </div>
                     </div>
                     <div class="info-card">
                         <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
                         <div>
-                            <div style="font-weight:700; font-size:0.95rem; color:#78350F;">08:00 - 22:00</div>
+                            <div style="font-weight:700; font-size:0.95rem; color:#5C4433;">08:00 - 22:00</div>
                             <div style="font-size:0.78rem; color:var(--accent-emerald);">Mở cửa hàng ngày</div>
                         </div>
                     </div>
                     <div class="info-card">
                         <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
                         <div>
-                            <div style="font-weight:700; font-size:0.95rem; color:#78350F;">Trung Tâm Phố Cổ Hội An</div>
-                            <div style="font-size:0.78rem; color:#92400E;">Ship đồ tận nơi 15 phút</div>
+                            <div style="font-weight:700; font-size:0.95rem; color:#5C4433;">Trung Tâm Phố Cổ Hội An</div>
+                            <div style="font-size:0.78rem; color:#8C6D53;">Ship đồ tận nơi 15 phút</div>
                         </div>
                     </div>
                 </div>
@@ -731,7 +732,7 @@
         <section class="products-section">
             <div class="container">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <h3 class="font-serif" style="font-size: 1.5rem; color:#0F172A;" id="catalog-title">Bộ Sưu Tập Trang Phục LONA Dress</h3>
+                    <h3 class="font-serif" style="font-size: 1.5rem; color:#2C221E;" id="catalog-title">Bộ Sưu Tập Trang Phục LONA Dress</h3>
                     <span style="font-size:0.85rem; color:var(--text-secondary);" id="item-count-label">Hiển thị 8 sản phẩm</span>
                 </div>
 
@@ -748,16 +749,16 @@
             
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
                 <div>
-                    <h2 class="font-serif" style="font-size:2rem; color:#0F172A;">Quản Lý LONA Dress - Lịch Khả Dụng</h2>
+                    <h2 class="font-serif" style="font-size:2rem; color:#2C221E;">Quản Lý LONA Dress - Lịch Khả Dụng</h2>
                     <p style="color:var(--text-secondary); font-size:0.9rem;">Cập nhật tình hình kho trang phục, đưa mẫu mới lên tiệm và thiết lập thời gian cho thuê / tạm bận.</p>
                 </div>
 
                 <div style="display:flex; gap:12px; align-items:center;">
-                    <button onclick="openAddProductModal()" style="background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:12px 24px; border:none; border-radius:30px; cursor:pointer; font-size:0.92rem; box-shadow:0 4px 15px rgba(217,119,6,0.3);">
+                    <button onclick="openAddProductModal()" style="background:linear-gradient(135deg, #8C6D53, #5C4433); color:#FFF; font-weight:800; padding:12px 24px; border:none; border-radius:30px; cursor:pointer; font-size:0.92rem; box-shadow:0 4px 15px rgba(92,68,51,0.25);">
                         <i class="fa-solid fa-plus"></i> THÊM MẪU CHO THUÊ MỚI
                     </button>
 
-                    <button onclick="handleAdminLogout()" style="background:#FEF2F2; color:#991B1B; border:1px solid #FCA5A5; font-weight:700; padding:10px 18px; border-radius:30px; cursor:pointer; font-size:0.85rem;">
+                    <button onclick="handleAdminLogout()" style="background:#FDF0F0; color:#B94A4A; border:1px solid #F5C6C6; font-weight:700; padding:10px 18px; border-radius:30px; cursor:pointer; font-size:0.85rem;">
                         <i class="fa-solid fa-right-from-bracket"></i> Đăng Xuất Admin
                     </button>
                 </div>
@@ -769,36 +770,36 @@
                     <i class="fa-solid fa-cloud" style="font-size:1.1rem; margin-right:8px;"></i>
                     <strong>Hệ Thống Đám Mây Firebase (lona-dress-hoian):</strong> Đã kết nối thành công 100%! Tự động đồng bộ 24/7 trên tất cả các máy.
                 </div>
-                <span style="font-weight:800; color:#047857;" id="firebase-sync-badge"><i class="fa-solid fa-circle-check"></i> LIVE CLOUD ACTIVE</span>
+                <span style="font-weight:800; color:#2E5C38;" id="firebase-sync-badge"><i class="fa-solid fa-circle-check"></i> LIVE CLOUD ACTIVE</span>
             </div>
 
             <!-- Admin Stat KPI Cards -->
             <div class="admin-kpi-grid">
                 <div class="admin-kpi">
-                    <div class="admin-kpi-icon" style="background:#FEF3C7; color:#D97706;"><i class="fa-solid fa-shirt"></i></div>
+                    <div class="admin-kpi-icon" style="background:#F5EFE6; color:#5C4433;"><i class="fa-solid fa-shirt"></i></div>
                     <div>
-                        <div style="font-size:1.5rem; font-weight:800;" id="adm-total-count">8</div>
+                        <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-total-count">8</div>
                         <div style="font-size:0.8rem; color:var(--text-secondary);">Tổng trang phục kho</div>
                     </div>
                 </div>
                 <div class="admin-kpi">
-                    <div class="admin-kpi-icon" style="background:#E6F4EA; color:#137333;"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="admin-kpi-icon" style="background:#EAF2EC; color:#2E5C38;"><i class="fa-solid fa-circle-check"></i></div>
                     <div>
-                        <div style="font-size:1.5rem; font-weight:800;" id="adm-avail-count">5</div>
+                        <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-avail-count">5</div>
                         <div style="font-size:0.8rem; color:var(--text-secondary);">Đang sẵn sàng cho thuê</div>
                     </div>
                 </div>
                 <div class="admin-kpi">
-                    <div class="admin-kpi-icon" style="background:#FCE8E6; color:#C5221F;"><i class="fa-solid fa-user-tag"></i></div>
+                    <div class="admin-kpi-icon" style="background:#FDF0F0; color:#B94A4A;"><i class="fa-solid fa-user-tag"></i></div>
                     <div>
-                        <div style="font-size:1.5rem; font-weight:800;" id="adm-rented-count">2</div>
+                        <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-rented-count">2</div>
                         <div style="font-size:0.8rem; color:var(--text-secondary);">Đang cho thuê / Đặt trước</div>
                     </div>
                 </div>
                 <div class="admin-kpi">
-                    <div class="admin-kpi-icon" style="background:#F3E8FF; color:#6B21A8;"><i class="fa-solid fa-soap"></i></div>
+                    <div class="admin-kpi-icon" style="background:#F3EEF8; color:#582C7A;"><i class="fa-solid fa-soap"></i></div>
                     <div>
-                        <div style="font-size:1.5rem; font-weight:800;" id="adm-maint-count">1</div>
+                        <div style="font-size:1.5rem; font-weight:800; color:#2C221E;" id="adm-maint-count">1</div>
                         <div style="font-size:0.8rem; color:var(--text-secondary);">Đang giặt hấp / Khử khuẩn</div>
                     </div>
                 </div>
@@ -806,7 +807,7 @@
 
             <!-- Admin Inventory Table -->
             <div class="admin-table-card">
-                <h3 class="font-serif" style="font-size:1.3rem; margin-bottom:16px;"><i class="fa-solid fa-list-check"></i> Bảng Cập Nhật Trạng Thái & Lịch Khả Dụng Mẫu Đồ</h3>
+                <h3 class="font-serif" style="font-size:1.3rem; margin-bottom:16px; color:#5C4433;"><i class="fa-solid fa-list-check"></i> Bảng Cập Nhật Trạng Thái & Lịch Khả Dụng Mẫu Đồ</h3>
                 
                 <div style="overflow-x:auto;">
                     <table class="admin-table">
@@ -832,10 +833,10 @@
 
     <!-- MODAL: ADMIN LOGIN GATEKEEPER -->
     <div class="modal-overlay" id="admin-login-modal">
-        <div class="modal-card" style="max-width: 420px; text-align: center; border-top: 5px solid #F59E0B;">
+        <div class="modal-card" style="max-width: 420px; text-align: center; border-top: 5px solid #8C6D53;">
             <button class="modal-close" onclick="closeAdminLoginModal()"><i class="fa-solid fa-xmark"></i></button>
-            <img src="assets/lona_dress_logo.png" style="width: 74px; height: 74px; border-radius: 50%; margin-bottom: 12px; border: 2px solid #F59E0B; box-shadow:0 4px 15px rgba(245,158,11,0.3);">
-            <h3 class="font-serif" style="font-size: 1.55rem; color: #78350F; margin-bottom: 4px;">Đăng Nhập Quản Lý LONA</h3>
+            <img src="assets/lona_dress_logo.png" style="width: 74px; height: 74px; border-radius: 50%; margin-bottom: 12px; border: 2px solid #8C6D53; box-shadow:0 4px 15px rgba(140,109,83,0.3);">
+            <h3 class="font-serif" style="font-size: 1.55rem; color: #5C4433; margin-bottom: 4px;">Đăng Nhập Quản Lý LONA</h3>
             <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 20px;">Vui lòng nhập tài khoản quản trị tiệm để vào Portal quản lý kho.</p>
 
             <form onsubmit="handleAdminLogin(event)">
@@ -852,7 +853,7 @@
                     <i class="fa-solid fa-circle-exclamation"></i> Tài khoản hoặc mật khẩu không chính xác!
                 </div>
 
-                <button type="submit" style="width:100%; background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:13px; border:none; border-radius:12px; font-size:0.95rem; cursor:pointer; margin-top:4px; box-shadow:0 4px 15px rgba(217, 119, 6, 0.35);">
+                <button type="submit" style="width:100%; background:linear-gradient(135deg, #8C6D53, #5C4433); color:#FFF; font-weight:800; padding:13px; border:none; border-radius:12px; font-size:0.95rem; cursor:pointer; margin-top:4px; box-shadow:0 4px 15px rgba(92, 68, 51, 0.3);">
                     <i class="fa-solid fa-right-to-bracket"></i> XÁC NHẬN ĐĂNG NHẬP ADMIN
                 </button>
             </form>
@@ -873,11 +874,11 @@
     <div class="modal-overlay" id="cart-modal">
         <div class="modal-card" style="max-width: 600px;">
             <button class="modal-close" onclick="closeCartModal()"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="font-serif" style="font-size:1.5rem; margin-bottom:20px; color:#78350F;"><i class="fa-solid fa-bag-shopping"></i> Giỏ Hàng & Đặt Thuê - LONA Dress</h3>
+            <h3 class="font-serif" style="font-size:1.5rem; margin-bottom:20px; color:#5C4433;"><i class="fa-solid fa-bag-shopping"></i> Giỏ Hàng & Đặt Thuê - LONA Dress</h3>
             
             <div id="cart-items-container"></div>
 
-            <div class="cart-summary-box">
+            <div class="cart-summary-box" style="background:#FAF5ED; border:1px solid #EBE3D8; padding:18px; border-radius:16px;">
                 <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9rem;">
                     <span>Tổng phí thuê trang phục:</span>
                     <strong id="cart-subtotal">0 đ</strong>
@@ -890,7 +891,7 @@
                     <span>Tiền cọc yêu cầu (CCCD / Tiền mặt):</span>
                     <strong style="color:var(--accent-gold-dark);" id="cart-deposit">0 đ</strong>
                 </div>
-                <div style="border-top:1px dashed #F59E0B; padding-top:12px; display:flex; justify-content:space-between; font-size:1.2rem; font-weight:800;">
+                <div style="border-top:1px dashed #8C6D53; padding-top:12px; display:flex; justify-content:space-between; font-size:1.2rem; font-weight:800;">
                     <span>TỔNG THANH TOÁN (TẠM TÍNH):</span>
                     <span style="color:var(--accent-rose);" id="cart-total">0 đ</span>
                 </div>
@@ -923,7 +924,7 @@
                     <input type="text" class="form-control" placeholder="Ví dụ: Anio Boutique Hotel, 02 Thái Phiên, Hoi An">
                 </div>
 
-                <button type="submit" style="width:100%; background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; font-size:1rem; padding:14px; border:none; border-radius:14px; cursor:pointer; margin-top:10px; box-shadow:0 6px 20px rgba(217, 119, 6, 0.4);">
+                <button type="submit" style="width:100%; background:linear-gradient(135deg, #8C6D53, #5C4433); color:#FFF; font-weight:800; font-size:1rem; padding:14px; border:none; border-radius:14px; cursor:pointer; margin-top:10px; box-shadow:0 6px 20px rgba(92, 68, 51, 0.35);">
                     <i class="fa-solid fa-paper-plane"></i> XÁC NHẬN ĐẶT THUÊ ĐỒ (GỬI ZALO/VIETQR)
                 </button>
             </form>
@@ -935,7 +936,7 @@
         <div class="modal-card" style="max-width: 650px;">
             <button class="modal-close" onclick="closeAddProductModal()"><i class="fa-solid fa-xmark"></i></button>
             
-            <h3 class="font-serif" style="font-size:1.5rem; margin-bottom:20px; color:#78350F;"><i class="fa-solid fa-plus-circle"></i> Thêm Mẫu Cho Thuê Mới Vừa Nhập - LONA Dress</h3>
+            <h3 class="font-serif" style="font-size:1.5rem; margin-bottom:20px; color:#5C4433;"><i class="fa-solid fa-plus-circle"></i> Thêm Mẫu Cho Thuê Mới Vừa Nhập - LONA Dress</h3>
 
             <form onsubmit="saveNewOutfit(event)">
                 <div class="form-group">
@@ -999,14 +1000,14 @@
                 </div>
 
                 <!-- ENHANCED IMAGE UPLOAD WITH FILE PICKER & AUTO COMPRESSION -->
-                <div class="form-group" style="background:#FFFDF9; border:1px dashed #F59E0B; padding:16px; border-radius:14px;">
-                    <label style="color:#78350F; font-weight:700;"><i class="fa-solid fa-image"></i> Tải Ảnh Trang Phục Mẫu *</label>
+                <div class="form-group" style="background:#FAF5ED; border:1px dashed #8C6D53; padding:16px; border-radius:14px;">
+                    <label style="color:#5C4433; font-weight:700;"><i class="fa-solid fa-image"></i> Tải Ảnh Trang Phục Mẫu *</label>
                     <p style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:10px;">Ảnh sẽ tự động được nén chuẩn HD nhẹ (150KB-300KB) trước khi đồng bộ lên Đám Mây Firebase:</p>
 
                     <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
                         <input type="file" id="add-image-file" accept="image/*" onchange="handleImageFileUpload(event)" style="display:none;">
                         
-                        <button type="button" onclick="document.getElementById('add-image-file').click()" style="background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:10px 18px; border:none; border-radius:12px; cursor:pointer; font-size:0.85rem; display:flex; align-items:center; gap:8px; box-shadow:0 3px 10px rgba(217,119,6,0.3);">
+                        <button type="button" onclick="document.getElementById('add-image-file').click()" style="background:linear-gradient(135deg, #8C6D53, #5C4433); color:#FFF; font-weight:800; padding:10px 18px; border:none; border-radius:12px; cursor:pointer; font-size:0.85rem; display:flex; align-items:center; gap:8px; box-shadow:0 3px 10px rgba(92,68,51,0.25);">
                             <i class="fa-solid fa-cloud-arrow-up"></i> CHỌN ẢNH TỪ MÁY TÍNH / ĐIỆN THOẠI
                         </button>
                         
@@ -1017,7 +1018,7 @@
 
                     <div id="image-upload-preview" style="margin-top:12px; display:none;">
                         <div style="font-size:0.78rem; font-weight:700; color:var(--accent-emerald); margin-bottom:4px;"><i class="fa-solid fa-circle-check"></i> Xem trước hình ảnh đã nén:</div>
-                        <img id="img-preview-tag" style="max-height:140px; border-radius:12px; border:2px solid #F59E0B; object-fit:cover; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                        <img id="img-preview-tag" style="max-height:140px; border-radius:12px; border:2px solid #8C6D53; object-fit:cover; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
                     </div>
                 </div>
 
@@ -1026,7 +1027,7 @@
                     <textarea class="form-control" id="add-desc" rows="3" placeholder="Đầm thích hợp chụp góc Chùa Cầu, tường vàng phố cổ..."></textarea>
                 </div>
 
-                <button type="submit" style="width:100%; background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:14px; border:none; border-radius:14px; cursor:pointer; font-size:1rem; box-shadow:0 4px 15px rgba(217, 119, 6, 0.3);">
+                <button type="submit" style="width:100%; background:linear-gradient(135deg, #8C6D53, #5C4433); color:#FFF; font-weight:800; padding:14px; border:none; border-radius:14px; cursor:pointer; font-size:1rem; box-shadow:0 4px 15px rgba(92, 68, 51, 0.3);">
                     <i class="fa-solid fa-cloud-arrow-up"></i> LƯU & ĐĂNG MẪU LÊN CLOUD FIREBASE
                 </button>
             </form>
@@ -1376,7 +1377,7 @@
 
                 let blackoutNote = '';
                 if (p.blackoutStart && p.blackoutEnd) {
-                    blackoutNote = `<div style="font-size:0.75rem; color:#D97706; margin-top:2px;"><i class="fa-regular fa-calendar-xmark"></i> Bận: ${p.blackoutStart} ➔ ${p.blackoutEnd}</div>`;
+                    blackoutNote = `<div style="font-size:0.75rem; color:#8C6D53; margin-top:2px;"><i class="fa-regular fa-calendar-xmark"></i> Bận: ${p.blackoutStart} ➔ ${p.blackoutEnd}</div>`;
                 }
 
                 const card = document.createElement('div');
@@ -1432,7 +1433,7 @@
                         <div style="display:flex; align-items:center; gap:12px;">
                             <img src="${p.image}" style="width:50px; height:65px; object-fit:cover; border-radius:8px;">
                             <div>
-                                <strong style="color:#0F172A; font-size:0.92rem;">${p.name}</strong>
+                                <strong style="color:#2C221E; font-size:0.92rem;">${p.name}</strong>
                                 <div style="font-size:0.78rem; color:var(--text-secondary);">Size: ${p.sizes.join(', ')}</div>
                             </div>
                         </div>
@@ -1446,7 +1447,7 @@
                         <span style="font-size:0.78rem; color:var(--text-secondary);">${p.price3h.toLocaleString('vi-VN')} đ /3h</span>
                     </td>
                     <td>
-                        <select onchange="updateOutfitStatus(${p.id}, this.value)" style="padding:6px 10px; border-radius:8px; border:1px solid #CBD5E1; font-weight:700; font-size:0.82rem;">
+                        <select onchange="updateOutfitStatus(${p.id}, this.value)" style="padding:6px 10px; border-radius:8px; border:1px solid #EBE3D8; font-weight:700; font-size:0.82rem; color:#5C4433;">
                             <option value="available" ${p.status === 'available' ? 'selected' : ''}>🟢 Sẵn Có Thuê</option>
                             <option value="rented" ${p.status === 'rented' ? 'selected' : ''}>🔴 Đang Cho Thuê</option>
                             <option value="reserved" ${p.status === 'reserved' ? 'selected' : ''}>🟡 Đã Được Cọc</option>
@@ -1455,9 +1456,9 @@
                     </td>
                     <td>
                         <div style="display:flex; flex-direction:column; gap:4px;">
-                            <input type="date" value="${p.blackoutStart || ''}" onchange="updateBlackoutDates(${p.id}, 'start', this.value)" style="padding:4px 8px; border:1px solid #CBD5E1; border-radius:6px; font-size:0.78rem;">
+                            <input type="date" value="${p.blackoutStart || ''}" onchange="updateBlackoutDates(${p.id}, 'start', this.value)" style="padding:4px 8px; border:1px solid #EBE3D8; border-radius:6px; font-size:0.78rem;">
                             <span style="font-size:0.7rem; text-align:center; color:var(--text-secondary);">đến ngày</span>
-                            <input type="date" value="${p.blackoutEnd || ''}" onchange="updateBlackoutDates(${p.id}, 'end', this.value)" style="padding:4px 8px; border:1px solid #CBD5E1; border-radius:6px; font-size:0.78rem;">
+                            <input type="date" value="${p.blackoutEnd || ''}" onchange="updateBlackoutDates(${p.id}, 'end', this.value)" style="padding:4px 8px; border:1px solid #EBE3D8; border-radius:6px; font-size:0.78rem;">
                         </div>
                     </td>
                     <td>
@@ -1557,21 +1558,21 @@
 
             let blackoutInfo = '';
             if (item.blackoutStart && item.blackoutEnd) {
-                blackoutInfo = `<div style="background:#FEF2F2; border:1px solid #FCA5A5; color:#991B1B; padding:10px 14px; border-radius:10px; font-size:0.85rem; margin-bottom:14px;"><i class="fa-solid fa-circle-exclamation"></i> Đồ đã có khách cọc từ <strong>${item.blackoutStart}</strong> đến <strong>${item.blackoutEnd}</strong>.</div>`;
+                blackoutInfo = `<div style="background:#FDF0F0; border:1px solid #F5C6C6; color:#B94A4A; padding:10px 14px; border-radius:10px; font-size:0.85rem; margin-bottom:14px;"><i class="fa-solid fa-circle-exclamation"></i> Đồ đã có khách cọc từ <strong>${item.blackoutStart}</strong> đến <strong>${item.blackoutEnd}</strong>.</div>`;
             }
 
             modalBody.innerHTML = `
                 <div>
-                    <img src="${item.image}" alt="${item.name}" style="width:100%; height:430px; object-fit:cover; border-radius:18px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+                    <img src="${item.image}" alt="${item.name}" style="width:100%; height:430px; object-fit:cover; border-radius:18px; box-shadow:0 4px 15px rgba(92,68,51,0.1);">
                 </div>
                 <div>
                     <span class="product-tier-tag ${item.tier}" style="position:static; display:inline-block; margin-bottom:8px;">${item.tierLabel}</span>
-                    <h3 class="font-serif" style="font-size:1.6rem; color:#0F172A; margin-bottom:6px;">${item.name}</h3>
+                    <h3 class="font-serif" style="font-size:1.6rem; color:#2C221E; margin-bottom:6px;">${item.name}</h3>
                     <p style="color:var(--text-secondary); font-size:0.88rem; margin-bottom:14px;">THƯƠNG HIỆU: <strong>${item.brand}</strong></p>
                     
                     ${blackoutInfo}
 
-                    <div style="background:#FEF3C7; border:1px solid #FDE68A; padding:16px; border-radius:14px; margin-bottom:18px; color:#78350F;">
+                    <div style="background:#FAF5ED; border:1px solid #EBE3D8; padding:16px; border-radius:14px; margin-bottom:18px; color:#5C4433;">
                         <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
                             <span>Giá thuê 3 Giờ (Chụp nhanh):</span>
                             <strong style="color:var(--accent-gold-dark); font-size:1.1rem;">${item.price3h.toLocaleString('vi-VN')} đ</strong>
@@ -1580,7 +1581,7 @@
                             <span>Giá thuê Trọn Ngày (24h):</span>
                             <strong style="color:var(--accent-gold-dark); font-size:1.2rem;">${item.price24h.toLocaleString('vi-VN')} đ</strong>
                         </div>
-                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; color:#92400E;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; color:#8C6D53;">
                             <span>Tiền cọc yêu cầu: ${item.deposit.toLocaleString('vi-VN')} đ (hoặc CCCD/Passport)</span>
                         </div>
                     </div>
@@ -1602,7 +1603,7 @@
                         </select>
                     </div>
 
-                    <button onclick="addToCart(${item.id})" style="width:100%; background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:14px; border:none; border-radius:14px; font-size:1rem; cursor:pointer; margin-top:10px; box-shadow:0 4px 15px rgba(217, 119, 6, 0.3);">
+                    <button onclick="addToCart(${item.id})" style="width:100%; background:linear-gradient(135deg, #8C6D53, #5C4433); color:#FFF; font-weight:800; padding:14px; border:none; border-radius:14px; font-size:1rem; cursor:pointer; margin-top:10px; box-shadow:0 4px 15px rgba(92, 68, 51, 0.3);">
                         <i class="fa-solid fa-cart-plus"></i> THÊM VÀO GIỎ ĐỒ THUÊ
                     </button>
                 </div>
@@ -1655,7 +1656,7 @@
                     row.innerHTML = `
                         <img src="${item.image}" class="cart-item-img">
                         <div class="cart-item-info">
-                            <h4 style="font-size:0.95rem; font-weight:700; color:#0F172A;">${item.name}</h4>
+                            <h4 style="font-size:0.95rem; font-weight:700; color:#2C221E;">${item.name}</h4>
                             <div style="font-size:0.8rem; color:var(--text-secondary);">Size: ${item.selectedSize} | Khung giờ: ${item.selectedPlan}</div>
                             <div style="color:var(--accent-gold-dark); font-weight:700; margin-top:4px;">${item.selectedPrice.toLocaleString('vi-VN')} đ</div>
                         </div>
