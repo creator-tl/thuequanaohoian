@@ -3,50 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cẩm Nang & Lộ Trình Vận Hành Tiệm Thuê Thời Trang Cao Cấp Hội An</title>
+    <title>thuequanaohoian - Thuê Quần Áo Hội An | Cho Thuê Váy Tiệc, Áo Dài, Đầm Thiết Kế Premium</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         :root {
-            --bg-main: #090d16;
-            --bg-card: #111827;
-            --bg-card-hover: #1f2937;
-            --accent-gold: #d97706;
-            --accent-gold-light: #fbbf24;
-            --accent-rose: #f43f5e;
-            --accent-emerald: #10b981;
-            --accent-cyan: #06b6d4;
-            --accent-indigo: #6366f1;
-            --text-primary: #f9fafb;
-            --text-secondary: #9ca3af;
-            --text-muted: #6b7280;
-            --border-color: #1f2937;
+            --bg-main: #FAF8F5;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #FFFDF9;
+            --accent-gold: #D97706;
+            --accent-gold-light: #F59E0B;
+            --accent-gold-dark: #92400E;
+            --accent-rose: #E11D48;
+            --accent-emerald: #059669;
+            --accent-cyan: #0284C7;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --border-color: #E2E8F0;
             --border-gold: rgba(217, 119, 6, 0.3);
-            --glass-bg: rgba(17, 24, 39, 0.85);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --shadow-glow: 0 10px 30px -10px rgba(217, 119, 6, 0.3);
+            --shadow-soft: 0 10px 25px -5px rgba(217, 119, 6, 0.12);
+            --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-main);
             color: var(--text-primary);
-            line-height: 1.65;
-            overflow-x: hidden;
+            padding-bottom: 90px;
         }
 
         h1, h2, h3, h4, .font-serif {
@@ -54,103 +49,519 @@
         }
 
         .container {
-            max-width: 1320px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
         }
 
-        /* Top Notification Banner */
-        .top-banner {
-            background: linear-gradient(90deg, #b45309, #d97706, #f59e0b);
-            color: #000;
+        /* Top Bar Notification */
+        .top-bar {
+            background: linear-gradient(90deg, #F59E0B, #D97706);
+            color: #FFFFFF;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             text-align: center;
             padding: 8px 16px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, rgba(9, 13, 22, 0.95) 0%, rgba(30, 27, 75, 0.92) 100%),
-                        url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-            position: relative;
-            padding: 70px 0 50px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 75% 30%, rgba(217, 119, 6, 0.18), transparent 65%);
-            pointer-events: none;
-        }
-
-        .badge-tag {
-            display: inline-flex;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
-            background: rgba(217, 119, 6, 0.15);
-            border: 1px solid rgba(217, 119, 6, 0.4);
-            color: var(--accent-gold-light);
-            padding: 6px 18px;
-            border-radius: 50px;
-            font-size: 0.82rem;
+            box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2);
+        }
+
+        .mode-switcher {
+            display: flex;
+            background: rgba(0,0,0,0.15);
+            padding: 3px;
+            border-radius: 20px;
+            gap: 4px;
+        }
+
+        .mode-btn {
+            border: none;
+            background: transparent;
+            color: #FFF;
+            padding: 4px 14px;
+            border-radius: 16px;
+            font-size: 0.78rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .header-title {
-            font-size: 2.8rem;
+        .mode-btn.active {
+            background: #FFFFFF;
+            color: var(--accent-gold-dark);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        /* Header Store Banner */
+        header {
+            background: #FFFFFF;
+            border-bottom: 1px solid #E2E8F0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            gap: 20px;
+        }
+
+        .store-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .store-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F59E0B, #E11D48);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            font-size: 1.3rem;
             font-weight: 800;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+            text-align: center;
+            line-height: 1;
+        }
+
+        .store-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #0F172A;
             line-height: 1.2;
-            background: linear-gradient(to right, #ffffff, #fef08a, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 16px;
+            letter-spacing: -0.5px;
         }
 
-        .header-subtitle {
-            font-size: 1.1rem;
+        .store-tagline {
+            font-size: 0.78rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        /* Search & Controls */
+        .search-bar {
+            flex: 1;
+            max-width: 420px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 30px;
+            padding: 10px 18px 10px 42px;
+            color: var(--text-primary);
+            font-size: 0.88rem;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .search-input:focus {
+            background: #FFFFFF;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--text-secondary);
-            max-width: 850px;
-            margin-bottom: 32px;
+            font-size: 0.88rem;
         }
 
-        /* KPI Quick Cards */
-        .kpi-grid {
+        /* Header Actions */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn-cart {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: #FFF;
+            font-weight: 700;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.45);
+        }
+
+        .cart-badge {
+            background: #1E293B;
+            color: #FFF;
+            font-size: 0.75rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        /* Hero Store Info Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 50%, #FEE2E2 100%);
+            border-bottom: 1px solid #FDE68A;
+            padding: 35px 0;
+            position: relative;
+        }
+
+        .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
-            margin-top: 24px;
+            gap: 16px;
+            margin-top: 20px;
         }
 
-        .kpi-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            padding: 18px 22px;
+        .info-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(245, 158, 11, 0.3);
             border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.06);
+        }
+
+        .info-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #FEF3C7;
+            color: var(--accent-gold-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+
+        /* Category Nav Filter Pills */
+        .cat-nav {
+            padding: 16px 0;
+            border-bottom: 1px solid #E2E8F0;
+            background: #FAF8F5;
+            position: sticky;
+            top: 81px;
+            z-index: 90;
+        }
+
+        .cat-pills {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .cat-btn {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            color: var(--text-secondary);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .cat-btn.active {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: #FFFFFF;
+            font-weight: 700;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-card);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(217, 119, 6, 0.4);
+            box-shadow: 0 12px 30px rgba(217, 119, 6, 0.15);
+        }
+
+        .product-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            overflow: hidden;
+            background: #F1F5F9;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(6px);
+            color: var(--accent-gold-dark);
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .product-tier-tag {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .tier-1 { background: #0284C7; color: #FFF; }
+        .tier-2 { background: #D97706; color: #FFF; }
+        .tier-3 { background: #E11D48; color: #FFF; }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .status-available { background: #E6F4EA; color: #137333; }
+        .status-rented { background: #FCE8E6; color: #C5221F; }
+        .status-reserved { background: #FEF7E0; color: #B06000; }
+        .status-maintenance { background: #F3E8FF; color: #6B21A8; }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-brand {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .product-title {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: #0F172A;
+            margin-bottom: 8px;
+            line-height: 1.35;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .price-box {
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px dashed #E2E8F0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .rent-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent-gold-dark);
+        }
+
+        .btn-rent-now {
+            width: 100%;
+            background: #FEF3C7;
+            border: 1px solid #FDE68A;
+            color: var(--accent-gold-dark);
+            font-weight: 700;
+            padding: 11px;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 14px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.88rem;
+        }
+
+        .btn-rent-now:hover {
+            background: var(--accent-gold);
+            color: #FFFFFF;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 24px;
+            max-width: 850px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 30px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #F1F5F9;
+            border: none;
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 11px 15px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .form-control:focus {
+            background: #FFFFFF;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+        }
+
+        /* ADMIN PORTAL STYLES */
+        .admin-section {
+            display: none;
+            padding: 30px 0;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        .admin-kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .admin-kpi {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 18px;
+            padding: 20px;
             display: flex;
             align-items: center;
             gap: 16px;
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-card);
         }
 
-        .kpi-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(217, 119, 6, 0.4);
-        }
-
-        .kpi-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(217, 119, 6, 0.15);
-            color: var(--accent-gold-light);
+        .admin-kpi-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -158,1240 +569,930 @@
             flex-shrink: 0;
         }
 
-        .kpi-val {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
+        .admin-table-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 30px;
         }
 
-        .kpi-lbl {
-            font-size: 0.82rem;
-            color: var(--text-secondary);
-        }
-
-        /* Sticky Navigation Tabs */
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(9, 13, 22, 0.92);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 0;
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 4px;
-        }
-
-        .nav-tabs::-webkit-scrollbar {
-            height: 4px;
-        }
-        .nav-tabs::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 4px;
-        }
-
-        .nav-btn {
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-secondary);
-            padding: 9px 18px;
-            border-radius: 30px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav-btn:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-btn.active {
-            background: var(--accent-gold);
-            color: #000;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.4);
-        }
-
-        /* Sections */
-        section {
-            padding: 65px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section-header {
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            color: var(--accent-gold-light);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-
-        .section-desc {
-            color: var(--text-secondary);
-            max-width: 750px;
-            margin: 0 auto;
-            font-size: 0.98rem;
-        }
-
-        /* Grid Layouts */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 24px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 18px;
-            padding: 28px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .card:hover {
-            border-color: var(--border-gold);
-            background: var(--bg-card-hover);
-            transform: translateY(-3px);
-        }
-
-        .card-icon {
-            font-size: 1.6rem;
-            color: var(--accent-gold-light);
-            margin-bottom: 16px;
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-
-        .card-body {
-            color: var(--text-secondary);
-            font-size: 0.93rem;
-        }
-
-        .card-list {
-            list-style: none;
-            margin-top: 12px;
-        }
-
-        .card-list li {
-            position: relative;
-            padding-left: 22px;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .card-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent-gold-light);
-            font-weight: bold;
-        }
-
-        /* Detail Tag Pill */
-        .pill {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            background: rgba(255,255,255,0.06);
-            color: var(--text-secondary);
-            margin-right: 6px;
-            margin-bottom: 6px;
-        }
-        .pill-gold { background: rgba(217, 119, 6, 0.2); color: var(--accent-gold-light); }
-        .pill-emerald { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); }
-        .pill-rose { background: rgba(244, 63, 94, 0.2); color: var(--accent-rose); }
-        .pill-cyan { background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan); }
-
-        /* Accordion / Expandable Cards */
-        .accordion-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            margin-bottom: 16px;
-            overflow: hidden;
-            transition: border-color 0.3s ease;
-        }
-
-        .accordion-item:hover {
-            border-color: var(--border-gold);
-        }
-
-        .accordion-header {
-            padding: 20px 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .accordion-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .accordion-icon {
-            transition: transform 0.3s ease;
-            color: var(--accent-gold-light);
-        }
-
-        .accordion-content {
-            padding: 0 24px 24px 24px;
-            display: none;
-            border-top: 1px dashed var(--border-color);
-            padding-top: 20px;
-        }
-
-        .accordion-item.active .accordion-content {
-            display: block;
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Step Box inside Accordion */
-        .step-box {
-            background: rgba(255, 255, 255, 0.02);
-            border-left: 3px solid var(--accent-gold);
-            padding: 14px 18px;
-            margin-bottom: 12px;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .step-title {
-            font-weight: 700;
-            color: var(--accent-gold-light);
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-        }
-
-        /* Script Box (Copyable text style) */
-        .script-box {
-            background: #050811;
-            border: 1px solid #1e293b;
-            border-radius: 12px;
-            padding: 16px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #38bdf8;
-            margin: 12px 0;
-            position: relative;
-            line-height: 1.5;
-        }
-
-        .script-badge {
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        /* Pricing Table */
-        .pricing-table {
+        .admin-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 16px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
-        .pricing-table th {
-            background: rgba(217, 119, 6, 0.15);
-            color: var(--accent-gold-light);
+        .admin-table th {
+            background: #F8FAFC;
+            color: #475569;
             text-align: left;
-            padding: 12px 16px;
+            padding: 12px 14px;
             font-weight: 700;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid #E2E8F0;
         }
 
-        .pricing-table td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-secondary);
+        .admin-table td {
+            padding: 14px;
+            border-bottom: 1px solid #E2E8F0;
+            vertical-align: middle;
         }
 
-        .pricing-table tr:hover td {
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--text-primary);
-        }
-
-        /* Timeline Roadmap Component */
-        .timeline {
-            position: relative;
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 45px;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--accent-gold), var(--accent-rose), var(--accent-emerald));
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 85px;
-            margin-bottom: 35px;
-        }
-
-        .timeline-badge {
-            position: absolute;
-            left: 26px;
-            top: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-main);
-            border: 3px solid var(--accent-gold-light);
-            color: var(--accent-gold-light);
+        .float-cart-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #F59E0B, #D97706);
+            color: #FFF;
+            padding: 14px 28px;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(217, 119, 6, 0.4);
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1rem;
-            box-shadow: 0 0 15px rgba(217, 119, 6, 0.4);
-            z-index: 2;
-        }
-
-        .timeline-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 18px;
-            padding: 24px;
-        }
-
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
-            gap: 8px;
-        }
-
-        .timeline-phase {
-            color: var(--accent-gold-light);
+            gap: 18px;
+            z-index: 99;
+            cursor: pointer;
             font-weight: 700;
-            font-size: 0.82rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .timeline-duration {
-            background: rgba(255, 255, 255, 0.06);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-        }
-
-        /* Calculator Form */
-        .calc-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 32px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-
-        .range-slider {
-            width: 100%;
-            accent-color: var(--accent-gold);
-            height: 6px;
-            background: #1e293b;
-            border-radius: 3px;
-        }
-
-        .calc-result-card {
-            background: rgba(217, 119, 6, 0.1);
-            border: 1px solid rgba(217, 119, 6, 0.3);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .calc-result-val {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent-gold-light);
-        }
-
-        /* Checklist Component */
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 14px 18px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .checklist-item:hover {
-            border-color: rgba(217, 119, 6, 0.3);
-        }
-
-        .checklist-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--accent-gold);
-            margin-top: 2px;
-            cursor: pointer;
-        }
-
-        .checklist-item.completed {
-            opacity: 0.45;
-            text-decoration: line-through;
-        }
-
-        /* Footer */
-        footer {
-            padding: 40px 0;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            background: var(--bg-main);
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Banner -->
-    <div class="top-banner">
-        <i class="fa-solid fa-crown"></i> CẨM NANG HÀNH ĐỘNG CHI TIẾT: DỰ ÁN CHO THUÊ THỜI TRANG CAO CẤP HỘI AN 2026
+    <!-- Top Announcement Bar + Mode Switcher -->
+    <div class="top-bar">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <span><i class="fa-solid fa-sparkles"></i> WELCOME TO THUEQUANAOHOIAN - THUÊ QUẦN ÁO HỘI AN PREMIUM</span>
+        </div>
+        
+        <!-- Store / Admin Mode Switcher -->
+        <div class="mode-switcher">
+            <button class="mode-btn active" id="btn-mode-store" onclick="switchView('store')">
+                <i class="fa-solid fa-shop"></i> Giao Diện Khách Thuê
+            </button>
+            <button class="mode-btn" id="btn-mode-admin" onclick="switchView('admin')">
+                <i class="fa-solid fa-user-gear"></i> Quản Lý Tiệm (Admin)
+            </button>
+        </div>
     </div>
 
     <!-- Header Section -->
     <header>
         <div class="container">
-            <div class="badge-tag"><i class="fa-solid fa-gem"></i> Kế Hoạch Ứng Dụng Thực Tế</div>
-            <h1 class="header-title">PLAYBOOK KINH DOANH TIỆM THUÊ QUẦN ÁO NỮ HỘI AN</h1>
-            <p class="header-subtitle">
-                Chiến lược chi tiết 100% ứng dụng thực tế: Từ nhập kho sản phẩm, định giá phân tầng, thiết kế không gian studio, quy trình giặt hấp bảo vệ đồ hiệu, tới kịch bản marketing kéo du khách tận tiệm.
-            </p>
+            <div class="header-inner">
+                <a href="#" class="store-brand">
+                    <div class="store-logo">THÁNG</div>
+                    <div>
+                        <div class="store-name">thuequanaohoian</div>
+                        <div class="store-tagline">Thuê Quần Áo Nữ & Cổ Phục Hội An Premium</div>
+                    </div>
+                </a>
 
-            <a href="app.html" target="_blank" style="display:inline-flex; align-items:center; gap:10px; background:var(--accent-gold); color:#000; font-weight:800; padding:12px 24px; border-radius:30px; text-decoration:none; margin-bottom:24px; box-shadow:0 6px 20px rgba(217,119,6,0.4);">
-                <i class="fa-solid fa-store"></i> MỞ DEMO WEBSITE BÁN & CHO THUÊ (APP.HTML) <i class="fa-solid fa-arrow-right"></i>
-            </a>
+                <!-- Search Bar -->
+                <div class="search-bar" id="search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" class="search-input" id="search-input" placeholder="Tìm kiếm váy tiệc, áo dài, váy Boho..." oninput="filterProducts()">
+                </div>
 
-            <!-- Key Metrics Grid -->
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-icon"><i class="fa-solid fa-location-dot"></i></div>
-                    <div>
-                        <div class="kpi-val">Bán Kính Phố Cổ</div>
-                        <div class="kpi-lbl">Vị trí trung tâm Hội An</div>
-                    </div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon"><i class="fa-solid fa-layer-group"></i></div>
-                    <div>
-                        <div class="kpi-val">2 Khung Thu Nhập</div>
-                        <div class="kpi-lbl">Gen Z Trend & Khách VIP Resort</div>
-                    </div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon"><i class="fa-solid fa-shirt"></i></div>
-                    <div>
-                        <div class="kpi-val">60% - 40%</div>
-                        <div class="kpi-lbl">Tỷ lệ Đồ Trend : Đồ Thiết Kế</div>
-                    </div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon"><i class="fa-solid fa-sack-dollar"></i></div>
-                    <div>
-                        <div class="kpi-val">3.5 - 5 Tháng</div>
-                        <div class="kpi-lbl">Thời gian hoàn vốn dự kiến</div>
-                    </div>
+                <!-- Header Actions -->
+                <div class="header-actions">
+                    <button class="btn-cart" id="btn-cart-header" onclick="openCartModal()">
+                        <i class="fa-solid fa-bag-shopping"></i> Giỏ Đồ Thuê
+                        <span class="cart-badge" id="cart-count">0</span>
+                    </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Sticky Navigation Tabs -->
-    <nav class="sticky-nav">
+    <!-- ==================== VIEW 1: CUSTOMER STOREFRONT ==================== -->
+    <div id="view-storefront">
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+            <div class="container">
+                <h2 class="font-serif" style="font-size: 1.85rem; color:#78350F; margin-bottom: 4px;">thuequanaohoian - Tiệm Thuê Thời Trang Phố Cổ</h2>
+                <p style="color:#92400E; font-size: 0.95rem;">Cho thuê trang phục chụp ảnh sống ảo, đầm thiết kế đi tiệc & áo dài tơ tằm thêu thủ công tại Trung tâm Hội An.</p>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <div style="font-weight:700; font-size:0.95rem; color:#78350F;">0903 419 592</div>
+                            <div style="font-size:0.78rem; color:#92400E;">Hotline / Zalo Đặt Đồ</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <div style="font-weight:700; font-size:0.95rem; color:#78350F;">08:00 - 22:00</div>
+                            <div style="font-size:0.78rem; color:var(--accent-emerald);">Mở cửa hàng ngày</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <div style="font-weight:700; font-size:0.95rem; color:#78350F;">Trung Tâm Phố Cổ Hội An</div>
+                            <div style="font-size:0.78rem; color:#92400E;">Ship đồ tận nơi 15 phút</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Nav -->
+        <nav class="cat-nav">
+            <div class="container">
+                <div class="cat-pills">
+                    <button class="cat-btn active" onclick="filterCategory('all', this)"><i class="fa-solid fa-border-all"></i> Tất Cả Trang Phục</button>
+                    <button class="cat-btn" onclick="filterCategory('boho', this)"><i class="fa-solid fa-sun"></i> Boho & Maxi Đi Biển</button>
+                    <button class="cat-btn" onclick="filterCategory('aodai', this)"><i class="fa-solid fa-fan"></i> Áo Dài & Cổ Phục</button>
+                    <button class="cat-btn" onclick="filterCategory('localbrand', this)"><i class="fa-solid fa-crown"></i> Local Brand Thiết Kế</button>
+                    <button class="cat-btn" onclick="filterCategory('evening', this)"><i class="fa-solid fa-gem"></i> Váy Dạ Hội VIP</button>
+                    <button class="cat-btn" onclick="filterCategory('combo', this)"><i class="fa-solid fa-camera"></i> Gói Combo Photo Tour</button>
+                    <button class="cat-btn" onclick="filterCategory('accessory', this)"><i class="fa-solid fa-hat-cowboy"></i> Phụ Kiện & Guốc</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Products Section -->
+        <section class="products-section">
+            <div class="container">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h3 class="font-serif" style="font-size: 1.5rem; color:#0F172A;" id="catalog-title">Bộ Sưu Tập Trang Phục thuequanaohoian</h3>
+                    <span style="font-size:0.85rem; color:var(--text-secondary);" id="item-count-label">Hiển thị 8 sản phẩm</span>
+                </div>
+
+                <div class="products-grid" id="products-grid">
+                    <!-- JS Rendered Products -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== VIEW 2: STORE MANAGER ADMIN PORTAL ==================== -->
+    <div class="admin-section" id="view-admin">
         <div class="container">
-            <div class="nav-tabs">
-                <button class="nav-btn active" onclick="scrollToSec('sec-roadmap', this)"><i class="fa-solid fa-route"></i> Lộ Trình 6 Giai Đoạn</button>
-                <button class="nav-btn" onclick="scrollToSec('sec-sourcing', this)"><i class="fa-solid fa-boxes-packing"></i> Chi Tiết Nhập Hàng</button>
-                <button class="nav-btn" onclick="scrollToSec('sec-pricing', this)"><i class="fa-solid fa-tags"></i> Bảng Giá & Combo</button>
-                <button class="nav-btn" onclick="scrollToSec('sec-store', this)"><i class="fa-solid fa-store"></i> Mặt Bằng & Studio Layout</button>
-                <button class="nav-btn" onclick="scrollToSec('sec-marketing', this)"><i class="fa-solid fa-bullhorn"></i> Kịch Bản Marketing B2B</button>
-                <button class="nav-btn" onclick="scrollToSec('sec-sops', this)"><i class="fa-solid fa-shield-halved"></i> Quy Trình SOP Giặt Hấp & Cọc</button>
-                <button class="nav-btn" onclick="scrollToSec('sec-roi', this)"><i class="fa-solid fa-calculator"></i> Dự Phóng ROI & Slider</button>
-                <button class="nav-btn" onclick="scrollToSec('sec-checklist', this)"><i class="fa-solid fa-list-check"></i> Checklist Công Việc</button>
-            </div>
-        </div>
-    </nav>
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
+                <div>
+                    <h2 class="font-serif" style="font-size:2rem; color:#0F172A;">Quản Lý thuequanaohoian - Lịch Khả Dụng</h2>
+                    <p style="color:var(--text-secondary); font-size:0.9rem;">Cập nhật tình hình kho trang phục, đưa mẫu mới lên tiệm và thiết lập thời gian cho thuê / tạm bận.</p>
+                </div>
 
-    <div class="container">
-
-        <!-- SECTION 1: 6-PHASE ROADMAP -->
-        <section id="sec-roadmap">
-            <div class="section-header">
-                <span class="section-subtitle">Tiến Độ Thực Thi</span>
-                <h2 class="section-title">Lộ Trình Triển Khai 6 Giai Đoạn Rõ Ràng</h2>
-                <p class="section-desc">Kế hoạch triển khai trong 12 tuần từ lúc khảo sát thị trường đến ngày khai trương và vận hành thương mại.</p>
+                <button onclick="openAddProductModal()" style="background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:12px 24px; border:none; border-radius:30px; cursor:pointer; font-size:0.92rem; box-shadow:0 4px 15px rgba(217,119,6,0.3);">
+                    <i class="fa-solid fa-plus"></i> THÊM MẪU CHO THUÊ MỚI
+                </button>
             </div>
 
-            <div class="timeline">
-
-                <!-- Phase 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-badge">1</div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="card-title" style="margin-bottom:0;">Giai Đoạn 1: Nghiên Cứu Định Vị & Xây Dựng Brand Identity</h3>
-                            <span class="timeline-duration"><i class="fa-regular fa-clock"></i> Tuần 1 - Tuần 2</span>
-                        </div>
-                        <span class="timeline-phase">Nền Tảng Chiến Lược</span>
-                        <div class="step-box" style="margin-top:12px;">
-                            <div class="step-title">Hành động cụ thể:</div>
-                            <ul class="card-list" style="margin-top:4px;">
-                                <li>Khảo sát trực tiếp 8 tiệm thuê quần áo nổi tiếng tại Hội An (xem mẫu mã, giá cọc, tình trạng đồ hư hỏng).</li>
-                                <li>Định vị thương hiệu theo phong cách <strong>"Luxury Heritage & Modern Aesthetic"</strong> (Sang trọng Indochine kết hợp hiện đại).</li>
-                                <li>Thiết kế Bộ nhận diện: Logo, Card visit, Tag treo quần áo bọc nhung, Túi xách ni-lông khóa kéo cao cấp in thương hiệu.</li>
-                            </ul>
-                        </div>
+            <!-- Admin Stat KPI Cards -->
+            <div class="admin-kpi-grid">
+                <div class="admin-kpi">
+                    <div class="admin-kpi-icon" style="background:#FEF3C7; color:#D97706;"><i class="fa-solid fa-shirt"></i></div>
+                    <div>
+                        <div style="font-size:1.5rem; font-weight:800;" id="adm-total-count">8</div>
+                        <div style="font-size:0.8rem; color:var(--text-secondary);">Tổng trang phục kho</div>
                     </div>
                 </div>
-
-                <!-- Phase 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-badge">2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="card-title" style="margin-bottom:0;">Giai Đoạn 2: Chốt Mặt Bằng & Thi Công Cửa Hàng Studio</h3>
-                            <span class="timeline-duration"><i class="fa-regular fa-clock"></i> Tuần 3 - Tuần 5</span>
-                        </div>
-                        <span class="timeline-phase">Địa Điểm & Nội Thất</span>
-                        <div class="step-box" style="margin-top:12px;">
-                            <div class="step-title">Hành động cụ thể:</div>
-                            <ul class="card-list" style="margin-top:4px;">
-                                <li>Ký hợp đồng mặt bằng diện tích 60 - 90m² ở bán kính ≤ 800m quanh Phố Cổ (Trần Hưng Đạo, Phan Châu Trinh, Lê Lợi).</li>
-                                <li>Thi công 3 Phòng thử đồ VIP (mỗi phòng 4m² có rèm nhung cách âm), bàn trang điểm 2 vị trí chuẩn đèn Hollywood.</li>
-                                <li>Lắp đặt sào treo inox mạ vàng champagne, dải đèn LED 5500K chiếu điểm tạo hiệu ứng đồ lấp lánh như showroom xa xỉ.</li>
-                            </ul>
-                        </div>
+                <div class="admin-kpi">
+                    <div class="admin-kpi-icon" style="background:#E6F4EA; color:#137333;"><i class="fa-solid fa-circle-check"></i></div>
+                    <div>
+                        <div style="font-size:1.5rem; font-weight:800;" id="adm-avail-count">5</div>
+                        <div style="font-size:0.8rem; color:var(--text-secondary);">Đang sẵn sàng cho thuê</div>
                     </div>
                 </div>
-
-                <!-- Phase 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-badge">3</div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="card-title" style="margin-bottom:0;">Giai Đoạn 3: Nhập Kho Sản Phẩm Đợt 1 & Lắp Đặt Hệ Thống SOP</h3>
-                            <span class="timeline-duration"><i class="fa-regular fa-clock"></i> Tuần 6 - Tuần 8</span>
-                        </div>
-                        <span class="timeline-phase">Nhập Hàng & Thiết Bị</span>
-                        <div class="step-box" style="margin-top:12px;">
-                            <div class="step-title">Hành động cụ thể:</div>
-                            <ul class="card-list" style="margin-top:4px;">
-                                <li>Nhập đợt 1: 150 bộ Trend Gen Z/Boho/Áo dài cách tân + 50 bộ Đồ thiết kế Local Brands (Daphale, Subtle, DATT, SIXDO...).</li>
-                                <li>Nhập 80+ phụ kiện: Nón cối vintage, túi mây nón lá, guốc gỗ sơn mài, quạt xếp cổ phong.</li>
-                                <li>Lắp đặt máy giặt hấp hơi nước LG Styler/Samsung AirDresser + máy xịt thơm Signature mùi hoa nhài Hội An.</li>
-                                <li>Dán mã QR quản lý từng bộ đồ trên phần mềm bán hàng/cho thuê.</li>
-                            </ul>
-                        </div>
+                <div class="admin-kpi">
+                    <div class="admin-kpi-icon" style="background:#FCE8E6; color:#C5221F;"><i class="fa-solid fa-user-tag"></i></div>
+                    <div>
+                        <div style="font-size:1.5rem; font-weight:800;" id="adm-rented-count">2</div>
+                        <div style="font-size:0.8rem; color:var(--text-secondary);">Đang cho thuê / Đặt trước</div>
                     </div>
                 </div>
-
-                <!-- Phase 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-badge">4</div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="card-title" style="margin-bottom:0;">Giai Đoạn 4: Xây Dựng Mạng Lưới Đối Tác (B2B Affiliate)</h3>
-                            <span class="timeline-duration"><i class="fa-regular fa-clock"></i> Tuần 8 - Tuần 10</span>
-                        </div>
-                        <span class="timeline-phase">Hợp Tác Kinh Doanh</span>
-                        <div class="step-box" style="margin-top:12px;">
-                            <div class="step-title">Hành động cụ thể:</div>
-                            <ul class="card-list" style="margin-top:4px;">
-                                <li>Lập Group Zalo <strong>"Cộng Đồng Photographer Đà Nẵng - Hội An"</strong> kết nối 50+ thợ ảnh tự do. Trích 15% hoa hồng thợ dẫn khách.</li>
-                                <li>Gửi bộ Kit Voucher giảm 10% tới Lễ tân 30+ Khách sạn 3-5 sao & Homestay tại Hội An (Lễ tân nhận 15% doanh thu).</li>
-                                <li>Hợp tác với 5 Make-up Artists chuyên nghiệp sẵn sàng nhận lịch làm tận nơi hoặc tại tiệm.</li>
-                            </ul>
-                        </div>
+                <div class="admin-kpi">
+                    <div class="admin-kpi-icon" style="background:#F3E8FF; color:#6B21A8;"><i class="fa-solid fa-soap"></i></div>
+                    <div>
+                        <div style="font-size:1.5rem; font-weight:800;" id="adm-maint-count">1</div>
+                        <div style="font-size:0.8rem; color:var(--text-secondary);">Đang giặt hấp / Khử khuẩn</div>
                     </div>
                 </div>
-
-                <!-- Phase 5 -->
-                <div class="timeline-item">
-                    <div class="timeline-badge">5</div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="card-title" style="margin-bottom:0;">Giai Đoạn 5: Pre-Launch Marketing & Booking KOCs</h3>
-                            <span class="timeline-duration"><i class="fa-regular fa-clock"></i> Tuần 10 - Tuần 11</span>
-                        </div>
-                        <span class="timeline-phase">Quảng Báo Bùng Nổ</span>
-                        <div class="step-box" style="margin-top:12px;">
-                            <div class="step-title">Hành động cụ thể:</div>
-                            <ul class="card-list" style="margin-top:4px;">
-                                <li>Mời 8 KOCs du lịch TikTok/IG tài trợ outfit + chụp hình Lookbook góc phố Hội An.</li>
-                                <li>Đăng series video TikTok Viral: <em>"Đi Hội An đừng mua váy nữa - Thuê đầm hiệu 8 triệu chỉ 250k"</em>.</li>
-                                <li>Đăng bài tiếng Trung trên Xiaohongshu nhắm du khách Trung Quốc / Đài Loan / Singapore tới Hội An.</li>
-                                <li>Set up quảng cáo Facebook/Instagram Geo-targeting bán kính 15km quanh Hội An & Sân bay Đà Nẵng.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Phase 6 -->
-                <div class="timeline-item">
-                    <div class="timeline-badge">6</div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="card-title" style="margin-bottom:0;">Giai Đoạn 6: Grand Opening & Tối Ưu Vận Hành Khấu Hao</h3>
-                            <span class="timeline-duration"><i class="fa-regular fa-clock"></i> Tuần 12 Trở Đi</span>
-                        </div>
-                        <span class="timeline-phase">Khai Trương & Tăng Trưởng</span>
-                        <div class="step-box" style="margin-top:12px;">
-                            <div class="step-title">Hành động cụ thể:</div>
-                            <ul class="card-list" style="margin-top:4px;">
-                                <li>Chương trình tuần đầu: <strong>"Thuê 1 Outfit - Tặng Free 1 Phụ Kiện & Ship Tận Khách Sạn"</strong>.</li>
-                                <li>Theo dõi độ mòn trang phục: Đồ thuê quá 15 lượt chuyển sang thanh lý thu hồi 40-50% vốn gốc để nhập BST mới.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 2: PRODUCT SOURCING STRATEGY -->
-        <section id="sec-sourcing">
-            <div class="section-header">
-                <span class="section-subtitle">Cơ Cấu Sản Phẩm</span>
-                <h2 class="section-title">Chi Tiết Chiến Lược Sourcing & Kho Hàng Ban Đầu</h2>
-                <p class="section-desc">Cơ cấu danh mục 200 trang phục ban đầu tối ưu chi phí nhập, đáp ứng 100% nhu cầu chụp ảnh sống ảo và tiệc cao cấp.</p>
             </div>
 
-            <div class="grid-2">
-
-                <!-- Accordion 1: Trend Inventory -->
-                <div class="accordion-item active">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title">
-                            <i class="fa-solid fa-fire-flame-curved" style="color:var(--accent-gold-light);"></i>
-                            <span>1. Danh Mục Đồ Trend / Gen Z / Boho (60% Kho Hàng - 150 Bộ)</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <span class="pill pill-gold">Đầu tư: 45 - 60 Triệu</span>
-                        <span class="pill pill-emerald">Thu hồi vốn: 2-3 lượt thuê</span>
-                        <p style="margin-top:10px;"><strong>Danh mục chi tiết:</strong></p>
-                        <ul class="card-list">
-                            <li><strong>Váy Boho / Maxi đi biển (50 bộ):</strong> Họa tiết thổ cẩm, dáng xòe bay rủ màu trắng, cam đất, đỏ gạch (rất nổi trên nền tường vàng Hội An).</li>
-                            <li><strong>Áo dài cách tân / Yếm đào (40 bộ):</strong> Chất liệu đũi tơ, lụa nhung hoa nhí nhẹ nhàng, phom dáng trẻ trung năng động.</li>
-                            <li><strong>Đầm Y2K & Vintage Retro (40 bộ):</strong> Đầm xòe hoa cổ điển phong cách Indochine thập niên 90.</li>
-                            <li><strong>Set Streetwear / Crop-top (20 bộ):</strong> Dành cho đối tượng khách trẻ thích năng động cá tính.</li>
-                        </ul>
-                        <div class="step-box" style="margin-top:12px;">
-                            <div class="step-title">Nguồn hàng & Size:</div>
-                            <p style="font-size:0.88rem; color:var(--text-secondary);">
-                                • Size chuẩn: 40% Size S, 45% Size M, 15% Size L (Ưu tiên trang phục có dây thắt rút điều chỉnh eo linh hoạt).<br>
-                                • Nguồn nhập: Xưởng sản xuất Quảng Châu tuyển chọn VIP, Xưởng may Ninh Hiệp hàng cao cấp. Giá gốc: 200k - 400k/bộ.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Accordion 2: Luxury Inventory -->
-                <div class="accordion-item active">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title">
-                            <i class="fa-solid fa-crown" style="color:var(--accent-rose);"></i>
-                            <span>2. Danh Mục Đồ Thiết Kế / High-End Luxury (40% Kho Hàng - 50 Bộ)</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <span class="pill pill-rose">Đầu tư: 90 - 150 Triệu</span>
-                        <span class="pill pill-cyan">Thu hồi vốn: 8-10 lượt thuê</span>
-                        <p style="margin-top:10px;"><strong>Danh mục chi tiết:</strong></p>
-                        <ul class="card-list">
-                            <li><strong>Đầm Thiết Kế Local Brand Hot (25 bộ):</strong> Các hãng nổi tiếng như Daphale Studios, Subtle Le Nguyen, DATT, SIXDO, Lespoir, Mamavirus (Giá gốc 2M - 5M/bộ).</li>
-                            <li><strong>Áo Dài Tơ Tằm / Gấm Thêu Thủ Công (15 bộ):</strong> Áo tấc cổ truyền, áo dài gấm tơ tằm thêu hoa sen/phượng cao cấp cho chụp ảnh nghệ thuật.</li>
-                            <li><strong>Váy Dạ Hội / Event Resort (10 bộ):</strong> Váy cúp ngực đính đá, váy xẻ tà quyến rũ cho khách tham dự tiệc tối tại Resort 5 sao.</li>
-                        </ul>
-                        <div class="step-box" style="margin-top:12px;">
-                            <div class="step-title">Quy trình Thanh lý Vòng đời Đồ Hiệu:</div>
-                            <p style="font-size:0.88rem; color:var(--text-secondary);">
-                                • Sau 15 - 20 lượt thuê (hoặc sau 3-4 tháng): Kiểm tra tình trạng đồ. Nếu đồ đạt 85-90% new thì chuyển sang mục Thuê Giá Chiết Khấu (-30%).<br>
-                                • Đồ cũ hơn sẽ đưa lên Group Facebook thanh lý cho các tiệm chụp ảnh tỉnh khác với giá 40-50% giá gốc -> Thu hồi vốn tái đầu tư BST mới.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 3: PRICING & COMBO MATRIX -->
-        <section id="sec-pricing">
-            <div class="section-header">
-                <span class="section-subtitle">Định Giá & Đóng Gói</span>
-                <h2 class="section-title">Chi Tiết Bảng Giá Thuê & Gói Combo Chụp Ảnh</h2>
-                <p class="section-desc">Cấu trúc giá theo khung giờ (Flexi-Time) và các gói Combo trọn gói mang lại doanh thu trung bình/khách cao nhất.</p>
-            </div>
-
-            <!-- Pricing Table -->
-            <div class="card" style="margin-bottom:30px;">
-                <h3 class="card-title"><i class="fa-solid fa-table-list"></i> Bảng Giá Chi Tiết Theo Phân Tầng Sản Phẩm</h3>
+            <!-- Admin Inventory Table -->
+            <div class="admin-table-card">
+                <h3 class="font-serif" style="font-size:1.3rem; margin-bottom:16px;"><i class="fa-solid fa-list-check"></i> Bảng Cập Nhật Trạng Thái & Lịch Khả Dụng Mẫu Đồ</h3>
+                
                 <div style="overflow-x:auto;">
-                    <table class="pricing-table">
+                    <table class="admin-table">
                         <thead>
                             <tr>
-                                <th>Phân Tầng</th>
-                                <th>Loại Trang Phục</th>
-                                <th>Giá Gốc Sản Phẩm</th>
-                                <th>Giá Thuê 3 Giờ</th>
-                                <th>Giá Thuê 24 Giờ</th>
-                                <th>Tiền Cọc Yêu Cầu</th>
+                                <th>Ảnh & Mẫu Trang Phục</th>
+                                <th>Thương Hiệu & Tier</th>
+                                <th>Giá Thuê (3h / 24h)</th>
+                                <th>Trạng Thái Hiện Tại</th>
+                                <th>Khoảng Thời Gian Bận / Đã Cọc</th>
+                                <th>Thao Tác Quản Lý</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="pill pill-gold">TIER 1</span></td>
-                                <td><strong>Trend Gen Z / Boho / Áo Dài Cách Tân</strong></td>
-                                <td>250k - 500k</td>
-                                <td><strong style="color:var(--accent-gold-light);">100.000 đ</strong></td>
-                                <td><strong>180.000 đ - 220.000 đ</strong></td>
-                                <td>CCCD / Hộ chiếu OR 300k</td>
-                            </tr>
-                            <tr>
-                                <td><span class="pill pill-emerald">TIER 2</span></td>
-                                <td><strong>Premium Local Brand / Áo Tấc Gấm</strong></td>
-                                <td>1.2M - 2.8M</td>
-                                <td><strong style="color:var(--accent-emerald);">200.000 đ</strong></td>
-                                <td><strong>350.000 đ - 480.000 đ</strong></td>
-                                <td>CCCD + 500k tiền mặt</td>
-                            </tr>
-                            <tr>
-                                <td><span class="pill pill-rose">TIER 3</span></td>
-                                <td><strong>High-End Designer / Váy Dạ Hội VIP</strong></td>
-                                <td>4M - 12M</td>
-                                <td><strong style="color:var(--accent-rose);">450.000 đ</strong></td>
-                                <td><strong>750.000 đ - 1.500.000 đ</strong></td>
-                                <td>CCCD + 1M-2M (Xác minh KS 5★)</td>
-                            </tr>
+                        <tbody id="admin-inventory-tbody">
+                            <!-- JS Rendered Table Rows -->
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Combo Cards -->
-            <div class="grid-3">
-
-                <div class="card">
-                    <span class="pill pill-gold" style="margin-bottom:8px;">Gói Phổ Thông</span>
-                    <h3 class="card-title">COMBO "HỘI AN THƠ MỘNG"</h3>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--accent-gold-light); margin:8px 0;">1.290.000 đ</div>
-                    <ul class="card-list">
-                        <li>1 Outfit Tier 1 tự chọn (Boho/Áo dài cách tân).</li>
-                        <li>Trang điểm & Làm tóc phong cách Hàn Quốc nhẹ nhàng.</li>
-                        <li>Thợ chụp ảnh chuyên nghiệp 1 giờ tại Phố Cổ.</li>
-                        <li>Trả toàn bộ file ảnh gốc + 15 ảnh màu đĩa đẹp.</li>
-                        <li><em>Phân chia: Thợ ảnh 450k, Makeup 250k, Tiệm nhận 590k.</em></li>
-                    </ul>
-                </div>
-
-                <div class="card" style="border:2px solid var(--accent-gold); background:rgba(217, 119, 6, 0.05);">
-                    <span class="pill pill-emerald" style="margin-bottom:8px;">Bán Chạy Nhất</span>
-                    <h3 class="card-title">COMBO "QUÝ CÔ PHỐ CỔ VIP"</h3>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--accent-emerald); margin:8px 0;">2.190.000 đ</div>
-                    <ul class="card-list">
-                        <li>1 Outfit Tier 2 tự chọn (Đầm Local Brand/Áo tấc gấm).</li>
-                        <li>Trang điểm VIP + Làm tóc tạo kiểu sang trọng.</li>
-                        <li>Thợ chụp ảnh VIP 1.5 giờ (Tư vấn góc & tạo dáng).</li>
-                        <li>Trả toàn bộ file ảnh gốc + 25 ảnh Retouch chuyên sâu.</li>
-                        <li><em>Phân chia: Thợ ảnh 700k, Makeup 400k, Tiệm nhận 1.090.000đ.</em></li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <span class="pill pill-rose" style="margin-bottom:8px;">Gói Đẳng Cấp</span>
-                    <h3 class="card-title">COMBO "LUXURY RESORT COUTURE"</h3>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--accent-rose); margin:8px 0;">3.490.000 đ</div>
-                    <ul class="card-list">
-                        <li>1 Outfit Tier 3 (Đầm hàng hiệu/Dạ hội/Tơ tằm).</li>
-                        <li>Makeup Artist cao cấp phục vụ tận phòng Resort.</li>
-                        <li>Thợ chụp ảnh Pro 2 giờ (Chụp Resort & Phố cổ).</li>
-                        <li>Tặng 1 Video ngắn 30s TikTok/Reels phong cách Cinematic.</li>
-                        <li><em>Phân chia: Thợ ảnh 1.1M, Makeup 600k, Tiệm nhận 1.790.000đ.</em></li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 4: LOCATION & STORE LAYOUT -->
-        <section id="sec-store">
-            <div class="section-header">
-                <span class="section-subtitle">Thiết Kế Không Gian</span>
-                <h2 class="section-title">Chi Tiết Tìm Mặt Bằng & Layout 4 Zone Cửa Hàng</h2>
-                <p class="section-desc">Mặt bằng tối ưu trải nghiệm khách hàng, biến tiệm thuê đồ thành một Studio chụp ảnh sống ảo thu nhỏ.</p>
-            </div>
-
-            <div class="grid-2">
-
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-compass-drafting"></i></div>
-                    <h3 class="card-title">Tiêu Chí Chọn Mặt Bằng Tại Hội An</h3>
-                    <ul class="card-list">
-                        <li><strong>Vị trí Tuyến 1 (Ưu tiên):</strong> Tuyến đường Phan Châu Trinh, Lê Lợi, Trần Hưng Đạo, Nguyễn Thị Minh Khai (Bán kính ≤ 800m tính từ Chùa Cầu). Khách vãng cảnh tự đi bộ vào cực kỳ đông.</li>
-                        <li><strong>Vị trí Tuyến 2 (Giá mềm):</strong> Tuyến đường Lý Thường Kiệt, Cửa Đại, Huỳnh Thúc Kháng (Dễ dừng đỗ xe điện 16 chỗ, tiện cho các tour đoàn).</li>
-                        <li><strong>Diện tích chuẩn:</strong> Tối thiểu <strong>60m² - 90m²</strong>, mặt tiền tối thiểu 4m để làm biển hiệu sáng thu hút vào ban đêm.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-border-all"></i></div>
-                    <h3 class="card-title">Layout 4 Phân Khu Không Gian (Zone Setup)</h3>
-                    <div class="step-box">
-                        <div class="step-title">Zone 1: Tiền Sảnh Check-in Aesthetic (20m²)</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Decor tường sơn màu vàng Hội An kết hợp nón lá & đèn lồng mây tre. Đặt 1 gương vòm bo cong cỡ đại + Đèn LED chiếu điểm để khách thử đồ check-in chụp hình đăng mạng xã hội ngay tại tiệm.</p>
-                    </div>
-                    <div class="step-box">
-                        <div class="step-title">Zone 2: Sào Đồ Boutique Sang Trọng (30m²)</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Sào treo inox mạ vàng champagne, khoảng cách giữa các móc 12cm (không xếp chèn ép). Phân khu rõ ràng theo tone màu: Tone Trắng/Kem, Tone Đỏ Indochine, Tone Boho, Tone Váy Dạ Hội.</p>
-                    </div>
-                    <div class="step-box">
-                        <div class="step-title">Zone 3: Phòng Thử Đồ & Makeup VIP (20m²)</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">3 Phòng thử rộng 4m² mỗi phòng có rèm nhung dày cách âm. Bàn trang điểm 2 vị trí gương tròn dải đèn LED Hollywood điều chỉnh 3 nhiệt độ màu.</p>
-                    </div>
-                    <div class="step-box">
-                        <div class="step-title">Zone 4: Khử Khuẩn & Kho Hậu Cần (15m²)</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Đặt máy giặt hấp LG Styler, cầu là hơi nước đứng, kho chứa phụ kiện niêm phong.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 5: MARKETING & B2B PLAYBOOK -->
-        <section id="sec-marketing">
-            <div class="section-header">
-                <span class="section-subtitle">Kịch Bản Đón Khách</span>
-                <h2 class="section-title">Kịch Bản Marketing 3 Kênh B2B & Viral Social</h2>
-                <p class="section-desc">Các mẫu kịch bản tư vấn, bài đăng và chiết khấu hoa hồng thực chiến dành cho thợ ảnh, lễ tân và mạng xã hội.</p>
-            </div>
-
-            <!-- Accordion Social Script -->
-            <div class="accordion-item active">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-title">
-                        <i class="fa-brands fa-tiktok" style="color:#38bdf8;"></i>
-                        <span>1. Kịch Bản TikTok Viral & Xiaohongshu (Khách Trung/Đài)</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
-                </div>
-                <div class="accordion-content">
-                    <p><strong>Mẫu Kịch bản TikTok 1 (Format: Cảnh Báo Du Lịch):</strong></p>
-                    <div class="script-box">
-                        <span class="script-badge">TikTok Hook</span>
-                        [Visual]: Cảnh du khách vật lộn nhét vali đồ nặng 20kg -> Chuyển cảnh bước vào tiệm đồ sang xịn.<br>
-                        [Voiceover]: "Cảnh báo: Đi Hội An ĐỪNG MUA váy 5-10 triệu nữa! Tốn tiền mà Vali nặng trịch. Ghé ngay tiệm [Tên Tiệm] ngay trung tâm, thuê toàn đầm Local Brand đắt tiền & Áo dài tơ tằm mà giá chỉ 150k - 250k/ngày thôi. Có cả thợ ảnh dắt đi chụp góc vắng cực chill luôn nha!"
-                    </div>
-                    <p style="margin-top:12px;"><strong>Mẫu Bài Đăng Xiaohongshu (Nhỏ Hồng Thư - Khách Trung/Đài):</strong></p>
-                    <div class="script-box">
-                        <span class="script-badge">Xiaohongshu Post</span>
-                        Title: 会安古镇汉服&高级连衣裙租赁推荐！📸<br>
-                        Content: 来会安旅游不用带重重衣服！这家店位于会安中心，提供各类精致奥黛（Áo dài）、高级设计师连衣裙和波西米亚风格裙子。包含发型化妆和专业摄影师陪同拍照服务。在店里拍出来的照片超级出片！<br>
-                        Hashtags: #会安古镇 #会安奥黛租赁 #会安打卡 #越南旅游
-                    </div>
-                </div>
-            </div>
-
-            <!-- Accordion Hotel Script -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-title">
-                        <i class="fa-solid fa-hotel" style="color:var(--accent-gold-light);"></i>
-                        <span>2. Kịch Bản Sales Dành Cho Lễ Tân Khách Sạn / Homestay</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
-                </div>
-                <div class="accordion-content">
-                    <p><strong>Cơ chế hoa hồng:</strong> Phát hành Voucher có mã QR riêng của từng Lễ tân. Khách dùng mã được giảm 10%, Lễ tân nhận ngay <strong>15% tổng bill thuê đồ</strong> (chuyển khoản tự động qua QR cuối ngày).</p>
-                    <div class="script-box">
-                        <span class="script-badge">Script Cho Lễ Tân</span>
-                        "Chị ơi, chiều nay mình ra Phố cổ ngắm đèn lồng với chụp hình đúng không ạ? Em tặng chị Voucher giảm 10% tại Tiệm [Tên Tiệm] ngay trung tâm nè. Bên đó toàn váy thiết kế với áo dài tơ tằm đẹp lắm, có nhân viên giao đồ tận phòng và dắt thợ ảnh qua chụp cho mình luôn, chị không cần lo chuẩn bị đồ nặng vali đâu ạ!"
-                    </div>
-                </div>
-            </div>
-
-            <!-- Accordion Photographer Network -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-title">
-                        <i class="fa-solid fa-camera" style="color:var(--accent-emerald);"></i>
-                        <span>3. Chính Sách Mạng Lưới Photographer Local Hội An</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
-                </div>
-                <div class="accordion-content">
-                    <ul class="card-list">
-                        <li><strong>Quyền lợi Thợ ảnh:</strong> Dẫn khách tới tiệm nhận ngay 15% tổng bill thuê đồ.</li>
-                        <li><strong>Đặc quyền hỗ trợ thợ:</strong> Thợ được mượn phụ kiện chụp ảnh free (quạt xếp cổ phong, nón cối vintage, đèn lồng cầm tay) cho buổi chụp. Tiệm hỗ trợ làm điểm tập kết gửi đồ và phục vụ nước mát miễn phí cho thợ và khách.</li>
-                        <li><strong>Group Zalo kết nối:</strong> Xây dựng Group Zalo <em>"Cộng Đồng Thợ Ảnh & Thời Trang Hội An"</em> (80+ thành viên) để đẩy show chụp trọn gói hàng ngày.</li>
-                    </ul>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- SECTION 6: SOPS & ASSET PROTECTION -->
-        <section id="sec-sops">
-            <div class="section-header">
-                <span class="section-subtitle">Quy Trình Chuẩn SOP</span>
-                <h2 class="section-title">Quy Trình Giặt Hấp & Bảo Vệ Tài Sản Đồ Hiệu</h2>
-                <p class="section-desc">Bộ quy trình chuẩn hóa giúp loại bỏ 100% rủi ro mất mát, hư hỏng đồ đắt tiền và duy trì tuổi thọ trang phục lâu nhất.</p>
-            </div>
-
-            <div class="grid-3">
-
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-qrcode"></i></div>
-                    <h3 class="card-title">SOP 1: Kiểm Soát Cọc & Số Hóa Hợp Đồng</h3>
-                    <div class="step-box">
-                        <div class="step-title">Quét QR & Chụp Tình Trạng:</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Nhân viên dùng máy quét QR dán trên tag đồ. Khách chụp hình xác nhận vết sờn/vết bẩn cũ (nếu có) trước khi xách đồ rời cửa hàng và ký điện tử trên iPad.</p>
-                    </div>
-                    <div class="step-box">
-                        <div class="step-title">Mức Tiền Cọc Yêu Cầu:</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">
-                            • Tier 1: CCCD/Passport gốc OR 300k.<br>
-                            • Tier 2: CCCD + 500k tiền mặt.<br>
-                            • Tier 3: CCCD + 1M-2M (Hoặc xác minh thẻ phòng KS 4-5 sao).
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-shield-cat"></i></div>
-                    <h3 class="card-title">SOP 2: Phí Bảo Hiểm Rủi Ro Nhỏ (Micro-Insurance)</h3>
-                    <div class="step-box">
-                        <div class="step-title">Khoản Phí Cố Định:</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Cộng tự động 20.000đ (Đồ Tier 1-2) hoặc 30.000đ (Đồ Tier 3) vào mỗi đơn thuê.</p>
-                    </div>
-                    <div class="step-box">
-                        <div class="step-title">Cam Kết Khách Hàng:</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Miễn phạt hoàn toàn đối với các vết bẩn bụi đường, vết son nhạt, rách chỉ khâu nhỏ dưới 3cm có thể tẩy sửa được.</p>
-                    </div>
-                    <div class="step-box">
-                        <div class="step-title">Đền Bù Hư Hỏng Nặng:</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Nếu đồ rách toang/cháy xém không sửa được: Đền 50-70% giá gốc (khấu trừ theo số lượt đã thuê).</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-pump-soap"></i></div>
-                    <h3 class="card-title">SOP 3: Quy Trình Giặt Hấp 4 Bước Chuyên Sâu</h3>
-                    <div class="step-box">
-                        <div class="step-title">Bước 1: Phân Loại & Soi Đèn UV</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Nhận đồ trả, soi dưới ánh sáng tím để phát hiện vết bẩn giặt tẩy ngay trong 30 phút đầu.</p>
-                    </div>
-                    <div class="step-box">
-                        <div class="step-title">Bước 2: Tẩy Điểm Sinh Học</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Dùng hóa chất Enzyme sinh học an toàn cho tơ tằm/lụa tẩy nhẹ nách áo & gấu váy.</p>
-                    </div>
-                    <div class="step-box">
-                        <div class="step-title">Bước 3: Giặt Hấp Hơi Nước LG Styler</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Chạy chế độ Sanitize 48 phút ở nhiệt độ 60°C diệt nấm mốc & xả phẳng hơi nước.</p>
-                    </div>
-                    <div class="step-box">
-                        <div class="step-title">Bước 4: Ướp Hương Signature & Bọc Ni-lông</div>
-                        <p style="font-size:0.85rem; color:var(--text-secondary);">Xịt nước hoa mùi "Hội An Night Jasmine" & bọc túi ni-lông khóa kéo treo sào.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 7: ROI FINANCIAL CALCULATOR -->
-        <section id="sec-roi">
-            <div class="section-header">
-                <span class="section-subtitle">Mô Hình Tài Chính</span>
-                <h2 class="section-title">Bộ Tính Lợi Nhuận & Thời Gian Hoàn Vốn (Interactive ROI)</h2>
-                <p class="section-desc">Kéo điều chỉnh các thông số vận hành bên dưới để xem dự phóng doanh thu, chi phí và thời gian hoàn vốn thực tế.</p>
-            </div>
-
-            <div class="grid-2" style="align-items: flex-start;">
-
-                <div class="calc-box">
-                    <h3 class="card-title" style="margin-bottom: 24px;"><i class="fa-solid fa-sliders"></i> Thông Số Đầu Vào Dự Án</h3>
-
-                    <div class="input-group">
-                        <label>Lượt khách thuê / ngày: <span id="val-guests" style="color:var(--accent-gold-light);">30 lượt</span></label>
-                        <input type="range" min="10" max="100" value="30" class="range-slider" id="inp-guests" oninput="updateFinancials()">
-                    </div>
-
-                    <div class="input-group">
-                        <label>Tỷ lệ khách thuê Đồ Trend (Tier 1): <span id="val-t1" style="color:var(--accent-gold-light);">60%</span></label>
-                        <input type="range" min="30" max="80" value="60" class="range-slider" id="inp-t1" oninput="updateFinancials()">
-                    </div>
-
-                    <div class="input-group">
-                        <label>Giá thuê TB Đồ Trend (Tier 1): <span id="val-p1" style="color:var(--accent-gold-light);">180.000 đ</span></label>
-                        <input type="range" min="120000" max="300000" step="10000" value="180000" class="range-slider" id="inp-p1" oninput="updateFinancials()">
-                    </div>
-
-                    <div class="input-group">
-                        <label>Giá thuê TB Đồ Thiết Kế / Luxury (Tier 2-3): <span id="val-p2" style="color:var(--accent-gold-light);">550.000 đ</span></label>
-                        <input type="range" min="350000" max="1000000" step="50000" value="550000" class="range-slider" id="inp-p2" oninput="updateFinancials()">
-                    </div>
-
-                    <div class="input-group">
-                        <label>Chi phí Mặt bằng + Điện nước / tháng: <span id="val-rent" style="color:var(--accent-gold-light);">28.000.000 đ</span></label>
-                        <input type="range" min="15000000" max="60000000" step="1000000" value="28000000" class="range-slider" id="inp-rent" oninput="updateFinancials()">
-                    </div>
-
-                    <div class="input-group">
-                        <label>Chi phí Nhân sự (3 bạn) / tháng: <span id="val-staff" style="color:var(--accent-gold-light);">21.000.000 đ</span></label>
-                        <input type="range" min="12000000" max="45000000" step="1000000" value="21000000" class="range-slider" id="inp-staff" oninput="updateFinancials()">
-                    </div>
-
-                    <div class="input-group">
-                        <label>Vốn đầu tư ban đầu (Mặt bằng + Kho đồ + Decor): <span id="val-cap" style="color:var(--accent-gold-light);">380.000.000 đ</span></label>
-                        <input type="range" min="200000000" max="800000000" step="10000000" value="380000000" class="range-slider" id="inp-cap" oninput="updateFinancials()">
-                    </div>
-                </div>
-
-                <div class="calc-box">
-                    <h3 class="card-title" style="margin-bottom: 20px;"><i class="fa-solid fa-chart-pie"></i> Kết Quả Dự Phóng Vận Hành Tháng</h3>
-
-                    <div class="grid-2" style="gap:14px; margin-bottom: 20px;">
-                        <div class="calc-result-card">
-                            <span style="font-size:0.78rem; color:var(--text-secondary);">DOANH THU THÁNG</span>
-                            <div class="calc-result-val" id="res-revenue">295.2 Tr</div>
-                        </div>
-                        <div class="calc-result-card" style="background:rgba(16, 185, 129, 0.1); border-color:rgba(16, 185, 129, 0.3);">
-                            <span style="font-size:0.78rem; color:var(--text-secondary);">LỢI NHUẬN RÒNG / THÁNG</span>
-                            <div class="calc-result-val" style="color:#10b981;" id="res-profit">171.9 Tr</div>
-                        </div>
-                    </div>
-
-                    <div class="calc-result-card" style="background:rgba(244, 63, 94, 0.1); border-color:rgba(244, 63, 94, 0.3); margin-bottom: 20px;">
-                        <span style="font-size:0.82rem; color:var(--text-secondary);">THỜI GIAN HOÀN VỐN DỰ KIẾN (PAYBACK PERIOD)</span>
-                        <div class="calc-result-val" style="color:#f43f5e;" id="res-payback">2.2 Tháng</div>
-                    </div>
-
-                    <div style="background:rgba(255, 255, 255, 0.02); border:1px solid var(--border-color); border-radius:14px; padding:16px;">
-                        <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
-                            • <strong>Hoa hồng đối tác (15%):</strong> Giới thiệu Lễ tân/Thợ ảnh.<br>
-                            • <strong>Khấu hao & Giặt hấp (10%):</strong> Chi phí hóa chất tẩy rửa & dự phòng hư hỏng.<br>
-                            • <strong>Lợi nhuận ròng =</strong> Doanh thu - (Mặt bằng + Nhân sự + Hoa hồng + Khấu hao).
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 8: ACTIONABLE CHECKLIST -->
-        <section id="sec-checklist">
-            <div class="section-header">
-                <span class="section-subtitle">Danh Sách Công Việc</span>
-                <h2 class="section-title">Checklist Hành Động Chi Tiết Từng Hạng Mục</h2>
-                <p class="section-desc">Tích chọn các mục bên dưới để ghi nhớ và theo dõi tiến độ chuẩn bị dự án của anh.</p>
-            </div>
-
-            <div class="grid-2">
-                <div>
-                    <h3 class="card-title" style="margin-bottom:16px; color:var(--accent-gold-light);">Hạng Mục Pháp Lý & Mặt Bằng</h3>
-                    <div class="checklist-item" onclick="toggleCheck(this)">
-                        <input type="checkbox">
-                        <div>
-                            <strong>Đăng ký Hộ kinh doanh cá thể</strong>
-                            <p style="font-size:0.8rem; color:var(--text-secondary);">Đăng ký tên tiệm + Ngành nghề Dịch vụ cho thuê trang phục & làm đẹp.</p>
-                        </div>
-                    </div>
-                    <div class="checklist-item" onclick="toggleCheck(this)">
-                        <input type="checkbox">
-                        <div>
-                            <strong>Ký Hợp đồng Mặt bằng 60-90m² Trung tâm Hội An</strong>
-                            <p style="font-size:0.8rem; color:var(--text-secondary);">Thời hạn tối thiểu 2-3 năm, có điều khoản sửa chữa decor.</p>
-                        </div>
-                    </div>
-                    <div class="checklist-item" onclick="toggleCheck(this)">
-                        <input type="checkbox">
-                        <div>
-                            <strong>Thi công 3 Phòng thử đồ VIP & Đèn LED Studio 5500K</strong>
-                            <p style="font-size:0.8rem; color:var(--text-secondary);">Lắp rèm nhung dày & gương tràn viền bo cong nịnh dáng.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="card-title" style="margin-bottom:16px; color:var(--accent-gold-light);">Hạng Mục Kho Hàng & Vận Hành B2B</h3>
-                    <div class="checklist-item" onclick="toggleCheck(this)">
-                        <input type="checkbox">
-                        <div>
-                            <strong>Nhập Đợt Hàng 1 (150 Đồ Trend + 50 Đồ Thiết Kế VIP)</strong>
-                            <p style="font-size:0.8rem; color:var(--text-secondary);">Đủ size S/M/L & 80+ phụ kiện nón, túi mây, quạt xếp.</p>
-                        </div>
-                    </div>
-                    <div class="checklist-item" onclick="toggleCheck(this)">
-                        <input type="checkbox">
-                        <div>
-                            <strong>Lắp đặt Máy Giặt Hấp LG Styler & Xịt Hương Signature</strong>
-                            <p style="font-size:0.8rem; color:var(--text-secondary);">Chạy thử nghiệm quy trình khử khuẩn 4 bước SOP.</p>
-                        </div>
-                    </div>
-                    <div class="checklist-item" onclick="toggleCheck(this)">
-                        <input type="checkbox">
-                        <div>
-                            <strong>Tạo Group Zalo 50+ Thợ Ảnh & Gửi Voucher Lễ Tân KS</strong>
-                            <p style="font-size:0.8rem; color:var(--text-secondary);">Phát hành Voucher QR Code chiết khấu 15% hoa hồng.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>Bản Quyền Kế Hoạch Kinh Doanh &copy; 2026 - Tiệm Thuê Thời Trang Cao Cấp Phố Cổ Hội An</p>
-            <p style="margin-top:6px; font-size:0.8rem; color:var(--text-muted);">Được thiết kế chuyên biệt cho thị trường du lịch & chụp ảnh sống ảo tại Hội An.</p>
+    <!-- Modal 1: Product Detail & Rent Popup for Customers -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeProductModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="grid-2" style="gap:24px;" id="modal-content-body">
+                <!-- Rendered dynamically -->
+            </div>
         </div>
-    </footer>
+    </div>
 
-    <!-- Interactive JavaScript -->
+    <!-- Modal 2: Cart Drawer -->
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-card" style="max-width: 600px;">
+            <button class="modal-close" onclick="closeCartModal()"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="font-serif" style="font-size:1.5rem; margin-bottom:20px; color:#78350F;"><i class="fa-solid fa-bag-shopping"></i> Giỏ Hàng & Đặt Thuê - thuequanaohoian</h3>
+            
+            <div id="cart-items-container"></div>
+
+            <div class="cart-summary-box">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9rem;">
+                    <span>Tổng phí thuê trang phục:</span>
+                    <strong id="cart-subtotal">0 đ</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9rem;">
+                    <span>Phí Bảo Hiểm Rủi Ro Nhỏ (Micro-Insurance):</span>
+                    <strong style="color:var(--accent-emerald);">20.000 đ</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.9rem;">
+                    <span>Tiền cọc yêu cầu (CCCD / Tiền mặt):</span>
+                    <strong style="color:var(--accent-gold-dark);" id="cart-deposit">0 đ</strong>
+                </div>
+                <div style="border-top:1px dashed #F59E0B; padding-top:12px; display:flex; justify-content:space-between; font-size:1.2rem; font-weight:800;">
+                    <span>TỔNG THANH TOÁN (TẠM TÍNH):</span>
+                    <span style="color:var(--accent-rose);" id="cart-total">0 đ</span>
+                </div>
+            </div>
+
+            <form onsubmit="submitRentalOrder(event)" style="margin-top:20px;">
+                <h4 style="font-size:1rem; margin-bottom:12px; color:var(--text-primary);">Thông Tin Nhận Đồ Tại Hội An</h4>
+                
+                <div class="form-group">
+                    <label>Họ và Tên Khách Hàng *</label>
+                    <input type="text" class="form-control" required placeholder="Ví dụ: Nguyễn Phương Thảo">
+                </div>
+
+                <div class="grid-2" style="gap:12px;">
+                    <div class="form-group">
+                        <label>Số Điện Thoại / Zalo *</label>
+                        <input type="tel" class="form-control" required placeholder="0987 xxx xxx">
+                    </div>
+                    <div class="form-group">
+                        <label>Hình thức nhận đồ *</label>
+                        <select class="form-control">
+                            <option>Giao tận nơi (Khách sạn / Homestay Hoi An)</option>
+                            <option>Thử & Lấy đồ trực tiếp tại Cửa Hàng</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Tên Khách Sạn / Homestay Địa chỉ tại Hội An *</label>
+                    <input type="text" class="form-control" placeholder="Ví dụ: Anio Boutique Hotel, 02 Thái Phiên, Hoi An">
+                </div>
+
+                <button type="submit" style="width:100%; background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; font-size:1rem; padding:14px; border:none; border-radius:14px; cursor:pointer; margin-top:10px; box-shadow:0 6px 20px rgba(217, 119, 6, 0.4);">
+                    <i class="fa-solid fa-paper-plane"></i> XÁC NHẬN ĐẶT THUÊ ĐỒ (GỬI ZALO/VIETQR)
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 3: ADMIN ADD NEW OUTFIT -->
+    <div class="modal-overlay" id="admin-add-modal">
+        <div class="modal-card" style="max-width: 650px;">
+            <button class="modal-close" onclick="closeAddProductModal()"><i class="fa-solid fa-xmark"></i></button>
+            
+            <h3 class="font-serif" style="font-size:1.5rem; margin-bottom:20px; color:#78350F;"><i class="fa-solid fa-plus-circle"></i> Thêm Mẫu Cho Thuê Mới Vừa Nhập - thuequanaohoian</h3>
+
+            <form onsubmit="saveNewOutfit(event)">
+                <div class="form-group">
+                    <label>Tên Trang Phục / Mẫu Váy *</label>
+                    <input type="text" class="form-control" id="add-name" required placeholder="Ví dụ: Daphale - Velvet Red Silk Dress">
+                </div>
+
+                <div class="grid-2" style="gap:12px;">
+                    <div class="form-group">
+                        <label>Thương Hiệu / Hãng *</label>
+                        <input type="text" class="form-control" id="add-brand" required placeholder="Ví dụ: Sò Vintage / Daphale">
+                    </div>
+                    <div class="form-group">
+                        <label>Danh Mục *</label>
+                        <select class="form-control" id="add-cat">
+                            <option value="boho">Boho & Maxi Đi Biển</option>
+                            <option value="aodai">Áo Dài & Cổ Phục</option>
+                            <option value="localbrand">Local Brand Thiết Kế</option>
+                            <option value="evening">Váy Dạ Hội VIP</option>
+                            <option value="combo">Combo Photo Tour</option>
+                            <option value="accessory">Phụ Kiện & Guốc</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="gap:12px;">
+                    <div class="form-group">
+                        <label>Phân Tầng Tier *</label>
+                        <select class="form-control" id="add-tier">
+                            <option value="tier-1">Tier 1: Gen Z Trend (100k - 250k)</option>
+                            <option value="tier-2">Tier 2: Premium Local (250k - 500k)</option>
+                            <option value="tier-3">Tier 3: Luxury VIP (500k - 1.5M)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Các Size Hiện Có *</label>
+                        <input type="text" class="form-control" id="add-sizes" required placeholder="S, M, L">
+                    </div>
+                </div>
+
+                <div class="grid-2" style="gap:12px;">
+                    <div class="form-group">
+                        <label>Giá Thuê 3 Giờ (VNĐ) *</label>
+                        <input type="number" class="form-control" id="add-price3h" required placeholder="200000">
+                    </div>
+                    <div class="form-group">
+                        <label>Giá Thuê 24 Giờ (VNĐ) *</label>
+                        <input type="number" class="form-control" id="add-price24h" required placeholder="380000">
+                    </div>
+                </div>
+
+                <div class="grid-2" style="gap:12px;">
+                    <div class="form-group">
+                        <label>Giá Gốc Mua Mới (VNĐ)</label>
+                        <input type="number" class="form-control" id="add-retailPrice" placeholder="2500000">
+                    </div>
+                    <div class="form-group">
+                        <label>Tiền Cọc Yêu Cầu (VNĐ)</label>
+                        <input type="number" class="form-control" id="add-deposit" placeholder="500000">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Link Hình Ảnh (URL Image) *</label>
+                    <input type="url" class="form-control" id="add-image" required placeholder="https://images.unsplash.com/photo-...">
+                </div>
+
+                <div class="form-group">
+                    <label>Mô Tả & Gợi Ý Góc Chụp Hội An</label>
+                    <textarea class="form-control" id="add-desc" rows="3" placeholder="Đầm thích hợp chụp góc Chùa Cầu, tường vàng phố cổ..."></textarea>
+                </div>
+
+                <button type="submit" style="width:100%; background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:14px; border:none; border-radius:14px; cursor:pointer; font-size:1rem; box-shadow:0 4px 15px rgba(217, 119, 6, 0.3);">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> LƯU & ĐĂNG MẪU LÊN TIỆM
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Quick Cart Trigger -->
+    <div class="float-cart-bar" id="float-cart-bar" onclick="openCartModal()">
+        <i class="fa-solid fa-bag-shopping" style="font-size:1.2rem;"></i>
+        <span>Giỏ Đồ Thuê: <span id="float-count">0</span> sản phẩm</span>
+        <span style="background:rgba(0,0,0,0.2); padding:4px 12px; border-radius:20px;" id="float-total">0 đ</span>
+    </div>
+
+    <!-- JavaScript Application Engine -->
     <script>
-        function scrollToSec(secId, btn) {
-            document.getElementById(secId).scrollIntoView({ behavior: 'smooth' });
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
+        let productsDB = [
+            {
+                id: 1,
+                brand: "Sò Vintage",
+                name: "Sò Vintage - 004 - DASHA Đầm Lưới Kèm Tay Choàng",
+                cat: "boho",
+                tier: "tier-2",
+                tierLabel: "Tier 2: Premium",
+                price3h: 200000,
+                price24h: 380000,
+                retailPrice: 2200000,
+                deposit: 500000,
+                sizes: ["S", "M"],
+                image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+                desc: "Thiết kế đầm lưới cao cấp dáng xòe bay rủ phong cách Boho Retro. Rất thích hợp chụp ảnh sống ảo tại hẻm vàng và các quán cafe Phố Cổ Hội An.",
+                status: "available",
+                statusText: "🟢 Sẵn Có Thuê Ngay",
+                blackoutStart: "",
+                blackoutEnd: ""
+            },
+            {
+                id: 2,
+                brand: "Daphale Studios",
+                name: "Daphale - Aurora Silk Dress - Đầm Lụa Cổ Yếm Quyến Rũ",
+                cat: "localbrand",
+                tier: "tier-2",
+                tierLabel: "Tier 2: Local Brand",
+                price3h: 220000,
+                price24h: 420000,
+                retailPrice: 2500000,
+                deposit: 500000,
+                sizes: ["S", "M"],
+                image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80",
+                desc: "Chất liệu lụa cao cấp mềm mịn tôn dáng, khoét lưng quyến rũ cho các buổi tiệc tối tại Resort 5 sao hoặc chụp hình sông Hoài.",
+                status: "rented",
+                statusText: "🔴 Đang Cho Thuê",
+                blackoutStart: "2026-09-01",
+                blackoutEnd: "2026-09-04"
+            },
+            {
+                id: 3,
+                brand: "Làng Nghề Cổ Truyền",
+                name: "Áo Dài Tơ Tằm Gấm Thêu Tay Cổ Phục Cao Cấp",
+                cat: "aodai",
+                tier: "tier-3",
+                tierLabel: "Tier 3: Luxury Couture",
+                price3h: 350000,
+                price24h: 650000,
+                retailPrice: 4800000,
+                deposit: 1000000,
+                sizes: ["S", "M", "L"],
+                image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80",
+                desc: "Áo dài gấm tơ tằm thêu hoa sen thủ công 100%. Phom dáng cổ truyền chuẩn đẹp chụp góc Chùa Cầu & Nhà Cổ Tấn Ký.",
+                status: "available",
+                statusText: "🟢 Sẵn Có Thuê Ngay",
+                blackoutStart: "",
+                blackoutEnd: ""
+            },
+            {
+                id: 4,
+                brand: "Boho Fashion",
+                name: "Boho Summer Dream - Váy Maxi Thổ Cẩm Trắng Bay Rủ",
+                cat: "boho",
+                tier: "tier-1",
+                tierLabel: "Tier 1: Gen Z Trend",
+                price3h: 100000,
+                price24h: 180000,
+                retailPrice: 450000,
+                deposit: 300000,
+                sizes: ["Freesize"],
+                image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=800&q=80",
+                desc: "Họa tiết ren thổ cẩm trắng nổi bật trên nền tường vàng Phố Cổ. Vải mỏng mát có dây thắt eo điều chỉnh tiện lợi.",
+                status: "reserved",
+                statusText: "🟡 Đã Được Đặt Trước",
+                blackoutStart: "2026-09-05",
+                blackoutEnd: "2026-09-07"
+            },
+            {
+                id: 5,
+                brand: "Châu Hy Couture",
+                name: "Châu Hy - 022 - Đầm Ren Trắng Phủ Lưới Indochine",
+                cat: "localbrand",
+                tier: "tier-2",
+                tierLabel: "Tier 2: Premium",
+                price3h: 180000,
+                price24h: 320000,
+                retailPrice: 1800000,
+                deposit: 500000,
+                sizes: ["S", "M"],
+                image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80",
+                desc: "Đầm ren xòe phối tay bồng nhẹ phong cách Indochine hoài niệm.",
+                status: "maintenance",
+                statusText: "🟣 Đang Giặt Hấp LG Styler",
+                blackoutStart: "2026-09-01",
+                blackoutEnd: "2026-09-02"
+            },
+            {
+                id: 6,
+                brand: "Subtle Le Nguyen",
+                name: "Subtle Le Nguyen - High Couture Evening Gown",
+                cat: "evening",
+                tier: "tier-3",
+                tierLabel: "Tier 3: Luxury VIP",
+                price3h: 500000,
+                price24h: 950000,
+                retailPrice: 8500000,
+                deposit: 2000000,
+                sizes: ["S", "M"],
+                image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=800&q=80",
+                desc: "Váy dạ hội cúp ngực sang trọng cho các buổi gala dinner tiệc bãi biển Resort.",
+                status: "available",
+                statusText: "🟢 Sẵn Có Thuê Ngay",
+                blackoutStart: "",
+                blackoutEnd: ""
+            },
+            {
+                id: 7,
+                brand: "Hội An Photo Tour",
+                name: "COMBO FULL PHOTO TOUR: Outfit Tier 2 + Makeup + Thợ Ảnh 1.5h",
+                cat: "combo",
+                tier: "tier-2",
+                tierLabel: "Combo Trọn Gói",
+                price3h: 2190000,
+                price24h: 2190000,
+                retailPrice: 3500000,
+                deposit: 500000,
+                sizes: ["S", "M", "L"],
+                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+                desc: "Gói trọn gói bao gồm 1 Trang phục tự chọn + Trang điểm VIP tận nơi + Thợ ảnh dắt đi chụp góc đẹp Phố Cổ 1.5 tiếng.",
+                status: "available",
+                statusText: "🟢 Sẵn Có Thuê Ngay",
+                blackoutStart: "",
+                blackoutEnd: ""
+            },
+            {
+                id: 8,
+                brand: "Phụ Kiện Hội An",
+                name: "Set Phụ Kiện: Nón Cối Vintage + Túi Mây Tre + Quạt Xếp",
+                cat: "accessory",
+                tier: "tier-1",
+                tierLabel: "Phụ Kiện",
+                price3h: 40000,
+                price24h: 50000,
+                retailPrice: 350000,
+                deposit: 100000,
+                sizes: ["Freesize"],
+                image: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=800&q=80",
+                desc: "Combo 3 món phụ kiện sống ảo không thể thiếu khi chụp ảnh Phố Cổ.",
+                status: "available",
+                statusText: "🟢 Sẵn Có Thuê Ngay",
+                blackoutStart: "",
+                blackoutEnd: ""
+            }
+        ];
 
-        function toggleAccordion(header) {
-            const item = header.parentElement;
-            item.classList.toggle('active');
-        }
+        let cartState = [];
+        let currentFilter = 'all';
 
-        function toggleCheck(item) {
-            const chk = item.querySelector('input[type="checkbox"]');
-            chk.checked = !chk.checked;
-            if (chk.checked) {
-                item.classList.add('completed');
+        function switchView(mode) {
+            document.getElementById('btn-mode-store').classList.remove('active');
+            document.getElementById('btn-mode-admin').classList.remove('active');
+
+            if (mode === 'store') {
+                document.getElementById('btn-mode-store').classList.add('active');
+                document.getElementById('view-storefront').style.display = 'block';
+                document.getElementById('view-admin').classList.remove('active');
+                document.getElementById('search-container').style.display = 'block';
+                document.getElementById('float-cart-bar').style.display = 'flex';
+                renderProducts(productsDB);
             } else {
-                item.classList.remove('completed');
+                document.getElementById('btn-mode-admin').classList.add('active');
+                document.getElementById('view-storefront').style.display = 'none';
+                document.getElementById('view-admin').classList.add('active');
+                document.getElementById('search-container').style.display = 'none';
+                document.getElementById('float-cart-bar').style.display = 'none';
+                renderAdminInventory();
             }
         }
 
-        function updateFinancials() {
-            const guests = parseInt(document.getElementById('inp-guests').value);
-            const t1Ratio = parseInt(document.getElementById('inp-t1').value) / 100;
-            const t2Ratio = 1 - t1Ratio;
-            
-            const p1 = parseInt(document.getElementById('inp-p1').value);
-            const p2 = parseInt(document.getElementById('inp-p2').value);
-            const rent = parseInt(document.getElementById('inp-rent').value);
-            const staff = parseInt(document.getElementById('inp-staff').value);
-            const capital = parseInt(document.getElementById('inp-cap').value);
+        function renderProducts(items) {
+            const grid = document.getElementById('products-grid');
+            document.getElementById('item-count-label').innerText = `Hiển thị ${items.length} sản phẩm`;
+            grid.innerHTML = '';
 
-            // Display Values
-            document.getElementById('val-guests').innerText = guests + " lượt";
-            document.getElementById('val-t1').innerText = Math.round(t1Ratio * 100) + "%";
-            document.getElementById('val-p1').innerText = p1.toLocaleString('vi-VN') + " đ";
-            document.getElementById('val-p2').innerText = p2.toLocaleString('vi-VN') + " đ";
-            document.getElementById('val-rent').innerText = rent.toLocaleString('vi-VN') + " đ";
-            document.getElementById('val-staff').innerText = staff.toLocaleString('vi-VN') + " đ";
-            document.getElementById('val-cap').innerText = capital.toLocaleString('vi-VN') + " đ";
+            items.forEach(p => {
+                let statusBadgeClass = 'status-available';
+                let statusBadgeIcon = '<i class="fa-solid fa-circle-check"></i> Sẵn có';
 
-            // Calculations
-            const avgPrice = (t1Ratio * p1) + (t2Ratio * p2);
-            const daysInMonth = 30;
-            const grossRevenue = guests * avgPrice * daysInMonth;
-            
-            const commission = grossRevenue * 0.15; // 15% partner commission
-            const maintenance = grossRevenue * 0.10; // 10% laundry & wear depreciation
-            const totalOperatingCost = rent + staff + commission + maintenance;
+                if (p.status === 'rented') {
+                    statusBadgeClass = 'status-rented';
+                    statusBadgeIcon = '<i class="fa-solid fa-clock"></i> Đang cho thuê';
+                } else if (p.status === 'reserved') {
+                    statusBadgeClass = 'status-reserved';
+                    statusBadgeIcon = '<i class="fa-solid fa-calendar-check"></i> Đã cọc trước';
+                } else if (p.status === 'maintenance') {
+                    statusBadgeClass = 'status-maintenance';
+                    statusBadgeIcon = '<i class="fa-solid fa-soap"></i> Đang giặt hấp';
+                }
 
-            const netProfit = grossRevenue - totalOperatingCost;
-            const paybackMonths = netProfit > 0 ? (capital / netProfit).toFixed(1) : "Không thể";
+                let blackoutNote = '';
+                if (p.blackoutStart && p.blackoutEnd) {
+                    blackoutNote = `<div style="font-size:0.75rem; color:#D97706; margin-top:2px;"><i class="fa-regular fa-calendar-xmark"></i> Bận: ${p.blackoutStart} ➔ ${p.blackoutEnd}</div>`;
+                }
 
-            document.getElementById('res-revenue').innerText = (grossRevenue / 1000000).toFixed(1) + " Tr";
-            document.getElementById('res-profit').innerText = (netProfit / 1000000).toFixed(1) + " Tr";
-            document.getElementById('res-payback').innerText = paybackMonths + " Tháng";
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-img-wrapper">
+                        <img src="${p.image}" alt="${p.name}" class="product-img" loading="lazy">
+                        <span class="product-badge">${p.brand}</span>
+                        <span class="product-tier-tag ${p.tier}">${p.tierLabel}</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">${p.brand}</div>
+                        <h4 class="product-title">${p.name}</h4>
+
+                        <div>
+                            <span class="status-badge ${statusBadgeClass}">${statusBadgeIcon}</span>
+                            ${blackoutNote}
+                        </div>
+
+                        <div class="price-box" style="margin-top:8px;">
+                            <div>
+                                <div class="rent-price">${p.price24h.toLocaleString('vi-VN')} đ <span>/ngày</span></div>
+                                <div style="font-size:0.75rem; color:var(--accent-gold-dark); font-weight:600;">Thuê 3h: ${p.price3h.toLocaleString('vi-VN')} đ</div>
+                            </div>
+                            <div style="font-size:0.75rem; color:var(--text-muted); text-decoration:line-through;">Giá gốc: ${p.retailPrice ? p.retailPrice.toLocaleString('vi-VN') + 'đ' : ''}</div>
+                        </div>
+
+                        <button class="btn-rent-now" onclick="openProductModal(${p.id})">
+                            <i class="fa-solid fa-calendar-check"></i> Xem Chi Tiết & Thuê Ngay
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function renderAdminInventory() {
+            const tbody = document.getElementById('admin-inventory-tbody');
+            tbody.innerHTML = '';
+
+            let availCount = 0;
+            let rentedCount = 0;
+            let maintCount = 0;
+
+            productsDB.forEach(p => {
+                if (p.status === 'available') availCount++;
+                if (p.status === 'rented' || p.status === 'reserved') rentedCount++;
+                if (p.status === 'maintenance') maintCount++;
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <img src="${p.image}" style="width:50px; height:65px; object-fit:cover; border-radius:8px;">
+                            <div>
+                                <strong style="color:#0F172A; font-size:0.92rem;">${p.name}</strong>
+                                <div style="font-size:0.78rem; color:var(--text-secondary);">Size: ${p.sizes.join(', ')}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="product-tier-tag ${p.tier}" style="position:static; display:inline-block;">${p.tierLabel}</span>
+                        <div style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;">${p.brand}</div>
+                    </td>
+                    <td>
+                        <strong>${p.price24h.toLocaleString('vi-VN')} đ</strong> /24h<br>
+                        <span style="font-size:0.78rem; color:var(--text-secondary);">${p.price3h.toLocaleString('vi-VN')} đ /3h</span>
+                    </td>
+                    <td>
+                        <select onchange="updateOutfitStatus(${p.id}, this.value)" style="padding:6px 10px; border-radius:8px; border:1px solid #CBD5E1; font-weight:700; font-size:0.82rem;">
+                            <option value="available" ${p.status === 'available' ? 'selected' : ''}>🟢 Sẵn Có Thuê</option>
+                            <option value="rented" ${p.status === 'rented' ? 'selected' : ''}>🔴 Đang Cho Thuê</option>
+                            <option value="reserved" ${p.status === 'reserved' ? 'selected' : ''}>🟡 Đã Được Cọc</option>
+                            <option value="maintenance" ${p.status === 'maintenance' ? 'selected' : ''}>🟣 Đang Giặt Hấp</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <input type="date" value="${p.blackoutStart || ''}" onchange="updateBlackoutDates(${p.id}, 'start', this.value)" style="padding:4px 8px; border:1px solid #CBD5E1; border-radius:6px; font-size:0.78rem;">
+                            <span style="font-size:0.7rem; text-align:center; color:var(--text-secondary);">đến ngày</span>
+                            <input type="date" value="${p.blackoutEnd || ''}" onchange="updateBlackoutDates(${p.id}, 'end', this.value)" style="padding:4px 8px; border:1px solid #CBD5E1; border-radius:6px; font-size:0.78rem;">
+                        </div>
+                    </td>
+                    <td>
+                        <button onclick="deleteOutfit(${p.id})" style="background:none; border:none; color:var(--accent-rose); cursor:pointer; font-size:1.1rem;" title="Xóa khỏi kho"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('adm-total-count').innerText = productsDB.length;
+            document.getElementById('adm-avail-count').innerText = availCount;
+            document.getElementById('adm-rented-count').innerText = rentedCount;
+            document.getElementById('adm-maint-count').innerText = maintCount;
+        }
+
+        function updateOutfitStatus(id, newStatus) {
+            const p = productsDB.find(x => x.id === id);
+            if (p) {
+                p.status = newStatus;
+                renderAdminInventory();
+            }
+        }
+
+        function updateBlackoutDates(id, type, dateVal) {
+            const p = productsDB.find(x => x.id === id);
+            if (p) {
+                if (type === 'start') p.blackoutStart = dateVal;
+                if (type === 'end') p.blackoutEnd = dateVal;
+            }
+        }
+
+        function deleteOutfit(id) {
+            if (confirm("Anh có chắc muốn xóa mẫu trang phục này khỏi kho cửa hàng không?")) {
+                productsDB = productsDB.filter(p => p.id !== id);
+                renderAdminInventory();
+            }
+        }
+
+        function openAddProductModal() {
+            document.getElementById('admin-add-modal').classList.add('active');
+        }
+
+        function closeAddProductModal() {
+            document.getElementById('admin-add-modal').classList.remove('active');
+        }
+
+        function saveNewOutfit(e) {
+            e.preventDefault();
+            const newOutfit = {
+                id: Date.now(),
+                name: document.getElementById('add-name').value,
+                brand: document.getElementById('add-brand').value,
+                cat: document.getElementById('add-cat').value,
+                tier: document.getElementById('add-tier').value,
+                tierLabel: document.getElementById('add-tier').options[document.getElementById('add-tier').selectedIndex].text.split('(')[0],
+                sizes: document.getElementById('add-sizes').value.split(',').map(s => s.trim()),
+                price3h: parseInt(document.getElementById('add-price3h').value),
+                price24h: parseInt(document.getElementById('add-price24h').value),
+                retailPrice: parseInt(document.getElementById('add-retailPrice').value || 0),
+                deposit: parseInt(document.getElementById('add-deposit').value || 300000),
+                image: document.getElementById('add-image').value,
+                desc: document.getElementById('add-desc').value,
+                status: "available",
+                statusText: "🟢 Sẵn Có Thuê Ngay",
+                blackoutStart: "",
+                blackoutEnd: ""
+            };
+
+            productsDB.unshift(newOutfit);
+            closeAddProductModal();
+            renderAdminInventory();
+            alert("✨ ĐÃ UP MẪU TRANG PHỤC MỚI LÊN THUEQUANAOHOIAN THÀNH CÔNG!");
+        }
+
+        function filterCategory(cat, btn) {
+            currentFilter = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (cat === 'all') {
+                renderProducts(productsDB);
+            } else {
+                const filtered = productsDB.filter(p => p.cat === cat);
+                renderProducts(filtered);
+            }
+        }
+
+        function filterProducts() {
+            const q = document.getElementById('search-input').value.toLowerCase();
+            const filtered = productsDB.filter(p => 
+                p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q)
+            );
+            renderProducts(filtered);
+        }
+
+        function openProductModal(id) {
+            const item = productsDB.find(p => p.id === id);
+            const modalBody = document.getElementById('modal-content-body');
+
+            let blackoutInfo = '';
+            if (item.blackoutStart && item.blackoutEnd) {
+                blackoutInfo = `<div style="background:#FEF2F2; border:1px solid #FCA5A5; color:#991B1B; padding:10px 14px; border-radius:10px; font-size:0.85rem; margin-bottom:14px;"><i class="fa-solid fa-circle-exclamation"></i> Đồ đã có khách cọc từ <strong>${item.blackoutStart}</strong> đến <strong>${item.blackoutEnd}</strong>.</div>`;
+            }
+
+            modalBody.innerHTML = `
+                <div>
+                    <img src="${item.image}" alt="${item.name}" style="width:100%; height:430px; object-fit:cover; border-radius:18px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+                </div>
+                <div>
+                    <span class="product-tier-tag ${item.tier}" style="position:static; display:inline-block; margin-bottom:8px;">${item.tierLabel}</span>
+                    <h3 class="font-serif" style="font-size:1.6rem; color:#0F172A; margin-bottom:6px;">${item.name}</h3>
+                    <p style="color:var(--text-secondary); font-size:0.88rem; margin-bottom:14px;">THƯƠNG HIỆU: <strong>${item.brand}</strong></p>
+                    
+                    ${blackoutInfo}
+
+                    <div style="background:#FEF3C7; border:1px solid #FDE68A; padding:16px; border-radius:14px; margin-bottom:18px; color:#78350F;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Giá thuê 3 Giờ (Chụp nhanh):</span>
+                            <strong style="color:var(--accent-gold-dark); font-size:1.1rem;">${item.price3h.toLocaleString('vi-VN')} đ</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Giá thuê Trọn Ngày (24h):</span>
+                            <strong style="color:var(--accent-gold-dark); font-size:1.2rem;">${item.price24h.toLocaleString('vi-VN')} đ</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; color:#92400E;">
+                            <span>Tiền cọc yêu cầu: ${item.deposit.toLocaleString('vi-VN')} đ (hoặc CCCD/Passport)</span>
+                        </div>
+                    </div>
+
+                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.5;">${item.desc}</p>
+
+                    <div class="form-group">
+                        <label>Chọn Size Trang Phục:</label>
+                        <select class="form-control" id="modal-size-select">
+                            ${item.sizes.map(s => `<option value="${s}">Size ${s}</option>`).join('')}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Chọn Gói Khung Giờ Thuê:</label>
+                        <select class="form-control" id="modal-plan-select">
+                            <option value="24h">Thuê 24 Giờ (${item.price24h.toLocaleString('vi-VN')} đ)</option>
+                            <option value="3h">Thuê 3 Giờ Chụp Nhanh (${item.price3h.toLocaleString('vi-VN')} đ)</option>
+                        </select>
+                    </div>
+
+                    <button onclick="addToCart(${item.id})" style="width:100%; background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFF; font-weight:800; padding:14px; border:none; border-radius:14px; font-size:1rem; cursor:pointer; margin-top:10px; box-shadow:0 4px 15px rgba(217, 119, 6, 0.3);">
+                        <i class="fa-solid fa-cart-plus"></i> THÊM VÀO GIỎ ĐỒ THUÊ
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('product-modal').classList.add('active');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.remove('active');
+        }
+
+        function addToCart(id) {
+            const item = productsDB.find(p => p.id === id);
+            const size = document.getElementById('modal-size-select').value;
+            const plan = document.getElementById('modal-plan-select').value;
+            const price = plan === '3h' ? item.price3h : item.price24h;
+
+            cartState.push({
+                ...item,
+                selectedSize: size,
+                selectedPlan: plan,
+                selectedPrice: price
+            });
+
+            updateCartUI();
+            closeProductModal();
+            openCartModal();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cartState.length;
+            document.getElementById('float-count').innerText = cartState.length;
+
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+
+            let subtotal = 0;
+            let totalDeposit = 0;
+
+            if (cartState.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:var(--text-secondary); padding:20px;">Giỏ hàng của anh chị đang trống.</p>';
+            } else {
+                cartState.forEach((item, idx) => {
+                    subtotal += item.selectedPrice;
+                    totalDeposit += item.deposit;
+
+                    const row = document.createElement('div');
+                    row.className = 'cart-item';
+                    row.innerHTML = `
+                        <img src="${item.image}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <h4 style="font-size:0.95rem; font-weight:700; color:#0F172A;">${item.name}</h4>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">Size: ${item.selectedSize} | Khung giờ: ${item.selectedPlan}</div>
+                            <div style="color:var(--accent-gold-dark); font-weight:700; margin-top:4px;">${item.selectedPrice.toLocaleString('vi-VN')} đ</div>
+                        </div>
+                        <button onclick="removeFromCart(${idx})" style="background:none; border:none; color:var(--accent-rose); cursor:pointer; font-size:1rem;"><i class="fa-solid fa-trash"></i></button>
+                    `;
+                    container.appendChild(row);
+                });
+            }
+
+            const insurance = cartState.length > 0 ? 20000 : 0;
+            const total = subtotal + insurance;
+
+            document.getElementById('cart-subtotal').innerText = subtotal.toLocaleString('vi-VN') + " đ";
+            document.getElementById('cart-deposit').innerText = totalDeposit.toLocaleString('vi-VN') + " đ";
+            document.getElementById('cart-total').innerText = total.toLocaleString('vi-VN') + " đ";
+            document.getElementById('float-total').innerText = total.toLocaleString('vi-VN') + " đ";
+        }
+
+        function removeFromCart(index) {
+            cartState.splice(index, 1);
+            updateCartUI();
+        }
+
+        function openCartModal() {
+            document.getElementById('cart-modal').classList.add('active');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').classList.remove('active');
+        }
+
+        function submitRentalOrder(e) {
+            e.preventDefault();
+            alert("🎉 ĐẶT THUÊ THÀNH CÔNG!\n\nĐơn hàng của anh chị đã được khởi tạo trên thuequanaohoian. Nhân viên tiệm sẽ gọi xác nhận & giao đồ tận khách sạn trong vòng 15-30 phút!");
+            cartState = [];
+            updateCartUI();
+            closeCartModal();
         }
 
         window.onload = function() {
-            updateFinancials();
+            renderProducts(productsDB);
         };
     </script>
 </body>
