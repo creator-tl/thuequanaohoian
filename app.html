@@ -545,6 +545,7 @@
             margin-bottom: 24px;
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 10px;
+            flex-wrap: wrap;
         }
 
         .admin-tab-btn {
@@ -697,6 +698,36 @@
         .zalo-btn:hover {
             background: #0052CC;
         }
+
+        /* PROGRESS TRACKER STYLES */
+        .progress-meter-box {
+            background: linear-gradient(135deg, #FAF5ED, #F5EFE6);
+            border: 1px solid #E5D9C8;
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 18px;
+            background: #EBE3D8;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8C6D53, #4A7C59);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .step-row-done {
+            background: #F4F8F5 !important;
+            opacity: 0.85;
+        }
     </style>
 </head>
 <body>
@@ -818,7 +849,7 @@
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:16px;">
                 <div>
                     <h2 class="font-serif" style="font-size:2rem; color:#2C221E;">Portal Quản Lý Tiệm LONA Dress</h2>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Quản lý đơn đặt thuê của khách hàng, theo dõi doanh thu & cập nhật lịch bận trang phục kho.</p>
+                    <p style="color:var(--text-secondary); font-size:0.9rem;">Quản lý đơn đặt thuê của khách hàng, theo dõi tiến độ mở tiệm & cập nhật kho sản phẩm.</p>
                 </div>
 
                 <div style="display:flex; gap:12px; align-items:center;">
@@ -836,7 +867,7 @@
             <div class="storage-status-banner">
                 <div>
                     <i class="fa-solid fa-cloud" style="font-size:1.1rem; margin-right:8px;"></i>
-                    <strong>Đám Mây Realtime Firebase (lona-dress-hoian):</strong> Đơn hàng mới & Tình trạng kho tự động đồng bộ ngay lập tức!
+                    <strong>Đám Mây Realtime Firebase (lona-dress-hoian):</strong> Tiến độ 6 Giai đoạn & Đơn hàng tự động đồng bộ ngay lập tức!
                 </div>
                 <span style="font-weight:800; color:#2E5C38;" id="firebase-sync-badge"><i class="fa-solid fa-circle-check"></i> LIVE CLOUD ACTIVE</span>
             </div>
@@ -845,6 +876,9 @@
             <div class="admin-tabs">
                 <button class="admin-tab-btn active" id="tab-btn-orders" onclick="switchAdminTab('orders')">
                     <i class="fa-solid fa-receipt"></i> QUẢN LÝ ĐƠN ĐẶT THUÊ (<span id="tab-order-count">0</span>)
+                </button>
+                <button class="admin-tab-btn" id="tab-btn-progress" onclick="switchAdminTab('progress')">
+                    <i class="fa-solid fa-bars-progress"></i> QUẢN LÝ TIẾN ĐỘ TỪNG BƯỚC (6 GIAI ĐOẠN)
                 </button>
                 <button class="admin-tab-btn" id="tab-btn-inventory" onclick="switchAdminTab('inventory')">
                     <i class="fa-solid fa-boxes-packing"></i> KHO TRANG PHỤC & LỊCH BẬN (<span id="tab-inventory-count">8</span>)
@@ -924,6 +958,60 @@
                 </div>
             </div>
 
+            <!-- ================= SUB VIEW C: PROGRESS TRACKER (6 GIAI ĐOẠN & REMARKS) ================= -->
+            <div class="admin-sub-view" id="admin-sub-progress">
+                <!-- Progress Meter Box -->
+                <div class="progress-meter-box">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                        <div>
+                            <h3 class="font-serif" style="font-size:1.4rem; color:#5C4433;"><i class="fa-solid fa-gauge-high"></i> THƯỚC ĐO TIẾN ĐỘ XÂY DỰNG TIỆM (6 GIAI ĐOẠN)</h3>
+                            <p style="font-size:0.88rem; color:var(--text-secondary);">Hoàn thành bước nào tick vào ô bước đó. Nhập Remark để diễn giải các vấn đề anh gặp phải.</p>
+                        </div>
+                        
+                        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                            <button onclick="downloadProgressCSV()" style="background:#4A7C59; color:#FFF; border:none; padding:10px 18px; border-radius:20px; font-weight:700; font-size:0.85rem; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                                <i class="fa-solid fa-file-csv"></i> Tải File CSV Quản Lý (Mở Google Sheets / Excel)
+                            </button>
+                            <a href="Process.html" target="_blank" style="background:#8C6D53; color:#FFF; text-decoration:none; padding:10px 18px; border-radius:20px; font-weight:700; font-size:0.85rem; display:inline-flex; align-items:center; gap:8px;">
+                                <i class="fa-solid fa-book-open"></i> Xem Playbook 6 Giai Đoạn
+                            </a>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:16px;">
+                        <div style="display:flex; justify-content:space-between; font-weight:800; color:#5C4433; font-size:1.1rem;">
+                            <span>TỔNG TIẾN ĐỘ HOÀN THÀNH:</span>
+                            <span id="progress-percent-label">0% (0/21 Bước)</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Checklist Table -->
+                <div class="admin-table-card">
+                    <div style="overflow-x:auto;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:60px; text-align:center;">Hoàn Thành</th>
+                                    <th style="width:70px;">Mã Bước</th>
+                                    <th style="width:200px;">Giai Đoạn</th>
+                                    <th style="width:220px;">Hạng Mục Công Việc</th>
+                                    <th>Hành Động Cụ Thể & Mô Tả Detail</th>
+                                    <th style="width:110px;">Thời Gian</th>
+                                    <th style="width:280px;">Ghi Chú & Diễn Giải Vấn Đề (Remark)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="progress-tracker-tbody">
+                                <!-- JS Rendered Progress Rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <!-- ================= SUB VIEW B: INVENTORY & BLACKOUT DATES ================= -->
             <div class="admin-sub-view" id="admin-sub-inventory">
                 <!-- Admin Stat KPI Cards -->
@@ -991,7 +1079,7 @@
             <button class="modal-close" onclick="closeAdminLoginModal()"><i class="fa-solid fa-xmark"></i></button>
             <img src="assets/lona_dress_logo.png" style="width: 74px; height: 74px; border-radius: 50%; margin-bottom: 12px; border: 2px solid #8C6D53; box-shadow:0 4px 15px rgba(140,109,83,0.3);">
             <h3 class="font-serif" style="font-size: 1.55rem; color: #5C4433; margin-bottom: 4px;">Đăng Nhập Quản Lý LONA</h3>
-            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 20px;">Vui lòng nhập tài khoản quản trị tiệm để vào Portal quản lý đơn & kho.</p>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 20px;">Vui lòng nhập tài khoản quản trị tiệm để vào Portal quản lý đơn & tiến độ.</p>
 
             <form onsubmit="handleAdminLogin(event)">
                 <div class="form-group" style="text-align: left;">
@@ -1220,6 +1308,36 @@
         let productsDB = [];
         let ordersDB = [];
 
+        // 21 Master Steps across 6 Phases
+        let progressStepsDB = [
+            { id: "1.1", phase: "Giai Đoạn 1", title: "Khảo sát đối thủ tại Phố Cổ", desc: "Khảo sát trực tiếp 8 tiệm thuê quần áo nổi tiếng tại Hội An (xem mẫu mã, giá cọc, tình trạng đồ hư hỏng).", time: "Tuần 1-2", done: false, remark: "" },
+            { id: "1.2", phase: "Giai Đoạn 1", title: "Định vị thương hiệu LONA Dress", desc: "Định vị thương hiệu theo phong cách 'Luxury Heritage & Modern Aesthetic' (Sang trọng Indochine kết hợp hiện đại).", time: "Tuần 1-2", done: false, remark: "" },
+            { id: "1.3", phase: "Giai Đoạn 1", title: "Thiết kế Bộ nhận diện thương hiệu", desc: "Thiết kế Logo, Card visit, Tag treo quần áo bọc nhung, Túi xách ni-lông khóa kéo cao cấp in thương hiệu.", time: "Tuần 1-2", done: false, remark: "" },
+            { id: "1.4", phase: "Giai Đoạn 1", title: "Đăng ký pháp lý & Giấy phép", desc: "Đăng ký hộ kinh doanh cá thể, cấp phép bảng hiệu & hoàn thiện hợp đồng pháp lý mở tiệm.", time: "Tuần 1-2", done: false, remark: "" },
+            
+            { id: "2.1", phase: "Giai Đoạn 2", title: "Tìm & Ký hợp đồng mặt bằng", desc: "Ký hợp đồng mặt bằng diện tích 60 - 90m² ở bán kính ≤ 800m quanh Phố Cổ (Trần Hưng Đạo, Phan Châu Trinh, Lê Lợi).", time: "Tuần 3-5", done: false, remark: "" },
+            { id: "2.2", phase: "Giai Đoạn 2", title: "Thi công 3 Phòng thử đồ VIP", desc: "Thi công 3 Phòng thử đồ VIP (mỗi phòng 4m² có rèm nhung cách âm), gương soi toàn thân gắn đèn LED.", time: "Tuần 3-5", done: false, remark: "" },
+            { id: "2.3", phase: "Giai Đoạn 2", title: "Lắp sào mạ vàng & Đèn LED 5500K", desc: "Lắp đặt sào treo inox mạ vàng champagne, dải đèn LED 5500K chiếu điểm tạo hiệu ứng đồ lấp lánh như showroom.", time: "Tuần 3-5", done: false, remark: "" },
+            { id: "2.4", phase: "Giai Đoạn 2", title: "Thiết kế Góc Makeup Hollywood", desc: "Thiết kế Bàn trang điểm Makeup 2 vị trí chuẩn đèn bóng tròn Hollywood & Góc sofa chờ cho bạn đi cùng.", time: "Tuần 3-5", done: false, remark: "" },
+
+            { id: "3.1", phase: "Giai Đoạn 3", title: "Nhập kho 200 bộ trang phục đợt 1", desc: "Nhập đợt 1: 150 bộ Trend Gen Z/Boho/Áo dài cách tân + 50 bộ Đồ thiết kế Local Brands (Daphale, Subtle, DATT, SIXDO...).", time: "Tuần 6-8", done: false, remark: "" },
+            { id: "3.2", phase: "Giai Đoạn 3", title: "Nhập 80+ Phụ kiện sống ảo", desc: "Nhập nón cối vintage, túi mây nón lá, guốc gỗ sơn mài, quạt xếp cổ phong chụp ảnh Phố Cổ.", time: "Tuần 6-8", done: false, remark: "" },
+            { id: "3.3", phase: "Giai Đoạn 3", title: "Lắp máy giặt hấp LG Styler & Xịt thơm", desc: "Lắp đặt máy giặt hấp hơi nước LG Styler/Samsung AirDresser + máy xịt thơm Signature mùi hoa nhài Hội An.", time: "Tuần 6-8", done: false, remark: "" },
+            { id: "3.4", phase: "Giai Đoạn 3", title: "Gán mã QR & Cấu hình App Quản Lý", desc: "Dán mã QR quản lý từng bộ đồ trên Web App / phần mềm quản lý kho & lịch bận khả dụng.", time: "Tuần 6-8", done: false, remark: "" },
+
+            { id: "4.1", phase: "Giai Đoạn 4", title: "Lập Group 50+ Thợ ảnh Hội An", desc: "Lập Group Zalo 'Cộng Đồng Photographer Đà Nẵng - Hội An' kết nối 50+ thợ ảnh tự do. Trích 15% hoa hồng thợ dẫn khách.", time: "Tuần 8-10", done: false, remark: "" },
+            { id: "4.2", phase: "Giai Đoạn 4", title: "Gửi Kit Voucher 30+ Khách sạn / Homestay", desc: "Gửi bộ Kit Voucher giảm 10% tới Lễ tân 30+ Khách sạn 3-5 sao & Homestay tại Hội An (Lễ tân nhận 15% doanh thu).", time: "Tuần 8-10", done: false, remark: "" },
+            { id: "4.3", phase: "Giai Đoạn 4", title: "Liên kết 5 Make-up Artists VIP", desc: "Hợp tác với 5 Make-up Artists chuyên nghiệp sẵn sàng nhận lịch làm tận nơi hoặc tại tiệm.", time: "Tuần 8-10", done: false, remark: "" },
+
+            { id: "5.1", phase: "Giai Đoạn 5", title: "Booking 8 KOCs TikTok / Instagram", desc: "Mời 8 KOCs du lịch TikTok/IG tài trợ outfit + chụp hình Lookbook góc phố Hội An.", time: "Tuần 10-11", done: false, remark: "" },
+            { id: "5.2", phase: "Giai Đoạn 5", title: "Sản xuất Video Viral TikTok", desc: "Đăng series video TikTok Viral: 'Đi Hội An đừng mua váy nữa - Thuê đầm hiệu 8 triệu chỉ 250k'.", time: "Tuần 10-11", done: false, remark: "" },
+            { id: "5.3", phase: "Giai Đoạn 5", title: "Bài viết Xiaohongshu cho khách quốc tế", desc: "Đăng bài tiếng Trung trên Xiaohongshu nhắm du khách Trung Quốc / Đài Loan / Singapore tới Hội An.", time: "Tuần 10-11", done: false, remark: "" },
+            { id: "5.4", phase: "Giai Đoạn 5", title: "Set Ads Facebook / Instagram Geo-target", desc: "Set up quảng cáo Facebook/Instagram Geo-targeting bán kính 15km quanh Hội An & Sân bay Đà Nẵng.", time: "Tuần 10-11", done: false, remark: "" },
+
+            { id: "6.1", phase: "Giai Đoạn 6", title: "Sự kiện Khai Trương Grand Opening", desc: "Chương trình tuần đầu: 'Thuê 1 Outfit - Tặng Free 1 Phụ Kiện & Ship Tận Khách Sạn'.", time: "Tuần 12+", done: false, remark: "" },
+            { id: "6.2", phase: "Giai Đoạn 6", title: "Quản lý Khấu hao & Thanh lý BST cũ", desc: "Theo dõi độ mòn trang phục: Đồ thuê quá 15 lượt chuyển sang thanh lý thu hồi 40-50% vốn gốc để nhập BST mới.", time: "Tuần 12+", done: false, remark: "" }
+        ];
+
         let initialProducts = [
             {
                 id: 1,
@@ -1410,19 +1528,43 @@
             }
         });
 
+        // Realtime 24/7 Firebase Listener for Progress Steps
+        db.collection("progress_tracker").onSnapshot((snapshot) => {
+            if (!snapshot.empty) {
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const found = progressStepsDB.find(s => s.id === doc.id);
+                    if (found) {
+                        found.done = data.done;
+                        found.remark = data.remark || "";
+                    }
+                });
+            }
+            if (document.getElementById('view-admin').classList.contains('active')) {
+                renderAdminProgressTracker();
+            }
+        });
+
         let cartState = [];
         let currentFilter = 'all';
 
         function switchAdminTab(subTab) {
             document.getElementById('tab-btn-orders').classList.remove('active');
+            document.getElementById('tab-btn-progress').classList.remove('active');
             document.getElementById('tab-btn-inventory').classList.remove('active');
+
             document.getElementById('admin-sub-orders').classList.remove('active');
+            document.getElementById('admin-sub-progress').classList.remove('active');
             document.getElementById('admin-sub-inventory').classList.remove('active');
 
             if (subTab === 'orders') {
                 document.getElementById('tab-btn-orders').classList.add('active');
                 document.getElementById('admin-sub-orders').classList.add('active');
                 renderAdminOrders();
+            } else if (subTab === 'progress') {
+                document.getElementById('tab-btn-progress').classList.add('active');
+                document.getElementById('admin-sub-progress').classList.add('active');
+                renderAdminProgressTracker();
             } else {
                 document.getElementById('tab-btn-inventory').classList.add('active');
                 document.getElementById('admin-sub-inventory').classList.add('active');
@@ -1487,8 +1629,89 @@
                 document.getElementById('search-container').style.display = 'none';
                 document.getElementById('float-cart-bar').style.display = 'none';
                 renderAdminOrders();
+                renderAdminProgressTracker();
                 renderAdminInventory();
             }
+        }
+
+        function renderAdminProgressTracker() {
+            const tbody = document.getElementById('progress-tracker-tbody');
+            tbody.innerHTML = '';
+
+            let doneCount = 0;
+            const total = progressStepsDB.length;
+
+            progressStepsDB.forEach(step => {
+                if (step.done) doneCount++;
+
+                const tr = document.createElement('tr');
+                if (step.done) tr.className = 'step-row-done';
+
+                tr.innerHTML = `
+                    <td style="text-align:center;">
+                        <input type="checkbox" ${step.done ? 'checked' : ''} onchange="toggleStepDone('${step.id}', this.checked)" style="width:20px; height:20px; accent-color:#4A7C59; cursor:pointer;">
+                    </td>
+                    <td><strong style="color:#5C4433;">${step.id}</strong></td>
+                    <td><span style="font-size:0.8rem; font-weight:700; color:#8C6D53;">${step.phase}</span></td>
+                    <td><strong style="color:#2C221E;">${step.title}</strong></td>
+                    <td style="font-size:0.83rem; color:var(--text-secondary);">${step.desc}</td>
+                    <td><span style="font-size:0.78rem; background:#FAF5ED; border:1px solid #EBE3D8; padding:3px 8px; border-radius:12px; font-weight:600; color:#5C4433;">${step.time}</span></td>
+                    <td>
+                        <textarea onblur="updateStepRemark('${step.id}', this.value)" placeholder="Nhập diễn giải / vấn đề gặp phải ở bước này..." style="width:100%; border:1px solid #EBE3D8; border-radius:8px; padding:6px 10px; font-size:0.8rem; outline:none; background:#FFF; resize:vertical; min-height:45px;">${step.remark || ''}</textarea>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            const percent = Math.round((doneCount / total) * 100);
+            document.getElementById('progress-percent-label').innerText = `${percent}% (${doneCount}/${total} Bước)`;
+            document.getElementById('progress-bar-fill').style.width = `${percent}%`;
+        }
+
+        function toggleStepDone(id, isDone) {
+            const step = progressStepsDB.find(s => s.id === id);
+            if (step) {
+                step.done = isDone;
+                db.collection("progress_tracker").doc(id).set({
+                    done: isDone,
+                    remark: step.remark || "",
+                    updatedAt: new Date().toISOString()
+                }, { merge: true }).then(() => {
+                    renderAdminProgressTracker();
+                });
+            }
+        }
+
+        function updateStepRemark(id, newRemark) {
+            const step = progressStepsDB.find(s => s.id === id);
+            if (step) {
+                step.remark = newRemark;
+                db.collection("progress_tracker").doc(id).set({
+                    done: step.done,
+                    remark: newRemark,
+                    updatedAt: new Date().toISOString()
+                }, { merge: true });
+            }
+        }
+
+        function downloadProgressCSV() {
+            let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
+            csvContent += `"Mã Bước","Giai Đoạn","Hạng Mục Công Việc","Hành Động Cụ Thể","Thời Gian","Hoàn Thành","Ghi Chú Vấn Đề (Remark)"\n`;
+
+            progressStepsDB.forEach(s => {
+                const doneStr = s.done ? "TRUE" : "FALSE";
+                const cleanDesc = (s.desc || '').replace(/"/g, '""');
+                const cleanRemark = (s.remark || '').replace(/"/g, '""');
+                csvContent += `"${s.id}","${s.phase}","${s.title}","${cleanDesc}","${s.time}","${doneStr}","${cleanRemark}"\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "Tien_Do_Xay_Dung_LONA_Dress.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function renderAdminOrders() {
